@@ -1,0 +1,8 @@
+{
+  "id": "002",
+  "description": "GetX token appears only in a comment describing HTTP verb — not a Go method name",
+  "input": "// handleRequest routes incoming requests. HTTP GET /users calls GetUser in the\n// downstream service; POST /users calls CreateUser. The router does not expose\n// GetUser or SetUser methods directly.\nfunc (s *Server) handleRequest(w http.ResponseWriter, r *http.Request) {\n\trouter.ServeHTTP(w, r)\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

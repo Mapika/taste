@@ -1,0 +1,8 @@
+{
+  "id": "010",
+  "description": "Tell Don't Ask applied — behavior pushed into Alarm domain object",
+  "input": "class Alarm {\n    private AlarmSeverity severity;\n    private AlarmOwner owner;\n    private AlarmStatus status;\n    private final NotificationDispatcher notificationDispatcher;\n\n    Alarm(AlarmSeverity severity, NotificationDispatcher notificationDispatcher) {\n        this.severity = severity;\n        this.notificationDispatcher = notificationDispatcher;\n        this.status = AlarmStatus.NEW;\n    }\n\n    void markAsUnownedCritical() {\n        this.status = AlarmStatus.UNOWNED_CRITICAL;\n        if (severity == AlarmSeverity.HIGH) {\n            notificationDispatcher.notifyAllHandlers(this);\n        }\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

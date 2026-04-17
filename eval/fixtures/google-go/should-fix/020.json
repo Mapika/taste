@@ -1,0 +1,10 @@
+{
+  "id": "020",
+  "description": "interface{} in function signature map and return type — use any",
+  "input": "// Encode serializes the given value to JSON bytes.\nfunc Encode(v interface{}) ([]byte, error) {\n\treturn json.Marshal(v)\n}\n\n// Merge combines two maps with interface{} values.\nfunc Merge(a, b map[string]interface{}) map[string]interface{} {\n\tresult := make(map[string]interface{})\n\tfor k, v := range a {\n\t\tresult[k] = v\n\t}\n\tfor k, v := range b {\n\t\tresult[k] = v\n\t}\n\treturn result\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.85,
+    "violationContains": ["interface{}", "any"]
+  }
+}

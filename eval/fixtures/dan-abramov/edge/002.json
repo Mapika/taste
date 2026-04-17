@@ -1,0 +1,8 @@
+{
+  "id": "002",
+  "description": "useCallback on a handler passed to a memoized child — legitimate use after measuring",
+  "input": "const ExpensiveList = React.memo(function ExpensiveList({ items, onItemClick }) {\n  // Renders thousands of items; re-render is expensive.\n  return (\n    <ul>\n      {items.map(item => (\n        <li key={item.id} onClick={() => onItemClick(item.id)}>{item.name}</li>\n      ))}\n    </ul>\n  );\n});\n\nfunction Parent({ items }) {\n  const [selectedId, setSelectedId] = useState(null);\n  // useCallback here because ExpensiveList is memoized and we measured\n  // the re-render cost to be significant (>16ms in profiler).\n  const handleItemClick = useCallback((id) => setSelectedId(id), []);\n\n  return <ExpensiveList items={items} onItemClick={handleItemClick} />;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "006",
+  "description": "typedef struct with anonymous inner struct — borderline, opaque HW register model",
+  "input": "/*\n * DMA descriptor ring entry. Treated as an opaque HW layout; callers\n * must use the accessor macros, never touch fields directly.\n */\ntypedef struct {\n\tunsigned int ctrl;\n\tunsigned int buf_addr;\n\tunsigned int next;\n\tunsigned int status;\n} dma_desc_t;",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.6,
+    "violationContains": ["typedef", "struct"]
+  }
+}

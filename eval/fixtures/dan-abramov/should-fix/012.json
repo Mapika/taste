@@ -1,0 +1,10 @@
+{
+  "id": "012",
+  "description": "premature useMemo wrapping a trivial inline computation",
+  "input": "function ProductList({ products, categoryFilter }) {\n  const filtered = useMemo(\n    () => products.filter(p => p.category === categoryFilter),\n    [products, categoryFilter]\n  );\n\n  const count = useMemo(\n    () => filtered.length,\n    [filtered]\n  );\n\n  return (\n    <div>\n      <p>Showing {count} products</p>\n      <ul>{filtered.map(p => <li key={p.id}>{p.name}</li>)}</ul>\n    </div>\n  );\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["useMemo", "premature"]
+  }
+}

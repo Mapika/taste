@@ -1,0 +1,8 @@
+{
+  "id": "013",
+  "description": "panic in main using log.Fatal — acceptable for unrecoverable startup failure",
+  "input": "func main() {\n\tcfg, err := config.Load(\"config.yaml\")\n\tif err != nil {\n\t\tlog.Fatalf(\"failed to load config: %v\", err)\n\t}\n\tsrv, err := server.New(cfg)\n\tif err != nil {\n\t\tlog.Fatalf(\"failed to create server: %v\", err)\n\t}\n\tif err := srv.ListenAndServe(); err != nil {\n\t\tlog.Fatalf(\"server error: %v\", err)\n\t}\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

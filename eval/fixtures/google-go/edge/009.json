@@ -1,0 +1,8 @@
+{
+  "id": "009",
+  "description": "named return parameters used for naked return in short function — acceptable use of named returns",
+  "input": "// divide returns the quotient and remainder of a divided by b.\nfunc divide(a, b int) (q, r int) {\n\tq = a / b\n\tr = a % b\n\treturn\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

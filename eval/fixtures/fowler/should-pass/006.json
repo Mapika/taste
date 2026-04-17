@@ -1,0 +1,8 @@
+{
+  "id": "006",
+  "description": "constructor injection with interface dependencies — correct DI pattern",
+  "input": "class OrderFulfillmentService {\n    private final OrderRepository orderRepository;\n    private final InventoryService inventoryService;\n    private final PaymentGateway paymentGateway;\n    private final OrderNotificationService orderNotificationService;\n\n    OrderFulfillmentService(\n            OrderRepository orderRepository,\n            InventoryService inventoryService,\n            PaymentGateway paymentGateway,\n            OrderNotificationService orderNotificationService) {\n        this.orderRepository = orderRepository;\n        this.inventoryService = inventoryService;\n        this.paymentGateway = paymentGateway;\n        this.orderNotificationService = orderNotificationService;\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

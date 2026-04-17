@@ -1,0 +1,8 @@
+{
+  "id": "010",
+  "description": "useToggle extracted at the third duplication — earned abstraction",
+  "input": "function useToggle(initialValue = false) {\n  const [value, setValue] = useState(initialValue);\n  // Stable reference: toggle identity doesn't change between renders.\n  const toggle = useCallback(() => setValue(v => !v), []);\n  return [value, toggle];\n}\n\nfunction Accordion({ sections }) {\n  return (\n    <div>\n      {sections.map(section => {\n        const [isOpen, toggleOpen] = useToggle(false);\n        return (\n          <div key={section.id}>\n            <button onClick={toggleOpen}>{section.title}</button>\n            {isOpen && <p>{section.content}</p>}\n          </div>\n        );\n      })}\n    </div>\n  );\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

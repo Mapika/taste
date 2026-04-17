@@ -1,0 +1,8 @@
+{
+  "id": "002",
+  "description": "domain-named PORO in app/models — Recording::Incineration does one thing",
+  "input": "class Recording::Incineration\n  def initialize(recording)\n    @recording = recording\n  end\n\n  def incinerate!\n    ActiveRecord::Base.transaction do\n      @recording.attachments.each(&:purge)\n      @recording.events.destroy_all\n      @recording.destroy!\n    end\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

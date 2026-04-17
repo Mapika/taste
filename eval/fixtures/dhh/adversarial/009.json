@@ -1,0 +1,8 @@
+{
+  "id": "009",
+  "description": "CamelCase constant in Ruby that is NOT a method name — it's a module namespace, which is correct",
+  "input": "module ActiveRecord\n  module ConnectionAdapters\n    module PostgreSQL\n      module SchemaStatements\n        def create_table_definition(name, **options)\n          PostgreSQL::TableDefinition.new(self, name, **options)\n        end\n      end\n    end\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

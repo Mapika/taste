@@ -1,0 +1,8 @@
+{
+  "id": "004",
+  "description": "abbreviated 'svc' appears only in a comment about the legacy naming — code itself is correct",
+  "input": "/**\n * Replacement for the legacy OrderSvc class.\n * Uses the full domain name OrderFulfillmentService as required by the ubiquitous language.\n */\nclass OrderFulfillmentService {\n    private final OrderRepository orderRepository;\n    private final InventoryService inventoryService;\n\n    OrderFulfillmentService(OrderRepository orderRepository, InventoryService inventoryService) {\n        this.orderRepository = orderRepository;\n        this.inventoryService = inventoryService;\n    }\n\n    void fulfillOrder(OrderId orderId) {\n        Order order = orderRepository.findById(orderId)\n            .orElseThrow(() -> new OrderNotFoundException(orderId));\n        inventoryService.reserveItemsForOrder(order);\n        order.markAsFulfilled();\n        orderRepository.save(order);\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

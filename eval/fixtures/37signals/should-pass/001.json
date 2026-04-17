@@ -1,0 +1,8 @@
+{
+  "id": "001",
+  "description": "narrow concern for one model behaviour — Closable handles only termination logic",
+  "input": "module Account::Closable\n  extend ActiveSupport::Concern\n\n  def terminate\n    purge_or_incinerate if terminable?\n  end\n\n  private\n\n  def terminable?\n    active? && !legal_hold?\n  end\n\n  def purge_or_incinerate\n    can_incinerate? ? incinerate! : purge!\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

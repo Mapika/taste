@@ -1,0 +1,10 @@
+{
+  "id": "016",
+  "description": "package name uses camelCase — should be lowercase single word",
+  "input": "package httpUtils\n\n// BuildURL constructs a URL from components.\nfunc BuildURL(scheme, host, path string) string {\n\treturn scheme + \"://\" + host + path\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.85,
+    "violationContains": ["package", "lowercase"]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "002",
+  "description": "class that might be justified — wraps a single sub-resource, similar to Messages holding Batches",
+  "input": "export class Completions extends APIResource {\n  multiTurn: MultiTurnAPI.MultiTurn = new MultiTurnAPI.MultiTurn(this._client);\n\n  create(body: CompletionCreateParams, options?: RequestOptions): APIPromise<Completion> {\n    return this._client.post('/v1/completions', { body, ...options });\n  }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

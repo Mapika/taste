@@ -1,0 +1,8 @@
+{
+  "id": "006",
+  "description": "routes DSL drawing resources and custom actions — idiomatic Rails routing",
+  "input": "Rails.application.routes.draw do\n  resources :posts do\n    member do\n      post :publish\n      delete :unpublish\n    end\n    collection do\n      get :drafts\n    end\n  end\n\n  resources :users, only: %i[ show edit update ] do\n    resource :avatar, only: %i[ show create destroy ]\n  end\n\n  root 'posts#index'\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

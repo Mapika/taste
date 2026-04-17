@@ -1,0 +1,8 @@
+{
+  "id": "006",
+  "description": "single-implementation interface — still correct when testability requires it",
+  "input": "interface SystemClock {\n    LocalDateTime now();\n}\n\nclass WallClock implements SystemClock {\n    public LocalDateTime now() {\n        return LocalDateTime.now();\n    }\n}\n\n// Used in production code; FakeClock used in tests\nclass SubscriptionExpiryChecker {\n    private final SystemClock clock;\n\n    SubscriptionExpiryChecker(SystemClock clock) {\n        this.clock = clock;\n    }\n\n    boolean hasSubscriptionExpired(Subscription subscription) {\n        return subscription.getExpiryDate().isBefore(clock.now().toLocalDate());\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "010",
+  "description": "bit operations and static-scope variables with prefix for logical grouping",
+  "input": "// r_surf.ts — surface-related refresh code\n\nlet lightmapBytes = 4; // 1, 2, or 4\nlet lightmapTextures = 0;\n\nconst BLOCK_WIDTH = 128;\nconst BLOCK_HEIGHT = 128;\nconst MAX_LIGHTMAPS = 64;\n\nlet activeLightmaps = 0;\nconst allocated: number[][] = Array.from({ length: MAX_LIGHTMAPS }, () => new Array(BLOCK_WIDTH).fill(0));\n\n// the lightmap texture data must stay in main memory so texsubimage can update\nconst lightmaps = new Uint8Array(4 * MAX_LIGHTMAPS * BLOCK_WIDTH * BLOCK_HEIGHT);",
+  "expect": {
+    "verdict": "pass"
+  }
+}

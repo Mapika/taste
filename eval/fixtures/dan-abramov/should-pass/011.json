@@ -1,0 +1,8 @@
+{
+  "id": "011",
+  "description": "controlled text input with useState — value/onChange pair returned for spreading",
+  "input": "function useFormInput(initialValue) {\n  const [value, setValue] = useState(initialValue);\n\n  function handleChange(e) {\n    setValue(e.target.value);\n  }\n\n  return { value, onChange: handleChange };\n}\n\nfunction SignupForm() {\n  const username = useFormInput('');\n  const email = useFormInput('');\n\n  return (\n    <form>\n      <input {...username} placeholder=\"Username\" />\n      <input {...email} placeholder=\"Email\" type=\"email\" />\n    </form>\n  );\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

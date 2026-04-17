@@ -1,0 +1,8 @@
+{
+  "id": "009",
+  "description": "error hierarchy — BadRequestError extends APIError with typed generics",
+  "input": "export class AnthropicError extends Error {}\n\nexport class APIError<\n  TStatus extends number | undefined = number | undefined,\n  THeaders extends Headers | undefined = Headers | undefined,\n  TError extends Object | undefined = Object | undefined,\n> extends AnthropicError {\n  readonly status: TStatus;\n  readonly headers: THeaders;\n  readonly error: TError;\n}\n\nexport class BadRequestError extends APIError<400, Headers, Object> {}\nexport class AuthenticationError extends APIError<401, Headers, Object> {}\nexport class RateLimitError extends APIError<429, Headers, Object> {}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

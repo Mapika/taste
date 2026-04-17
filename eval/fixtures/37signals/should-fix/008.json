@@ -1,0 +1,10 @@
+{
+  "id": "008",
+  "description": "@deprecated tag left on a method in production code instead of removing or isolating in a shim",
+  "input": "class Account < ApplicationRecord\n  # @deprecated Use #terminate instead\n  def close!\n    update!(state: :closed)\n  end\n\n  # @deprecated Prefer Account::Billable#cancel_subscription\n  def cancel!\n    subscription.cancel!\n  end\n\n  def terminate\n    purge_or_incinerate if terminable?\n  end\nend",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["@deprecated", "remove", "shim"]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "006",
+  "description": "stateless utility class wrapping functions that should be plain exports",
+  "input": "export class RequestUtils {\n  static isAbsoluteURL(url: string): boolean {\n    return /^[a-z][a-z0-9+.-]*:/i.test(url);\n  }\n\n  static validatePositiveInteger(name: string, n: unknown): number {\n    if (typeof n !== 'number' || !Number.isInteger(n) || n < 0) {\n      throw new Error(`${name} must be a positive integer`);\n    }\n    return n;\n  }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["class", "function"]
+  }
+}

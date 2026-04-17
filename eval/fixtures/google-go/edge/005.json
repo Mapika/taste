@@ -1,0 +1,8 @@
+{
+  "id": "005",
+  "description": "longer receiver name for a very short type with name collision risk — borderline but acceptable",
+  "input": "// DB wraps a sql database connection.\ntype DB struct {\n\tdb *sql.DB\n}\n\n// Close closes the underlying database connection.\nfunc (db *DB) Close() error {\n\treturn db.db.Close()\n}\n\n// Ping verifies the database connection is alive.\nfunc (db *DB) Ping(ctx context.Context) error {\n\treturn db.db.PingContext(ctx)\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

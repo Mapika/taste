@@ -1,0 +1,10 @@
+{
+  "id": "003",
+  "description": "generic machine-speak error message — talks to the log, not to the person",
+  "input": "class Signup\n  include ActiveModel::Model\n\n  validates :email, presence: true\n\n  def save\n    return false unless valid?\n    Identity.create!(email: email)\n  rescue ActiveRecord::RecordNotUnique\n    errors.add(:email, \"validation_failed: uniqueness_constraint_violated\")\n    false\n  end\nend",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["error message", "person", "human"]
+  }
+}

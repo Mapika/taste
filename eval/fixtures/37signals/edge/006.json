@@ -1,0 +1,8 @@
+{
+  "id": "006",
+  "description": "a model with one concern that covers the same concept — acceptable even if the concern name is slightly generic",
+  "input": "module Archivable\n  extend ActiveSupport::Concern\n\n  included do\n    scope :archived, -> { where.not(archived_at: nil) }\n    scope :active, -> { where(archived_at: nil) }\n  end\n\n  def archive!\n    update!(archived_at: Time.current)\n  end\n\n  def unarchive!\n    update!(archived_at: nil)\n  end\n\n  def archived? = archived_at.present?\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

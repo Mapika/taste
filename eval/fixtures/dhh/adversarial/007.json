@@ -1,0 +1,8 @@
+{
+  "id": "007",
+  "description": "'Service' appears in an error message string, not a class definition",
+  "input": "class ApplicationController < ActionController::Base\n  rescue_from Stripe::CardError, with: :handle_stripe_error\n\n  private\n    def handle_stripe_error(error)\n      redirect_to new_payment_path,\n        alert: \"The payment service returned an error: #{error.message}\"\n    end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "007",
+  "description": "explicit #include-style imports, no barrel, system first then project",
+  "input": "import { readFileSync, statSync } from 'fs';\nimport { openSync, readSync, closeSync } from 'fs';\n\nimport { SCREENWIDTH, SCREENHEIGHT, FRACBITS } from './doomdef';\nimport { zMalloc, PU_STATIC } from './z_zone';\nimport { iError } from './i_system';\nimport { vVideo } from './v_video';\nimport type { LightTable, Fixed } from './r_local';",
+  "expect": {
+    "verdict": "pass"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "014",
+  "description": "kmalloc with sizeof(*p) idiom, no cast, proper null check",
+  "input": "int alloc_worker(struct worker_pool *pool)\n{\n\tstruct worker *w;\n\n\tw = kmalloc(sizeof(*w), GFP_KERNEL);\n\tif (!w)\n\t\treturn -ENOMEM;\n\tw->pool = pool;\n\tlist_add(&w->node, &pool->workers);\n\treturn 0;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

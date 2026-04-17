@@ -1,0 +1,10 @@
+{
+  "id": "013",
+  "description": "README that buries the value proposition under installation ceremony",
+  "input": "# MyGem\n\n## Installation\n\nAdd this line to your application's Gemfile:\n\n```ruby\ngem 'my_gem'\n```\n\nAnd then execute:\n\n```bash\n$ bundle install\n```\n\nOr install it yourself as:\n\n```bash\n$ gem install my_gem\n```\n\n## Usage\n\nAfter installing, require the gem in your code:\n\n```ruby\nrequire 'my_gem'\n```\n\nThen you can use it like this...\n\n## What does it do?\n\nmy_gem lets you paginate Active Record sets at variable speeds.",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["README", "value proposition", "first"]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "002",
+  "description": "panic used in library function — should return error instead",
+  "input": "// ParseConfig parses JSON configuration data.\nfunc ParseConfig(data []byte) *Config {\n\tvar cfg Config\n\tif err := json.Unmarshal(data, &cfg); err != nil {\n\t\tpanic(fmt.Sprintf(\"invalid config: %v\", err))\n\t}\n\treturn &cfg\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.85,
+    "violationContains": ["panic", "error"]
+  }
+}

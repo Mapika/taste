@@ -1,0 +1,8 @@
+{
+  "id": "012",
+  "description": "useEffect with explicit dependency array and cleanup mirroring subscription",
+  "input": "function useFriendStatus(friendID) {\n  const [isOnline, setIsOnline] = useState(null);\n\n  useEffect(() => {\n    function handleStatusChange(status) {\n      setIsOnline(status.isOnline);\n    }\n\n    ChatAPI.subscribeToFriendStatus(friendID, handleStatusChange);\n    // Cleanup mirrors the subscription so no stale listener remains.\n    return () => ChatAPI.unsubscribeFromFriendStatus(friendID, handleStatusChange);\n  }, [friendID]);\n\n  return isOnline;\n}\n\nfunction FriendStatus({ friend }) {\n  const isOnline = useFriendStatus(friend.id);\n\n  if (isOnline === null) {\n    return <span>Loading...</span>;\n  }\n  return (\n    <span style={{ color: isOnline ? 'green' : 'black' }}>\n      {isOnline ? 'Online' : 'Offline'}\n    </span>\n  );\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

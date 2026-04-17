@@ -1,0 +1,8 @@
+{
+  "id": "002",
+  "description": "magic numbers 0 and 1 are explicitly allowed — boundary constants in validation",
+  "input": "class AgeValidator {\n    private static final int MINIMUM_LEGAL_DRINKING_AGE = 21;\n    private static final int MAXIMUM_ENROLLMENT_AGE = 65;\n\n    boolean isEligibleForProgram(int age) {\n        return age >= MINIMUM_LEGAL_DRINKING_AGE && age <= MAXIMUM_ENROLLMENT_AGE;\n    }\n\n    boolean isValidAge(int age) {\n        return age > 0 && age < 150;\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

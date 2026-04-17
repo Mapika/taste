@@ -1,0 +1,8 @@
+{
+  "id": "004",
+  "description": "fluent ActiveRecord query chain — composable, reads like English",
+  "input": "Post.published\n    .by_author(current_user)\n    .where(category: params[:category])\n    .order(created_at: :desc)\n    .limit(10)",
+  "expect": {
+    "verdict": "pass"
+  }
+}

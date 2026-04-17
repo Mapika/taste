@@ -1,0 +1,8 @@
+{
+  "id": "012",
+  "description": "lean gem config — console1984 scoped to one lambda, no extra framework dependency",
+  "input": "# config/environments/production.rb\nconfig.console1984.username_resolver = -> { Current.user }\n\n# Gemfile\ngem \"console1984\"",
+  "expect": {
+    "verdict": "pass"
+  }
+}

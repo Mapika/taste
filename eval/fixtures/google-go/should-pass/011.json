@@ -1,0 +1,8 @@
+{
+  "id": "011",
+  "description": "snake_case file name with correct package name",
+  "input": "// file: request_parser.go\npackage http\n\n// ParseRequest reads and validates an HTTP request from r.\nfunc ParseRequest(r io.Reader) (*Request, error) {\n\t// implementation\n\treturn nil, nil\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

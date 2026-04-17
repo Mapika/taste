@@ -1,0 +1,8 @@
+{
+  "id": "005",
+  "description": "Redux reducer as a pure function — no classes, current/next naming",
+  "input": "function todosReducer(state = [], action) {\n  switch (action.type) {\n    case 'ADD_TODO':\n      return [...state, { id: action.id, text: action.text, completed: false }];\n    case 'TOGGLE_TODO':\n      return state.map(todo =>\n        todo.id === action.id ? { ...todo, completed: !todo.completed } : todo\n      );\n    case 'REMOVE_TODO':\n      return state.filter(todo => todo.id !== action.id);\n    default:\n      return state;\n  }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "015",
+  "description": "Whole Object preserved — HeatingPlan receives TempRange, not decomposed primitives",
+  "input": "class HeatingPlan {\n    private final TempRange permittedRange;\n\n    HeatingPlan(TempRange permittedRange) {\n        this.permittedRange = permittedRange;\n    }\n\n    boolean isWithinPermittedRange(TempRange actualRange) {\n        return permittedRange.contains(actualRange);\n    }\n}\n\nvoid checkTemperatureRange(Room room, HeatingPlan plan) {\n    TempRange dailyRange = room.getDaysTempRange();\n    if (!plan.isWithinPermittedRange(dailyRange)) {\n        alerts.add(\"Room temperature outside heating plan range\");\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

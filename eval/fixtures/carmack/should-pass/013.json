@@ -1,0 +1,8 @@
+{
+  "id": "013",
+  "description": "NaN check with console print and fix-in-place, not throw",
+  "input": "function checkVelocity(ent: Edict): void {\n  for (let i = 0; i < 3; i++) {\n    if (isNaN(ent.v.velocity[i])) {\n      console.log(`Got a NaN velocity on ${ent.v.classname}`);\n      ent.v.velocity[i] = 0;\n    }\n    if (ent.v.velocity[i] > sv_maxvelocity.value)\n      ent.v.velocity[i] = sv_maxvelocity.value;\n    else if (ent.v.velocity[i] < -sv_maxvelocity.value)\n      ent.v.velocity[i] = -sv_maxvelocity.value;\n  }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

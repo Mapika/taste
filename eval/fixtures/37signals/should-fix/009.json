@@ -1,0 +1,10 @@
+{
+  "id": "009",
+  "description": "heavy external gem imported for a task that a few lines of plain Ruby handles",
+  "input": "# Gemfile\ngem 'chronic'          # natural-language date parsing\ngem 'money-rails'      # money types\ngem 'aasm'             # state machine\ngem 'paper_trail'      # versioning\ngem 'pundit'           # authorisation\ngem 'draper'           # decorators\ngem 'reform'           # form objects",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["dependency", "lean", "plain Ruby"]
+  }
+}

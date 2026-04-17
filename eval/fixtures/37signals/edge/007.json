@@ -1,0 +1,8 @@
+{
+  "id": "007",
+  "description": "a builder/factory class — not named Service, but still adds abstraction ceremony over a simple AR create",
+  "input": "class RecordingBuilder\n  def initialize(bucket:, creator:)\n    @bucket = bucket\n    @creator = creator\n  end\n\n  def build_message(subject:, body:)\n    message = Message.new(subject: subject, body: body)\n    Recording.new(recordable: message, bucket: @bucket, creator: @creator)\n  end\n\n  def build_comment(body:)\n    comment = Comment.new(body: body)\n    Recording.new(recordable: comment, bucket: @bucket, creator: @creator)\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

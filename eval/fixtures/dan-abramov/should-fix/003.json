@@ -1,0 +1,10 @@
+{
+  "id": "003",
+  "description": "abbreviated state variable names — intent-free single-letter names",
+  "input": "function LoginForm() {\n  const [e, setE] = useState('');\n  const [p, setP] = useState('');\n  const [l, setL] = useState(false);\n\n  async function handleSubmit() {\n    setL(true);\n    await login(e, p);\n    setL(false);\n  }\n\n  return (\n    <form onSubmit={handleSubmit}>\n      <input value={e} onChange={ev => setE(ev.target.value)} />\n      <input value={p} onChange={ev => setP(ev.target.value)} type=\"password\" />\n      {l && <span>Loading...</span>}\n    </form>\n  );\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.8,
+    "violationContains": ["name", "intent"]
+  }
+}

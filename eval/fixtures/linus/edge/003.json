@@ -1,0 +1,8 @@
+{
+  "id": "003",
+  "description": "function slightly over 80 cols in comment string that cannot break — acceptable per §2 exception",
+  "input": "static int init_proc(struct proc_info *p)\n{\n\tint err;\n\n\t/* User-visible message; must not break for grep to find it in logs */\n\tpr_info(\"process: initializing proc_info for pid %d on cpu %d\\n\", p->pid, p->cpu);\n\n\terr = alloc_stack(p);\n\tif (err)\n\t\treturn err;\n\treturn 0;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

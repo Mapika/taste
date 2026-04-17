@@ -1,0 +1,8 @@
+{
+  "id": "001",
+  "description": "useReducer for genuinely complex state — acceptable alternative to multiple useState",
+  "input": "const initialState = { count: 0, step: 1 };\n\nfunction counterReducer(state, action) {\n  switch (action.type) {\n    case 'increment': return { ...state, count: state.count + state.step };\n    case 'decrement': return { ...state, count: state.count - state.step };\n    case 'setStep': return { ...state, step: action.step };\n    case 'reset': return initialState;\n    default: return state;\n  }\n}\n\nfunction Counter() {\n  const [state, dispatch] = useReducer(counterReducer, initialState);\n  return (\n    <div>\n      <p>{state.count}</p>\n      <button onClick={() => dispatch({ type: 'increment' })}>+</button>\n      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>\n      <input\n        type=\"number\"\n        value={state.step}\n        onChange={e => dispatch({ type: 'setStep', step: Number(e.target.value) })}\n      />\n    </div>\n  );\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

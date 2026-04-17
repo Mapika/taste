@@ -1,0 +1,10 @@
+{
+  "id": "003",
+  "description": "deep multi-level class hierarchy beyond APIResource base — violates single-purpose shallow classes rule",
+  "input": "export class BaseService {\n  protected config: Config;\n  constructor(config: Config) { this.config = config; }\n}\n\nexport class HttpService extends BaseService {\n  protected httpClient: HttpClient;\n  constructor(config: Config, client: HttpClient) {\n    super(config);\n    this.httpClient = client;\n  }\n}\n\nexport class MessagesService extends HttpService {\n  private transformer: MessageTransformer;\n  constructor(config: Config, client: HttpClient, xform: MessageTransformer) {\n    super(config, client);\n    this.transformer = xform;\n  }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["hierarch", "shallow"]
+  }
+}

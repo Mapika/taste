@@ -1,0 +1,8 @@
+{
+  "id": "006",
+  "description": "K&R function brace on next line, control-flow braces at end of line",
+  "input": "static int find_free_slot(struct pool *pool)\n{\n\tint i;\n\n\tfor (i = 0; i < pool->nr_slots; i++) {\n\t\tif (!pool->slots[i].used)\n\t\t\treturn i;\n\t}\n\treturn -1;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "012",
+  "description": "inline comment explaining WHY — spec citation before a regexp",
+  "input": "// https://url.spec.whatwg.org/#url-scheme-string\nconst startsWithSchemeRegexp = /^[a-z][a-z0-9+.-]*:/i;\n\nexport const isAbsoluteURL = (url: string): boolean => {\n  return startsWithSchemeRegexp.test(url);\n};",
+  "expect": {
+    "verdict": "pass"
+  }
+}

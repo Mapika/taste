@@ -1,0 +1,8 @@
+{
+  "id": "010",
+  "description": "Signup PORO using ActiveModel — no external gem, no service suffix",
+  "input": "class Signup\n  include ActiveModel::Model\n  include ActiveModel::Attributes\n\n  attribute :email, :string\n  attribute :name, :string\n\n  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }\n  validates :name, presence: true\n\n  def save\n    return false unless valid?\n    create_identity\n  end\n\n  private\n\n  def create_identity\n    Identity.create!(email: email, name: name)\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

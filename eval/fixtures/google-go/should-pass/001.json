@@ -1,0 +1,8 @@
+{
+  "id": "001",
+  "description": "idiomatic interface with -er suffix and doc comment starting with identifier",
+  "input": "// Reader is the interface that wraps the basic Read method.\ntype Reader interface {\n\tRead(p []byte) (n int, err error)\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

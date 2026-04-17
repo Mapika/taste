@@ -1,0 +1,8 @@
+{
+  "id": "009",
+  "description": "short scope variables i and v in range loop — idiomatic",
+  "input": "// Sum returns the sum of all values in the slice.\nfunc Sum(vals []int) int {\n\tn := 0\n\tfor _, v := range vals {\n\t\tn += v\n\t}\n\treturn n\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

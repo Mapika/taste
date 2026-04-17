@@ -1,0 +1,8 @@
+{
+  "id": "011",
+  "description": "delegated type setup — Recording delegates to concrete types, no inheritance chain",
+  "input": "class Recording < ApplicationRecord\n  delegated_type :recordable, types: %w[ Message Comment Document Upload ]\n  belongs_to :bucket\n  belongs_to :creator, class_name: \"Person\"\n\n  scope :ordered, -> { order(created_at: :desc) }\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

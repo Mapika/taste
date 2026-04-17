@@ -1,0 +1,10 @@
+{
+  "id": "007",
+  "description": "attr_accessor used to manually declare database-backed attributes — Rails infers these from schema",
+  "input": "class Post < ActiveRecord::Base\n  attr_accessor :title\n  attr_accessor :body\n  attr_accessor :published_at\n  attr_accessor :author_id\n  attr_accessor :view_count\nend",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.8,
+    "violationContains": ["convention", "schema", "infer"]
+  }
+}

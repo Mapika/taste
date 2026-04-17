@@ -1,0 +1,10 @@
+{
+  "id": "004",
+  "description": "macro constant name with lower-case — deceptive, constants must be ALL_CAPS",
+  "input": "#define page_shift 12\n#define page_size (1UL << page_shift)\n\nstatic inline unsigned long page_align(unsigned long addr)\n{\n\treturn (addr + page_size - 1) & ~(page_size - 1);\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["macro", "constant", "uppercase"]
+  }
+}

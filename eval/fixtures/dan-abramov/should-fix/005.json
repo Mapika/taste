@@ -1,0 +1,10 @@
+{
+  "id": "005",
+  "description": "premature abstraction — hook wrapping a single useState call",
+  "input": "function useIsOpen() {\n  return useState(false);\n}\n\nfunction useIsLoading() {\n  return useState(false);\n}\n\nfunction useIsError() {\n  return useState(false);\n}\n\nfunction Modal() {\n  const [isOpen, setIsOpen] = useIsOpen();\n  return <div>{isOpen && <div>Modal content</div>}</div>;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["abstraction", "useState"]
+  }
+}

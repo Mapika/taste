@@ -1,0 +1,8 @@
+{
+  "id": "015",
+  "description": "multiple narrow concerns included in a model — each covers exactly one responsibility",
+  "input": "class Account < ApplicationRecord\n  include Closable\n  include Billable\n  include Searchable\n  include Invitable\n\n  has_many :users\n  has_many :projects\n  belongs_to :plan\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

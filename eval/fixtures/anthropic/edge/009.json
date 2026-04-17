@@ -1,0 +1,10 @@
+{
+  "id": "009",
+  "description": "non-deprecated use of export * from a closely related shim file — intent is ambiguous",
+  "input": "// src/resources/messages/index.ts\n// Re-export everything from the messages module for consumers\nexport * from './messages';",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.3,
+    "violationContains": ["export *"]
+  }
+}

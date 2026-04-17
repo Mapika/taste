@@ -1,0 +1,8 @@
+{
+  "id": "002",
+  "description": "ApplicationService base class — could be legitimate if it's truly a thin base, not a ceremony multiplier",
+  "input": "# Base for the handful of true cross-cutting operations that are\n# neither a model concern nor a job (e.g., third-party API orchestration\n# with its own retry/circuit-breaker logic)\nclass ApplicationService\n  def self.call(...)\n    new(...).call\n  end\nend\n\nclass StripeWebhookService < ApplicationService\n  def initialize(payload, signature)\n    @payload   = payload\n    @signature = signature\n  end\n\n  def call\n    event = Stripe::Webhook.construct_event(@payload, @signature, Rails.application.credentials.stripe_webhook_secret)\n    handle_event(event)\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

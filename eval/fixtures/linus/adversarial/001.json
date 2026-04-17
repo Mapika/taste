@@ -1,0 +1,8 @@
+{
+  "id": "001",
+  "description": "CamelCase appears only in a string literal — not an identifier, should pass",
+  "input": "static int report_error(int err)\n{\n\tpr_err(\"CamelCase identifiers are banned in kernel code: %d\\n\", err);\n\treturn err;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

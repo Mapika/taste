@@ -1,0 +1,8 @@
+{
+  "id": "015",
+  "description": "ClientOptions interface with JSDoc @unit and @default tags — matches corpus snippet 5",
+  "input": "export interface ClientOptions {\n  /**\n   * API key used for authentication.\n   *\n   * Defaults to process.env['ANTHROPIC_API_KEY'].\n   */\n  apiKey?: string | null | undefined;\n\n  /**\n   * The maximum amount of time (in milliseconds) that the client should wait.\n   *\n   * @unit milliseconds\n   */\n  timeout?: number | undefined;\n\n  /**\n   * The maximum number of times the client will retry a request.\n   *\n   * @default 2\n   */\n  maxRetries?: number;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

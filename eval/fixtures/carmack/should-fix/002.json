@@ -1,0 +1,10 @@
+{
+  "id": "002",
+  "description": "naming: verbose parameter names where short ones suffice in a tight loop",
+  "input": "function transformVector(\n  inputVector: [number, number, number],\n  transformationMatrix: number[][],\n  outputVector: [number, number, number]\n): void {\n  for (let componentIndex = 0; componentIndex < 3; componentIndex++) {\n    outputVector[componentIndex] = 0;\n    for (let matrixColumn = 0; matrixColumn < 3; matrixColumn++) {\n      outputVector[componentIndex] +=\n        transformationMatrix[componentIndex][matrixColumn] *\n        inputVector[matrixColumn];\n    }\n  }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["verbose", "names"]
+  }
+}

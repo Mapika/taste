@@ -1,0 +1,8 @@
+{
+  "id": "009",
+  "description": "magic number -1 used as sentinel return value — -1 is in the allowed set (0/1/-1)",
+  "input": "class StringSearcher {\n    int findFirstOccurrenceOf(String searchTerm, String text) {\n        if (searchTerm == null || text == null) return -1;\n        return text.indexOf(searchTerm);\n    }\n\n    boolean containsSearchTerm(String searchTerm, String text) {\n        return findFirstOccurrenceOf(searchTerm, text) != -1;\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

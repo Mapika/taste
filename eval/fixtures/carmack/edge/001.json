@@ -1,0 +1,8 @@
+{
+  "id": "001",
+  "description": "class with a single constructor that just holds a pointer — matches Carmack's APIResource-equivalent pattern but still a class",
+  "input": "class RenderContext {\n  constructor(public readonly gl: WebGLRenderingContext) {}\n}\n\nfunction drawSurface(ctx: RenderContext, surf: Surface): void {\n  ctx.gl.bindTexture(ctx.gl.TEXTURE_2D, surf.texture);\n  ctx.gl.drawArrays(ctx.gl.TRIANGLES, surf.offset, surf.count);\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

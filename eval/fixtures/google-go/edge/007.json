@@ -1,0 +1,8 @@
+{
+  "id": "007",
+  "description": "defer f.Close() without error check on read-only file — acceptable per Effective Go",
+  "input": "// Hash computes the SHA256 hash of the file at path.\nfunc Hash(path string) ([]byte, error) {\n\tf, err := os.Open(path)\n\tif err != nil {\n\t\treturn nil, fmt.Errorf(\"Hash: %w\", err)\n\t}\n\tdefer f.Close() // read-only; Close error is not actionable\n\th := sha256.New()\n\tif _, err := io.Copy(h, f); err != nil {\n\t\treturn nil, fmt.Errorf(\"Hash: %w\", err)\n\t}\n\treturn h.Sum(nil), nil\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

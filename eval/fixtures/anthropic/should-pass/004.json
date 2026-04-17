@@ -1,0 +1,8 @@
+{
+  "id": "004",
+  "description": "error handling at infrastructure boundary with isAbortError check before rethrowing",
+  "input": "async function* iterator(): AsyncIterator<Item, any, undefined> {\n  consumed = true;\n  let done = false;\n  try {\n    for await (const sse of _iterSSEMessages(response, controller)) {\n      yield parseEvent(sse);\n    }\n    done = true;\n  } catch (e) {\n    // If the user calls `stream.controller.abort()`, we should exit without throwing.\n    if (isAbortError(e)) return;\n    throw e;\n  } finally {\n    // If the user `break`s, abort the ongoing request.\n    if (!done) controller.abort();\n  }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "003",
+  "description": "lodash imported for array utilities that Enumerable or ActiveSupport provides natively",
+  "input": "const _ = require('lodash');\n\nconst titles = _.map(posts, p => p.title);\nconst published = _.filter(posts, p => p.published);\nconst sorted = _.sortBy(posts, 'created_at');",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.85,
+    "violationContains": ["lodash", "stdlib"]
+  }
+}

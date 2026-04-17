@@ -1,0 +1,8 @@
+{
+  "id": "006",
+  "description": "clean named re-export from index — explicit names, type keyword on type-only exports",
+  "input": "export { APIPromise } from './core/api-promise';\nexport { BaseAnthropic, Anthropic, type ClientOptions } from './client';\nexport {\n  AnthropicError,\n  APIError,\n  APIConnectionError,\n  APIConnectionTimeoutError,\n  APIUserAbortError,\n  BadRequestError,\n  AuthenticationError,\n  NotFoundError,\n  RateLimitError,\n  InternalServerError,\n} from './core/error';\nexport type {\n  ParsedMessage,\n  ParsedContentBlock,\n} from './lib/parser';",
+  "expect": {
+    "verdict": "pass"
+  }
+}

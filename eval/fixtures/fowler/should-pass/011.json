@@ -1,0 +1,8 @@
+{
+  "id": "011",
+  "description": "CQS-compliant ShoppingCart with separate command and query methods",
+  "input": "class ShoppingCart {\n    private final List<CartItem> items = new ArrayList<>();\n\n    void addItem(CartItem item) {\n        items.add(item);\n    }\n\n    void removeItem(CartItemId itemId) {\n        items.removeIf(item -> item.getId().equals(itemId));\n    }\n\n    Money calculateSubtotal() {\n        return items.stream()\n            .map(CartItem::calculateLineTotal)\n            .reduce(Money.ZERO, Money::add);\n    }\n\n    boolean isEmpty() {\n        return items.isEmpty();\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

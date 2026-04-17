@@ -1,0 +1,8 @@
+{
+  "id": "003",
+  "description": "bad example from the profile appears inside a docstring — should pass because it is documentation",
+  "input": "/**\n * Converts a catch-block error to a typed Error instance.\n *\n * @example Bad pattern (do not do this):\n * ```ts\n * catch (e: any) { console.error(e); }\n * ```\n *\n * @example Good pattern:\n * ```ts\n * catch (e: unknown) { throw castToError(e); }\n * ```\n */\nexport function castToError(err: unknown): Error {\n  if (err instanceof Error) return err;\n  return new Error(String(err));\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

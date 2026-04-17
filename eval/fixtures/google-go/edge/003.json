@@ -1,0 +1,8 @@
+{
+  "id": "003",
+  "description": "regexp.MustCompile uses panic internally at package init — acceptable stdlib pattern",
+  "input": "// validEmail matches basic email addresses.\nvar validEmail = regexp.MustCompile(`^[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}$`)\n\n// IsValidEmail reports whether s is a valid email address.\nfunc IsValidEmail(s string) bool {\n\treturn validEmail.MatchString(s)\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

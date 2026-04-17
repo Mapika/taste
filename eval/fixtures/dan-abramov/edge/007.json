@@ -1,0 +1,8 @@
+{
+  "id": "007",
+  "description": "hook with multiple useEffects, each for one concern — acceptable decomposition",
+  "input": "function DocumentEditor({ docId, userId }) {\n  const [content, setContent] = useState('');\n  const [isOnline, setIsOnline] = useState(navigator.onLine);\n\n  // Load document when docId changes.\n  useEffect(() => {\n    loadDocument(docId).then(setContent);\n  }, [docId]);\n\n  // Track online status separately; unrelated to document loading.\n  useEffect(() => {\n    function handleOnline() { setIsOnline(true); }\n    function handleOffline() { setIsOnline(false); }\n    window.addEventListener('online', handleOnline);\n    window.addEventListener('offline', handleOffline);\n    return () => {\n      window.removeEventListener('online', handleOnline);\n      window.removeEventListener('offline', handleOffline);\n    };\n  }, []);\n\n  return <Editor content={content} readOnly={!isOnline} onChange={setContent} />;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

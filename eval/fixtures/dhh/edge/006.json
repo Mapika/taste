@@ -1,0 +1,10 @@
+{
+  "id": "006",
+  "description": "class with 'Service' in its name that is a genuine service object interfacing an external API — borderline",
+  "input": "# Wraps the Stripe API; has no Rails model analogue\nclass StripeService\n  def initialize(api_key: Rails.application.credentials.stripe_key)\n    Stripe.api_key = api_key\n  end\n\n  def create_customer(email:)\n    Stripe::Customer.create(email: email)\n  end\n\n  def create_charge(customer:, amount_cents:, description:)\n    Stripe::Charge.create(\n      customer: customer.id,\n      amount: amount_cents,\n      currency: 'usd',\n      description: description\n    )\n  end\nend",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["Service", "model", "naming"]
+  }
+}

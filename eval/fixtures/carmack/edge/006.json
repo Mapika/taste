@@ -1,0 +1,8 @@
+{
+  "id": "006",
+  "description": "a class used for a stateful object with real invariants (e.g. a resource that must be opened/closed)",
+  "input": "class WadFile {\n  private handle: number;\n  private numLumps: number;\n  private infotable: LumpInfo[];\n\n  constructor(filename: string) {\n    this.handle = openSync(filename, 'r');\n    if (this.handle < 0) iError(`Couldn't open ${filename}`);\n    const header = readHeader(this.handle);\n    if (header.identification !== 'IWAD' && header.identification !== 'PWAD')\n      iError(`${filename} is not a valid WAD file`);\n    this.numLumps = header.numlumps;\n    this.infotable = readInfotable(this.handle, header.infotableofs, this.numLumps);\n  }\n\n  getLump(name: string): Uint8Array {\n    const idx = this.infotable.findIndex(l => l.name === name);\n    if (idx < 0) iError(`W_GetNumForName: ${name} not found`);\n    return readLump(this.handle, this.infotable[idx]);\n  }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

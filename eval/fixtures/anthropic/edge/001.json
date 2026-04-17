@@ -1,0 +1,8 @@
+{
+  "id": "001",
+  "description": "function slightly longer than anthropic's typical — could be acceptable if single purpose",
+  "input": "export function formatRequestDetails(details: {\n  url?: string | undefined;\n  method?: string | undefined;\n  status?: number | undefined;\n  durationMs?: number | undefined;\n  body?: unknown;\n  headers?: Record<string, string> | undefined;\n}): Record<string, unknown> {\n  const result: Record<string, unknown> = {};\n  if (details.url) result['url'] = details.url;\n  if (details.method) result['method'] = details.method;\n  if (details.status) result['status'] = details.status;\n  if (details.durationMs) result['durationMs'] = details.durationMs;\n  if (details.headers) {\n    result['headers'] = Object.fromEntries(\n      Object.entries(details.headers).map(([k, v]) =>\n        k.toLowerCase() === 'x-api-key' ? [k, '***'] : [k, v]\n      )\n    );\n  }\n  return result;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

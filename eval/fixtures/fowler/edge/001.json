@@ -1,0 +1,8 @@
+{
+  "id": "001",
+  "description": "loop variable 'i' is acceptable — single-letter indexing is a Fowler exception for canonical loop idioms",
+  "input": "void printTopNItems(List<Item> items, int count) {\n    for (int i = 0; i < count && i < items.size(); i++) {\n        System.out.println((i + 1) + \". \" + items.get(i).getDisplayName());\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

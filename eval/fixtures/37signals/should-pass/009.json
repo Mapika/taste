@@ -1,0 +1,8 @@
+{
+  "id": "009",
+  "description": "single-purpose commit messages — imperative, one idea each",
+  "input": "# git log --oneline (last 5 commits)\na1b2c3d Add cursor-based pagination option\ne4f5a6b Fix double-render when upload fails validation\nc7d8e9f Remove unused format_for_json helper\nb0a1c2d Extract EmailValidator into its own file\nf3e4d5c Update kamal deploy config for staging",
+  "expect": {
+    "verdict": "pass"
+  }
+}

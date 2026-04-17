@@ -1,0 +1,8 @@
+{
+  "id": "002",
+  "description": "try-catch at a true infrastructure boundary — reading from disk, not propagating through app logic",
+  "input": "function tryLoadConfig(path: string): Config | null {\n  try {\n    const raw = readFileSync(path, 'utf8');\n    return JSON.parse(raw) as Config;\n  } catch {\n    return null; // config is optional, missing or malformed means defaults\n  }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

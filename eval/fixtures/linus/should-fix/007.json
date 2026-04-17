@@ -1,0 +1,10 @@
+{
+  "id": "007",
+  "description": "comment explaining HOW rather than WHY",
+  "input": "int compress_buffer(char *buf, size_t len)\n{\n\tint i;\n\tint out = 0;\n\n\t/* loop through each byte, check if it matches previous byte,\n\t * if yes increment run-length counter, otherwise write\n\t * length and value pair to output */\n\tfor (i = 0; i < len; i++) {\n\t\tout += encode_rle(buf, i, &buf[out]);\n\t}\n\treturn out;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["comment", "HOW", "WHY"]
+  }
+}

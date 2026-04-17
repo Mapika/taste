@@ -1,0 +1,10 @@
+{
+  "id": "020",
+  "description": "feature scope creep — one commit touching unrelated areas (no single-purpose discipline)",
+  "input": "# git diff --stat HEAD~1\napp/models/account.rb          | 45 +++++++++\napp/models/subscription.rb     | 12 +++\napp/controllers/projects_controller.rb | 8 ++\napp/javascript/components/Avatar.js | 33 ++++++\napp/assets/stylesheets/buttons.css | 17 +++\ndb/migrate/20240301_add_state_to_accounts.rb | 6 +\nconfig/routes.rb               | 3 +\n# commit message: \"various improvements and bug fixes\"",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["commit", "one thing", "scope"]
+  }
+}

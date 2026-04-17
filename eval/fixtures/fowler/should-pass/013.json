@@ -1,0 +1,8 @@
+{
+  "id": "013",
+  "description": "Factory method with intention-revealing name — forMovieType reads as domain language",
+  "input": "class PricingStrategyFactory {\n    static PricingStrategy forMovieType(MovieType movieType) {\n        switch (movieType) {\n            case REGULAR:     return new RegularPricingStrategy();\n            case NEW_RELEASE: return new NewReleasePricingStrategy();\n            case CHILDRENS:   return new ChildrensPricingStrategy();\n        }\n        throw new IllegalArgumentException(\"No pricing strategy for movie type: \" + movieType);\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

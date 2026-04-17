@@ -1,0 +1,8 @@
+{
+  "id": "009",
+  "description": "ActiveJob subclass with perform — plain domain object, not a service wrapper",
+  "input": "class WelcomeEmailJob < ApplicationJob\n  queue_as :default\n\n  def perform(user)\n    UserMailer.welcome(user).deliver_now\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

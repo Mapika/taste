@@ -1,0 +1,8 @@
+{
+  "id": "010",
+  "description": "panic used in a test helper that calls t.Fatal — testing helpers may panic via t.Fatal",
+  "input": "// mustOpen opens the file or fails the test.\nfunc mustOpen(t *testing.T, path string) *os.File {\n\tt.Helper()\n\tf, err := os.Open(path)\n\tif err != nil {\n\t\tt.Fatalf(\"mustOpen: %v\", err)\n\t}\n\treturn f\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

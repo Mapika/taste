@@ -1,0 +1,8 @@
+{
+  "id": "004",
+  "description": "IReader appears in a comment discussing the anti-pattern being avoided — actual interface is correctly named",
+  "input": "// Fetcher retrieves bytes from a source.\n// Note: the interface was previously named IFetcher following a Java convention;\n// it was renamed to Fetcher to conform to the Go -er suffix idiom.\ntype Fetcher interface {\n\tFetch(ctx context.Context, url string) ([]byte, error)\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

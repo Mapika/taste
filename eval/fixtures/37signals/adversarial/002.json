@@ -1,0 +1,8 @@
+{
+  "id": "002",
+  "description": "'TODO' appears in a string being tested, not as a code comment — should pass",
+  "input": "class TaskParserTest < ActiveSupport::TestCase\n  test \"parses a TODO item from plain text\" do\n    text = \"TODO: follow up with legal\"\n    task = TaskParser.new(text).parse\n    assert_equal \"follow up with legal\", task.title\n    assert_equal :todo, task.kind\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

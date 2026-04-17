@@ -1,0 +1,8 @@
+{
+  "id": "003",
+  "description": "goto label named 'out' — minimal but acceptable label name when there is only one exit point",
+  "input": "int acquire_resource(struct resource *r)\n{\n\tint err;\n\n\terr = lock_resource(r);\n\tif (err)\n\t\treturn err;\n\n\terr = claim_resource(r);\n\tif (err)\n\t\tgoto out;\n\n\treturn 0;\nout:\n\tunlock_resource(r);\n\treturn err;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

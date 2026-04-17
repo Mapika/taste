@@ -1,0 +1,8 @@
+{
+  "id": "001",
+  "description": "string 'console.log' appears only in a comment — not an actual call, should pass",
+  "input": "/**\n * Logs a message at the appropriate level.\n *\n * Note: never use console.log directly in production code; always route\n * through this logger so the log level can be controlled at runtime.\n */\nexport function logMessage(logger: Logger, level: LogLevel, message: string): void {\n  if (level !== 'off') {\n    logger[level](message);\n  }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

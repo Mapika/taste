@@ -1,0 +1,10 @@
+{
+  "id": "012",
+  "description": "test exhausting every branch instead of happy path + one meaningful edge case",
+  "input": "class AccountTest < ActiveSupport::TestCase\n  test \"terminable? returns true when state is active\" do\n    assert Account.new(state: :active).terminable?\n  end\n\n  test \"terminable? returns false when state is closed\" do\n    refute Account.new(state: :closed).terminable?\n  end\n\n  test \"terminable? returns false when state is purged\" do\n    refute Account.new(state: :purged).terminable?\n  end\n\n  test \"terminable? returns false when state is incinerated\" do\n    refute Account.new(state: :incinerated).terminable?\n  end\n\n  test \"terminable? returns false when state is nil\" do\n    refute Account.new(state: nil).terminable?\n  end\n\n  test \"terminable? returns false when state is empty string\" do\n    refute Account.new(state: '').terminable?\n  end\nend",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["exhaustive", "happy path", "edge case"]
+  }
+}

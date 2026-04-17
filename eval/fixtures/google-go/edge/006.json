@@ -1,0 +1,8 @@
+{
+  "id": "006",
+  "description": "interface{} appears in a build constraint comment for legacy Go version support",
+  "input": "//go:build go1.18\n\n// Package store provides a generic key-value store.\n// For Go < 1.18 compatibility, the original API used interface{} instead of any.\npackage store\n\n// Entry holds a cached value.\ntype Entry struct {\n\tKey   string\n\tValue any\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

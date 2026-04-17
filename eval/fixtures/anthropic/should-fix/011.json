@@ -1,0 +1,10 @@
+{
+  "id": "011",
+  "description": "mixed ESM and CommonJS — require() alongside ES import statements",
+  "input": "import { APIResource } from '../../core/resource';\nimport { RequestOptions } from '../../internal/request-options';\n\nconst fs = require('fs');\nconst path = require('path');\n\nexport class Files extends APIResource {\n  upload(filePath: string, options?: RequestOptions) {\n    const content = fs.readFileSync(filePath);\n    return this._client.post('/files', { body: content, ...options });\n  }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.8,
+    "violationContains": ["require", "ESM"]
+  }
+}

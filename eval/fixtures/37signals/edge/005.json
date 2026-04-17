@@ -1,0 +1,10 @@
+{
+  "id": "005",
+  "description": "a shim file using @deprecated — technically the dhh preset bangs this too, but 37signals also bans it",
+  "input": "# app/models/account/legacy_api.rb\n# @deprecated These methods exist only for the v1 mobile API. Remove after April 2025.\nmodule Account::LegacyApi\n  def api_token = read_attribute(:legacy_token)\n  def display_name = \"#{first_name} #{last_name}\"\nend",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.6,
+    "violationContains": ["@deprecated", "remove", "shim"]
+  }
+}

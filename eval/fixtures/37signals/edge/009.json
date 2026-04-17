@@ -1,0 +1,8 @@
+{
+  "id": "009",
+  "description": "two-level inheritance that mirrors a real domain taxonomy — not an abstract pyramid",
+  "input": "class ApplicationRecord < ActiveRecord::Base\n  primary_abstract_class\nend\n\nclass Account < ApplicationRecord\n  include Closable\n  include Billable\nend\n\nclass PersonalAccount < Account\n  validates :owner, presence: true\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

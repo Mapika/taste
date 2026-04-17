@@ -1,0 +1,10 @@
+{
+  "id": "005",
+  "description": "GetOwner getter — Go getters drop the Get prefix",
+  "input": "// User represents an application user.\ntype User struct {\n\tname  string\n\temail string\n}\n\nfunc (u *User) GetName() string {\n\treturn u.name\n}\n\nfunc (u *User) GetEmail() string {\n\treturn u.email\n}\n\nfunc (u *User) SetName(name string) {\n\tu.name = name\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.85,
+    "violationContains": ["GetName", "GetEmail", "Get"]
+  }
+}

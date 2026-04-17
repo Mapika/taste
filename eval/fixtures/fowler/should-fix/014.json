@@ -1,0 +1,10 @@
+{
+  "id": "014",
+  "description": "dependency created inside class body — violates Dependency Injection principle",
+  "input": "class ReportGenerator {\n    private final DatabaseConnection db = new MySQLDatabaseConnection(\"localhost\", 3306, \"reports\");\n    private final EmailSender emailSender = new SmtpEmailSender(\"smtp.company.com\");\n\n    void generateAndSendMonthlyReport(String recipientEmail) {\n        List<ReportRow> data = db.query(\"SELECT * FROM monthly_summary\");\n        Report report = buildReport(data);\n        emailSender.send(recipientEmail, report.toHtml());\n    }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["inject", "constructor"]
+  }
+}

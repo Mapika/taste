@@ -1,0 +1,10 @@
+{
+  "id": "019",
+  "description": "magic number 12 (months) embedded without named constant",
+  "input": "class LoanCalculator {\n    double calculateMonthlyPayment(double principal, double annualRate, int termYears) {\n        double monthlyRate = annualRate / 12;\n        int numberOfPayments = termYears * 12;\n        return principal * monthlyRate / (1 - Math.pow(1 + monthlyRate, -numberOfPayments));\n    }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["magic", "constant"]
+  }
+}

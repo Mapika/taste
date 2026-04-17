@@ -1,0 +1,10 @@
+{
+  "id": "019",
+  "description": "error messages that use internal identifiers instead of human language",
+  "input": "class Payment < ApplicationRecord\n  validate :card_must_be_valid\n\n  private\n\n  def card_must_be_valid\n    result = PaymentGateway.validate(card_number)\n    errors.add(:card_number, result.error_code) unless result.success?\n    # error_code might be: \"insufficient_funds\", \"card_expired\", \"invalid_cvv\"\n  end\nend",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["error message", "human", "copy"]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "001",
+  "description": "naming: utility state wrapped in a class when file-scope variables would do",
+  "input": "class ColumnRenderer {\n  private colormap: Uint8Array;\n  private x: number;\n  private yl: number;\n  private yh: number;\n  private source: Uint8Array;\n\n  setColumn(x: number, yl: number, yh: number, colormap: Uint8Array, source: Uint8Array) {\n    this.x = x;\n    this.yl = yl;\n    this.yh = yh;\n    this.colormap = colormap;\n    this.source = source;\n  }\n\n  draw() {\n    for (let i = this.yl; i <= this.yh; i++) {\n      screen[i * screenWidth + this.x] = this.colormap[this.source[i]];\n    }\n  }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["class", "file-scope"]
+  }
+}

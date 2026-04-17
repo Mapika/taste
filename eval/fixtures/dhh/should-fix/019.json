@@ -1,0 +1,10 @@
+{
+  "id": "019",
+  "description": "private final field Java ceremony in a multi-language codebase alongside Rails",
+  "input": "// Java companion service called from Rails via JRuby\npublic class SessionValidatorService {\n    private final String secretKey;\n    private final int expirationSeconds;\n\n    public SessionValidatorService(String secretKey, int expirationSeconds) {\n        this.secretKey = secretKey;\n        this.expirationSeconds = expirationSeconds;\n    }\n\n    public boolean isValid(String token) {\n        return JWT.decode(token, secretKey).getExpiration() > System.currentTimeMillis();\n    }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["private final", "Service", "ceremony"]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "007",
+  "description": "two-level class hierarchy that could go either way — base class adds shared retry logic",
+  "input": "export abstract class BaseAPIResource {\n  protected _client: BaseAnthropic;\n  protected _retries: number;\n\n  constructor(client: BaseAnthropic, retries = 2) {\n    this._client = client;\n    this._retries = retries;\n  }\n}\n\nexport class Messages extends BaseAPIResource {\n  create(body: MessageCreateParams, options?: RequestOptions): APIPromise<Message> {\n    return this._client.post('/v1/messages', { body, ...options });\n  }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.3,
+    "violationContains": ["hierarch", "shallow"]
+  }
+}

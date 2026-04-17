@@ -1,0 +1,8 @@
+{
+  "id": "005",
+  "description": "table_name= appears in a migration file adding a legacy alias — not a production model violation",
+  "input": "class CreateLegacyMirrorTable < ActiveRecord::Migration[7.2]\n  def change\n    # Creates a view aliasing tbl_blog_entries for the new Post model;\n    # self.table_name = 'tbl_blog_entries' used only in migration context\n    execute <<~SQL\n      CREATE VIEW posts AS SELECT * FROM tbl_blog_entries\n    SQL\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

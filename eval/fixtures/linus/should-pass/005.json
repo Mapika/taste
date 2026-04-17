@@ -1,0 +1,8 @@
+{
+  "id": "005",
+  "description": "snake_case local variables, short loop counter named 'i'",
+  "input": "int count_active_users(struct user_table *table)\n{\n\tint i;\n\tint count = 0;\n\n\tfor (i = 0; i < table->size; i++) {\n\t\tif (table->slots[i].active)\n\t\t\tcount++;\n\t}\n\treturn count;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "008",
+  "description": "before_action with authenticate_user! — canonical DHH naming, bang signals side-effectful auth",
+  "input": "class AccountsController < ApplicationController\n  before_action :authenticate_user!\n  before_action :set_account\n  before_action :require_owner!, only: %i[ edit update destroy ]\n\n  private\n    def set_account\n      @account = current_user.accounts.find(params.expect(:id))\n    end\n\n    def require_owner!\n      redirect_to root_path, alert: 'Not authorized.' unless @account.owner?(current_user)\n    end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

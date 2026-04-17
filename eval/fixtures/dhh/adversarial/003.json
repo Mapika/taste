@@ -1,0 +1,8 @@
+{
+  "id": "003",
+  "description": "lodash appears only in a test file's spec description string, not as an import",
+  "input": "RSpec.describe 'JavaScript utility comparison' do\n  it 'achieves what lodash does with plain Ruby' do\n    # Ruby's Enumerable replaces lodash for server-side logic\n    result = [1, 2, 3, 4].select(&:even?).map { |n| n * 2 }\n    expect(result).to eq([4, 8])\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

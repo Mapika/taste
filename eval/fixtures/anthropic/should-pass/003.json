@@ -1,0 +1,8 @@
+{
+  "id": "003",
+  "description": "class with overload signatures — matches messages.create pattern",
+  "input": "export class Messages extends APIResource {\n  create(body: MessageCreateParamsNonStreaming, options?: RequestOptions): APIPromise<Message>;\n  create(\n    body: MessageCreateParamsStreaming,\n    options?: RequestOptions,\n  ): APIPromise<Stream<RawMessageStreamEvent>>;\n  create(\n    body: MessageCreateParamsBase,\n    options?: RequestOptions,\n  ): APIPromise<Stream<RawMessageStreamEvent> | Message>;\n  create(\n    body: MessageCreateParams,\n    options?: RequestOptions,\n  ): APIPromise<Message> | APIPromise<Stream<RawMessageStreamEvent>> {\n    return this._client.post('/v1/messages', { body, ...options });\n  }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

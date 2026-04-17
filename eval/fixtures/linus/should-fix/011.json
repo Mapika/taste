@@ -1,0 +1,10 @@
+{
+  "id": "011",
+  "description": "brace on wrong line for function definition (non-K&R)",
+  "input": "int alloc_task_struct(struct task_struct **tsk) {\n\t*tsk = kmalloc(sizeof(struct task_struct), GFP_KERNEL);\n\tif (!*tsk)\n\t\treturn -ENOMEM;\n\treturn 0;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["brace", "function", "K&R"]
+  }
+}

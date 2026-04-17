@@ -1,0 +1,8 @@
+{
+  "id": "008",
+  "description": "README opening with value and the shortest path to success",
+  "input": "# Geared Pagination\n\nPaginate Active Record sets at variable speeds — more records per page as you go deeper.\n\nWorks out of the box with Rails. Two helpers, no configuration required.\n\n```ruby\n# controller\ndef index\n  set_page_and_extract_portion_from Post.ordered\nend\n```\n\nThat's it. Add `gem 'geared_pagination'` to your Gemfile and you're done.",
+  "expect": {
+    "verdict": "pass"
+  }
+}

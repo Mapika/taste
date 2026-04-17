@@ -1,0 +1,8 @@
+{
+  "id": "004",
+  "description": "function with 8 local variables — near the 5-10 limit but still acceptable",
+  "input": "int process_packet(struct sk_buff *skb)\n{\n\tstruct ethhdr *eth;\n\tstruct iphdr *iph;\n\tstruct udphdr *udph;\n\tunsigned int proto;\n\tunsigned int len;\n\tint src_port;\n\tint dst_port;\n\tint err;\n\n\teth = eth_hdr(skb);\n\tiph = ip_hdr(skb);\n\tudph = udp_hdr(skb);\n\tproto = iph->protocol;\n\tlen = ntohs(iph->tot_len);\n\tsrc_port = ntohs(udph->source);\n\tdst_port = ntohs(udph->dest);\n\terr = route_packet(skb, src_port, dst_port);\n\treturn err;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

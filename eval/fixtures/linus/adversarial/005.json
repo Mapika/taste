@@ -1,0 +1,10 @@
+{
+  "id": "005",
+  "description": "code looks clean but uses 4-space indentation instead of tabs — subtle violation",
+  "input": "int alloc_node(struct tree *t, int val)\n{\n    struct node *n;\n    int err;\n\n    n = kmalloc(sizeof(*n), GFP_KERNEL);\n    if (!n)\n        return -ENOMEM;\n    n->val = val;\n    n->left = NULL;\n    n->right = NULL;\n    err = tree_insert(t, n);\n    if (err)\n        goto out_free;\n    return 0;\nout_free:\n    kfree(n);\n    return err;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["indent", "tab", "8"]
+  }
+}

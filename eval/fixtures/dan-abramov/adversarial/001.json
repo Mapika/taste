@@ -1,0 +1,8 @@
+{
+  "id": "001",
+  "description": "the word 'class' appears only in a CSS className string — not a component class",
+  "input": "function Button({ label, variant = 'primary', onClick }) {\n  const [isPressed, setIsPressed] = useState(false);\n\n  return (\n    <button\n      className={`button button--${variant} ${isPressed ? 'button--pressed' : ''}`}\n      onClick={() => {\n        setIsPressed(true);\n        onClick?.();\n        setTimeout(() => setIsPressed(false), 150);\n      }}\n    >\n      {label}\n    </button>\n  );\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

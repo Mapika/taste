@@ -1,0 +1,10 @@
+{
+  "id": "006",
+  "description": "props not destructured — accessing via props.x throughout the component",
+  "input": "function UserCard(props) {\n  const [isExpanded, setIsExpanded] = useState(false);\n\n  return (\n    <div className=\"card\">\n      <h2>{props.name}</h2>\n      <p>{props.email}</p>\n      {isExpanded && <p>{props.bio}</p>}\n      <button onClick={() => setIsExpanded(!isExpanded)}>\n        {isExpanded ? 'Show less' : 'Show more'}\n      </button>\n    </div>\n  );\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["destructur", "props"]
+  }
+}

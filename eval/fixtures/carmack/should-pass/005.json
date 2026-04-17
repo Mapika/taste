@@ -1,0 +1,8 @@
+{
+  "id": "005",
+  "description": "module-level config variables initialized inline, no init function",
+  "input": "const sv_friction = { name: 'sv_friction', value: 4, archive: false, notify: true };\nconst sv_stopspeed = { name: 'sv_stopspeed', value: 100 };\nconst sv_gravity = { name: 'sv_gravity', value: 800, archive: false, notify: true };\nconst sv_maxvelocity = { name: 'sv_maxvelocity', value: 2000 };\n\nconst MOVE_EPSILON = 0.01; // below this treat velocity as zero",
+  "expect": {
+    "verdict": "pass"
+  }
+}

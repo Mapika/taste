@@ -1,0 +1,8 @@
+{
+  "id": "003",
+  "description": "Concern with included and class_methods DSL blocks — ActiveSupport idiomatic mixin",
+  "input": "module Publishable\n  extend ActiveSupport::Concern\n\n  included do\n    scope :published, -> { where(published: true).order(published_at: :desc) }\n    scope :unpublished, -> { where(published: false) }\n\n    validates :published_at, presence: true, if: :published?\n  end\n\n  class_methods do\n    def publish_all!\n      update_all(published: true, published_at: Time.current)\n    end\n  end\n\n  def publish!\n    update!(published: true, published_at: Time.current)\n  end\n\n  def unpublish!\n    update!(published: false, published_at: nil)\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

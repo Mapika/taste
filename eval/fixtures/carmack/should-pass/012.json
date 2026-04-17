@@ -1,0 +1,8 @@
+{
+  "id": "012",
+  "description": "read file with crash-on-failure, no error propagation",
+  "input": "function readFile(name: string): Uint8Array {\n  const handle = openSync(name, 'r');\n  if (handle < 0) iError(`Couldn't read file ${name}`);\n  const stat = fstatSync(handle);\n  const buf = new Uint8Array(stat.size);\n  const count = readSync(handle, buf);\n  closeSync(handle);\n  if (count < stat.size) iError(`Couldn't read file ${name}`);\n  return buf;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

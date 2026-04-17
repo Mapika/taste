@@ -1,0 +1,8 @@
+{
+  "id": "003",
+  "description": "medium-length function name that is still clear — borderline between carmack terse and overly verbose",
+  "input": "function buildLightmap(surf: Surface, dest: Uint8Array, stride: number): void {\n  const smax = (surf.extents[0] >> 4) + 1;\n  const tmax = (surf.extents[1] >> 4) + 1;\n  let bl = blocklights;\n  for (let i = 0; i < tmax; i++, dest += stride) {\n    for (let j = 0; j < smax; j++) {\n      let t = bl[j] >> 7;\n      if (t > 255) t = 255;\n      dest[j] = t;\n    }\n    bl = bl.subarray(smax);\n  }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

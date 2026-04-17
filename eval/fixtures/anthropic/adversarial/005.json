@@ -1,0 +1,8 @@
+{
+  "id": "005",
+  "description": "very long identifiers that push line length — valid naming but stress-tests line-length heuristics",
+  "input": "export function validateAndNormalizeAuthenticationCredentialsForOutgoingRequest(\n  apiKey: string | null | undefined,\n  authToken: string | null | undefined,\n): { resolvedApiKey: string | null; resolvedAuthToken: string | null } {\n  const resolvedApiKey = apiKey?.trim() ?? null;\n  const resolvedAuthToken = authToken?.trim() ?? null;\n  if (!resolvedApiKey && !resolvedAuthToken) {\n    throw new AnthropicError(\n      'Either apiKey or authToken must be provided to authenticate requests.',\n    );\n  }\n  return { resolvedApiKey, resolvedAuthToken };\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

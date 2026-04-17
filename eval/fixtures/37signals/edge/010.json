@@ -1,0 +1,8 @@
+{
+  "id": "010",
+  "description": "a gem with more than a handful of dependencies — not necessarily bad if each dep is well-justified",
+  "input": "# Gemfile (production)\ngem 'rails',            '~> 7.2'\ngem 'pg',               '~> 1.5'\ngem 'puma',             '~> 6.0'\ngem 'redis',            '~> 5.0'\ngem 'kamal',            require: false\ngem 'image_processing', '~> 1.2'\ngem 'aws-sdk-s3',       require: false",
+  "expect": {
+    "verdict": "pass"
+  }
+}

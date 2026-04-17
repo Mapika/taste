@@ -1,0 +1,10 @@
+{
+  "id": "018",
+  "description": "no exported doc comments on exported types and functions",
+  "input": "type Router struct {\n\troutes map[string]http.HandlerFunc\n}\n\nfunc NewRouter() *Router {\n\treturn &Router{routes: make(map[string]http.HandlerFunc)}\n}\n\nfunc (r *Router) Handle(pattern string, fn http.HandlerFunc) {\n\tr.routes[pattern] = fn\n}\n\nfunc (r *Router) ServeHTTP(w http.ResponseWriter, req *http.Request) {\n\tif fn, ok := r.routes[req.URL.Path]; ok {\n\t\tfn(w, req)\n\t\treturn\n\t}\n\thttp.NotFound(w, req)\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["comment", "exported"]
+  }
+}

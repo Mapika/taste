@@ -1,0 +1,10 @@
+{
+  "id": "011",
+  "description": "domain repository named after technology, not domain role",
+  "input": "class JdbcOrderDao {\n    private final Connection connection;\n\n    JdbcOrderDao(Connection connection) {\n        this.connection = connection;\n    }\n\n    Order selectOrderById(int id) {\n        // raw JDBC in domain-facing method\n        PreparedStatement stmt = connection.prepareStatement(\"SELECT * FROM orders WHERE id = ?\");\n        stmt.setInt(1, id);\n        ResultSet rs = stmt.executeQuery();\n        return mapRowToOrder(rs);\n    }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["repository", "interface"]
+  }
+}

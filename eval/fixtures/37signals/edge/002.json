@@ -1,0 +1,8 @@
+{
+  "id": "002",
+  "description": "a concern that includes two related sub-behaviours — could be one or two; judgment call",
+  "input": "module Account::Billable\n  extend ActiveSupport::Concern\n\n  def billable? = subscription.active?\n\n  def cancel_subscription\n    subscription.cancel!\n    AccountMailer.cancellation_confirmation(self).deliver_later\n  end\n\n  def upgrade_plan(new_plan)\n    subscription.upgrade!(new_plan)\n    AccountMailer.upgrade_confirmation(self).deliver_later\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

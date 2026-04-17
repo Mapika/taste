@@ -1,0 +1,8 @@
+{
+  "id": "014",
+  "description": "ANNUAL_INTEREST_RATE and DAYS_PER_YEAR as named constants — no magic numbers",
+  "input": "class LoanCalculator {\n    private static final double ANNUAL_INTEREST_RATE_STANDARD = 0.05;\n    private static final int MONTHS_PER_YEAR = 12;\n\n    Money calculateMonthlyPayment(Money principal, int termInYears) {\n        double monthlyInterestRate = ANNUAL_INTEREST_RATE_STANDARD / MONTHS_PER_YEAR;\n        int numberOfMonthlyPayments = termInYears * MONTHS_PER_YEAR;\n        double paymentFactor = monthlyInterestRate\n            / (1 - Math.pow(1 + monthlyInterestRate, -numberOfMonthlyPayments));\n        return principal.multipliedBy(paymentFactor);\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

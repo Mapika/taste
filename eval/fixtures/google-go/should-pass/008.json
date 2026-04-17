@@ -1,0 +1,8 @@
+{
+  "id": "008",
+  "description": "NewXxx constructor with error return, functional options pattern",
+  "input": "// Client makes HTTP requests to the API.\ntype Client struct {\n\tbaseURL string\n\ttimeout time.Duration\n}\n\n// NewClient creates a Client for the given base URL.\nfunc NewClient(baseURL string) (*Client, error) {\n\tif baseURL == \"\" {\n\t\treturn nil, errors.New(\"NewClient: baseURL must not be empty\")\n\t}\n\treturn &Client{\n\t\tbaseURL: baseURL,\n\t\ttimeout: 30 * time.Second,\n\t}, nil\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

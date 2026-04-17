@@ -1,0 +1,10 @@
+{
+  "id": "017",
+  "description": "defer placed after several lines of logic — should be immediately after resource acquisition",
+  "input": "func processFile(path string) error {\n\tf, err := os.Open(path)\n\tif err != nil {\n\t\treturn err\n\t}\n\tstat, err := f.Stat()\n\tif err != nil {\n\t\tf.Close()\n\t\treturn err\n\t}\n\tif stat.Size() == 0 {\n\t\tf.Close()\n\t\treturn errors.New(\"empty file\")\n\t}\n\tdefer f.Close()\n\treturn processReader(f)\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["defer", "Close"]
+  }
+}

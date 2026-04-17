@@ -1,0 +1,8 @@
+{
+  "id": "005",
+  "description": "a comment that explains what the constant is, not just why — borderline acceptable",
+  "input": "const BMODEL_FULLY_CLIPPED = 0x10; // returned by checkBBox if the box is trivially outside the frustum\nconst CLIP_EPSILON = 0.001;         // avoid z-fighting at brush edges\nconst BACKFACE_EPSILON = 0.01;      // cull polys facing just past perpendicular\n\nfunction R_BmodelCheckBBox(node: BspNode): number {\n  for (let i = 0; i < 4; i++) {\n    if (dotProduct(node.mins, frustum[i].normal) - frustum[i].dist > 0) continue;\n    if (dotProduct(node.maxs, frustum[i].normal) - frustum[i].dist > 0) continue;\n    return BMODEL_FULLY_CLIPPED;\n  }\n  return 0;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

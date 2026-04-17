@@ -1,0 +1,10 @@
+{
+  "id": "016",
+  "description": "predicate function returns error-code integer instead of boolean",
+  "input": "/*\n * Check whether the device is present on the bus.\n * Returns 0 on failure, -ENODEV if not found.\n */\nint device_is_present(struct bus *bus, unsigned int id)\n{\n\tif (!bus)\n\t\treturn -EINVAL;\n\tif (bus->slots[id] == NULL)\n\t\treturn -ENODEV;\n\treturn 0;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["predicate", "return", "boolean"]
+  }
+}

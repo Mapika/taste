@@ -1,0 +1,8 @@
+{
+  "id": "008",
+  "description": "function that does one thing with early return — clean control flow",
+  "input": "export function ensurePresent<T>(value: T | null | undefined): T {\n  if (value == null) {\n    throw new AnthropicError('Expected a value to be present but received null or undefined');\n  }\n  return value;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

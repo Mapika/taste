@@ -1,0 +1,8 @@
+{
+  "id": "012",
+  "description": "zero-value useful struct with doc comment on type",
+  "input": "// Counter is a thread-safe integer counter.\n// The zero value is ready to use.\ntype Counter struct {\n\tmu sync.Mutex\n\tn  int64\n}\n\n// Add increments the counter by delta.\nfunc (c *Counter) Add(delta int64) {\n\tc.mu.Lock()\n\tdefer c.mu.Unlock()\n\tc.n += delta\n}\n\n// Value returns the current counter value.\nfunc (c *Counter) Value() int64 {\n\tc.mu.Lock()\n\tdefer c.mu.Unlock()\n\treturn c.n\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

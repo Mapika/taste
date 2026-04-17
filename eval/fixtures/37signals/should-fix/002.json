@@ -1,0 +1,10 @@
+{
+  "id": "002",
+  "description": "TODO comment left in production code — work items belong in the tracker",
+  "input": "class Recording < ApplicationRecord\n  delegated_type :recordable, types: %w[ Message Comment ]\n\n  # TODO: add support for Upload type when S3 migration is complete\n  # TODO: clean up the duplicate creator logic here\n\n  belongs_to :bucket\n  belongs_to :creator, class_name: \"Person\"\nend",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.8,
+    "violationContains": ["TODO", "tracker", "Basecamp"]
+  }
+}

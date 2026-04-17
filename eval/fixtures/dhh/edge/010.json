@@ -1,0 +1,8 @@
+{
+  "id": "010",
+  "description": "self.table_name override chain — acceptable when wrapping multiple legacy tables in a namespace",
+  "input": "module Legacy\n  class Invoice < ActiveRecord::Base\n    self.table_name  = 'acctg_invoices'\n    self.primary_key = 'invoice_number'\n\n    # Legacy table uses VARCHAR primary key; cannot use AR default\n    belongs_to :customer, class_name: 'Legacy::Customer',\n                          foreign_key: 'cust_id'\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

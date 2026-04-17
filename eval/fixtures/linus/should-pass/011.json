@@ -1,0 +1,8 @@
+{
+  "id": "011",
+  "description": "typedef for totally opaque object (acceptable per §5)",
+  "input": "/*\n * pte_t is intentionally opaque: callers must use pte_val() and\n * __pte() to access the underlying value. Direct access is\n * architecture-specific and must be abstracted away.\n */\ntypedef struct { unsigned long pte; } pte_t;",
+  "expect": {
+    "verdict": "pass"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "001",
+  "description": "word 'bar' appears only in a string literal describing a bar chart — not a placeholder name",
+  "input": "class ChartRenderer {\n    private static final String BAR_CHART_TYPE = \"bar\";\n    private static final String LINE_CHART_TYPE = \"line\";\n\n    ChartConfiguration createBarChartConfiguration(String title, List<DataSeries> dataSeries) {\n        return ChartConfiguration.builder()\n            .withType(BAR_CHART_TYPE)\n            .withTitle(title)\n            .withDataSeries(dataSeries)\n            .build();\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

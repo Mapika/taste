@@ -1,0 +1,10 @@
+{
+  "id": "016",
+  "description": "object properties extracted as primitives instead of Preserve Whole Object",
+  "input": "class HeatingPlan {\n    boolean withinRange(int low, int high) {\n        return low >= this.rangeMin && high <= this.rangeMax;\n    }\n}\n\n// caller decomposes the object before passing\nvoid checkTemperatureRange(Room room, HeatingPlan plan) {\n    int low = room.getDaysTempRange().getLow();\n    int high = room.getDaysTempRange().getHigh();\n    if (!plan.withinRange(low, high)) {\n        alerts.add(\"Room temperature outside heating plan range\");\n    }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["whole object", "preserve"]
+  }
+}

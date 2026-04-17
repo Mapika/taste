@@ -1,0 +1,10 @@
+{
+  "id": "001",
+  "description": "CamelCase struct name and typedef hiding struct",
+  "input": "typedef struct NetworkBuffer {\n\tchar *data;\n\tsize_t len;\n\tsize_t capacity;\n} NetworkBuffer;\n\nNetworkBuffer *alloc_buffer(size_t size);",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["typedef", "struct", "CamelCase"]
+  }
+}

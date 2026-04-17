@@ -1,0 +1,8 @@
+{
+  "id": "001",
+  "description": "the word 'Service' appears only in a string/comment, not as a class name — should pass",
+  "input": "class Account < ApplicationRecord\n  include Closable\n\n  # We used to rely on an external billing service for payment processing.\n  # Now we handle it directly via the Stripe gem.\n  def process_payment(amount)\n    Stripe::Charge.create(amount: amount, currency: 'usd', customer: stripe_id)\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

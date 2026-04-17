@@ -1,0 +1,8 @@
+{
+  "id": "002",
+  "description": "typedef appears only in a comment explaining why it is bad — not actual use",
+  "input": "/*\n * We do NOT use typedef struct here. Writing 'struct inode *inode'\n * is better than 'inode_t *inode' because the struct keyword tells\n * you exactly what you are looking at.\n */\nstruct inode *lookup_inode(unsigned long ino)\n{\n\treturn iget_locked(current->nsproxy->mnt_ns->root->d_sb, ino);\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

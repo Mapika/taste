@@ -1,0 +1,10 @@
+{
+  "id": "008",
+  "description": "Hungarian notation in variable names",
+  "input": "int read_sector(struct block_device *bdev, sector_t sector)\n{\n\tchar *pszBuffer;\n\tint iRetCode;\n\tsize_t nBytesRead;\n\n\tpszBuffer = kmalloc(512, GFP_KERNEL);\n\tif (!pszBuffer)\n\t\treturn -ENOMEM;\n\tiRetCode = submit_bio_read(bdev, sector, pszBuffer, &nBytesRead);\n\tkfree(pszBuffer);\n\treturn iRetCode;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["Hungarian", "naming", "prefix"]
+  }
+}

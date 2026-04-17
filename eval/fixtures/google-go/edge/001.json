@@ -1,0 +1,8 @@
+{
+  "id": "001",
+  "description": "interface{} appears only in a comment explaining the old spelling — not an actual usage",
+  "input": "// Store accepts any value. Prior to Go 1.18 the parameter was typed interface{};\n// it is now typed any per the language alias introduced in Go 1.18.\nfunc (s *Store) Put(key string, value any) {\n\ts.data[key] = value\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

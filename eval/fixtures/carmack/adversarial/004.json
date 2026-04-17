@@ -1,0 +1,10 @@
+{
+  "id": "004",
+  "description": "adversarial: looks like a passing Carmack pattern (file-scope vars, short names) but has a class hiding as a namespace",
+  "input": "// sv_phys.ts\nlet sv_time = 0;\nlet host_frametime = 0;\n\n// All functions are 'static' members of a namespace-class — looks like module style but is not\nclass sv {\n  static checkAllEnts(): void {\n    for (let e = 1; e < sv_numEdicts; e++) {\n      const ent = getEdict(e);\n      if (ent.free) continue;\n      if (sv.testEntityPosition(ent))\n        console.log('entity in invalid position');\n    }\n  }\n\n  static testEntityPosition(ent: Edict): boolean {\n    return svMove(ent.v.origin, ent.v.mins, ent.v.maxs, ent.v.origin, MOVE_NOMONSTERS, ent).startSolid;\n  }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["class", "namespace"]
+  }
+}

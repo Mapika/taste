@@ -1,0 +1,8 @@
+{
+  "id": "004",
+  "description": "TypeScript interface used to share a struct shape — borderline: not a class, but is it too much abstraction for Carmack?",
+  "input": "interface Edict {\n  v: {\n    velocity: [number, number, number];\n    origin: [number, number, number];\n    classname: string;\n    flags: number;\n    movetype: number;\n    nextthink: number;\n  };\n  free: boolean;\n}\n\nfunction svRunThink(ent: Edict): boolean {\n  const thinktime = ent.v.nextthink;\n  if (thinktime <= 0 || thinktime > sv_time + host_frametime) return true;\n  ent.v.nextthink = 0;\n  prExecuteProgram(ent.v.think);\n  return !ent.free;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

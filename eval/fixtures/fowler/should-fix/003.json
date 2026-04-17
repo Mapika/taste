@@ -1,0 +1,10 @@
+{
+  "id": "003",
+  "description": "tmp variable instead of intention-revealing name — Replace Temp with Query target",
+  "input": "double calculateDiscount(Order order) {\n    String tmp = order.getCustomer().getMembershipLevel().toUpperCase();\n    if (tmp.equals(\"GOLD\")) return 0.15;\n    if (tmp.equals(\"SILVER\")) return 0.10;\n    return 0.0;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.8,
+    "violationContains": ["tmp", "intention"]
+  }
+}

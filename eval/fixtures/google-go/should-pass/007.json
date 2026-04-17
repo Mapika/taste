@@ -1,0 +1,8 @@
+{
+  "id": "007",
+  "description": "short names w, r for HTTP handler parameters — canonical Go HTTP convention",
+  "input": "// ServeHTTP calls f(w, r).\nfunc (f HandlerFunc) ServeHTTP(w http.ResponseWriter, r *http.Request) {\n\tf(w, r)\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

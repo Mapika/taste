@@ -1,0 +1,8 @@
+{
+  "id": "003",
+  "description": "human error message with context and next step",
+  "input": "class Signup\n  include ActiveModel::Model\n  include ActiveModel::Attributes\n\n  attribute :email, :string\n\n  validates :email, presence: { message: \"can't be blank — we need it to create your account\" }\n\n  def save\n    return false unless valid?\n    Identity.create!(email: email)\n  rescue ActiveRecord::RecordNotUnique\n    errors.add(:email, \"looks like it's already taken. Did you mean to sign in?\")\n    false\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

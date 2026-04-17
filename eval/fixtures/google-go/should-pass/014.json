@@ -1,0 +1,8 @@
+{
+  "id": "014",
+  "description": "context.Context as first parameter with canonical ctx name",
+  "input": "// Fetch retrieves data from the given URL.\nfunc Fetch(ctx context.Context, url string) ([]byte, error) {\n\treq, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)\n\tif err != nil {\n\t\treturn nil, fmt.Errorf(\"Fetch: %w\", err)\n\t}\n\tresp, err := http.DefaultClient.Do(req)\n\tif err != nil {\n\t\treturn nil, fmt.Errorf(\"Fetch: %w\", err)\n\t}\n\tdefer resp.Body.Close()\n\treturn io.ReadAll(resp.Body)\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

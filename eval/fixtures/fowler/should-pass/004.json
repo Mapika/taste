@@ -1,0 +1,8 @@
+{
+  "id": "004",
+  "description": "domain object with behavior — not anemic — owns calculateLifetimeValue",
+  "input": "class Customer {\n    private final CustomerId id;\n    private final CustomerName name;\n    private final List<Order> orders;\n\n    Customer(CustomerId id, CustomerName name, List<Order> orders) {\n        this.id = id;\n        this.name = name;\n        this.orders = Collections.unmodifiableList(orders);\n    }\n\n    Money calculateLifetimeValue() {\n        return orders.stream()\n            .map(Order::calculateTotal)\n            .reduce(Money.ZERO, Money::add);\n    }\n\n    boolean isHighValueCustomer() {\n        return calculateLifetimeValue().isGreaterThan(Money.of(1000));\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

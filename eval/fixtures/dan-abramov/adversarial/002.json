@@ -1,0 +1,8 @@
+{
+  "id": "002",
+  "description": "this.state appears only in a JSDoc comment describing the old API — not actual usage",
+  "input": "/**\n * Hook replacement for the legacy this.state pattern.\n * Previously components used this.state = { count: 0 } and\n * this.setState({ count: 1 }) in class components.\n * This hook provides the same capability without a class.\n */\nfunction useCount(initial = 0) {\n  const [count, setCount] = useState(initial);\n  return { count, setCount };\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

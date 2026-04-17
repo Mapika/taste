@@ -1,0 +1,10 @@
+{
+  "id": "009",
+  "description": "function with BUG_ON — acceptable at boot, but generally discouraged vs WARN_ON",
+  "input": "void init_memory_subsystem(void)\n{\n\tstruct zone *zone;\n\tint i;\n\n\tfor_each_zone(zone) {\n\t\tBUG_ON(zone->nr_pages == 0);\n\t\tinit_zone(zone);\n\t}\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.6,
+    "violationContains": ["BUG_ON", "WARN_ON", "panic"]
+  }
+}

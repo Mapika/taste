@@ -1,0 +1,8 @@
+{
+  "id": "006",
+  "description": "JSX flat template with early return for loading and error states",
+  "input": "function FriendStatus({ friend }) {\n  const isOnline = useFriendStatus(friend.id);\n\n  if (isOnline === null) {\n    return <span>Loading...</span>;\n  }\n\n  return (\n    <span style={{ color: isOnline ? 'green' : 'black' }}>\n      {isOnline ? 'Online' : 'Offline'}\n    </span>\n  );\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

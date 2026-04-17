@@ -1,0 +1,8 @@
+{
+  "id": "010",
+  "description": "static inline wrapper around a single expression — legitimate use",
+  "input": "static inline int task_is_stopped(struct task_struct *p)\n{\n\treturn p->state == TASK_STOPPED;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

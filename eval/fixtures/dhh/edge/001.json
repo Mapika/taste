@@ -1,0 +1,8 @@
+{
+  "id": "001",
+  "description": "table_name override is legitimate when the Rails convention cannot be honored (legacy schema)",
+  "input": "class Post < ActiveRecord::Base\n  # Legacy billing system uses tbl_blog_entries; cannot rename without downtime\n  self.table_name = 'tbl_blog_entries'\n\n  validates :title, presence: true\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "002",
+  "description": "one-letter receiver, short var names, error returned not panicked",
+  "input": "// Write appends p to the buffer.\nfunc (b *Buffer) Write(p []byte) (n int, err error) {\n\tb.lastRead = opInvalid\n\tm, ok := b.tryGrowByReslice(len(p))\n\tif !ok {\n\t\tm = b.grow(len(p))\n\t}\n\treturn copy(b.buf[m:], p), nil\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

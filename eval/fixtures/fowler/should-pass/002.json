@@ -1,0 +1,8 @@
+{
+  "id": "002",
+  "description": "Repository interface with domain-language method names — correct pattern application",
+  "input": "interface OrderRepository {\n    Optional<Order> findById(OrderId id);\n    List<Order> findByCustomer(CustomerId customerId);\n    List<Order> findOrdersOverdueAsOf(LocalDate date);\n    List<Order> findOrdersShippedInPeriod(DateRange period);\n    void save(Order order);\n    void remove(Order order);\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

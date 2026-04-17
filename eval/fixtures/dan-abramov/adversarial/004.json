@@ -1,0 +1,8 @@
+{
+  "id": "004",
+  "description": "abbreviated loop variable 'i' in a map — acceptable short name in a tight scope",
+  "input": "function NumberList({ numbers }) {\n  return (\n    <ol>\n      {numbers.map((n, i) => (\n        <li key={i}>{n}</li>\n      ))}\n    </ol>\n  );\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

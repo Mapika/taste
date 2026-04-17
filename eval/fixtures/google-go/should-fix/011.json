@@ -1,0 +1,10 @@
+{
+  "id": "011",
+  "description": "unnecessary else after error return",
+  "input": "func readConfig(path string) (*Config, error) {\n\tf, err := os.Open(path)\n\tif err != nil {\n\t\treturn nil, err\n\t} else {\n\t\tdefer f.Close()\n\t\tvar cfg Config\n\t\tif err := json.NewDecoder(f).Decode(&cfg); err != nil {\n\t\t\treturn nil, err\n\t\t} else {\n\t\t\treturn &cfg, nil\n\t\t}\n\t}\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["else", "return"]
+  }
+}

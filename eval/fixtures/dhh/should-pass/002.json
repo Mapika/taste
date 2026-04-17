@@ -1,0 +1,8 @@
+{
+  "id": "002",
+  "description": "ActiveRecord model with named scopes, validations, and associations — pure DHH style",
+  "input": "class Post < ApplicationRecord\n  belongs_to :author, class_name: 'User'\n  has_many   :comments, dependent: :destroy\n  has_many   :taggings\n  has_many   :tags, through: :taggings\n\n  validates :title,   presence: true, length: { maximum: 255 }\n  validates :body,    presence: true\n  validates :author,  presence: true\n\n  scope :published,  -> { where(published: true) }\n  scope :drafts,     -> { where(published: false) }\n  scope :recent,     -> { order(created_at: :desc) }\n  scope :by_author,  ->(user) { where(author: user) }\n\n  def publish!\n    update!(published: true, published_at: Time.current)\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

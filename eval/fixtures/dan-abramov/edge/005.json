@@ -1,0 +1,8 @@
+{
+  "id": "005",
+  "description": "single-file state object acceptable when fields always update together",
+  "input": "function useMousePosition() {\n  // x and y always change together so one object is the right granularity.\n  const [position, setPosition] = useState({ x: 0, y: 0 });\n\n  useEffect(() => {\n    function handleMove(e) {\n      setPosition({ x: e.clientX, y: e.clientY });\n    }\n    window.addEventListener('mousemove', handleMove);\n    return () => window.removeEventListener('mousemove', handleMove);\n  }, []);\n\n  return position;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

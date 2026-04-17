@@ -1,0 +1,8 @@
+{
+  "id": "008",
+  "description": "multiple named scopes that are complex but each named expressively — acceptable compression",
+  "input": "class Article < ApplicationRecord\n  scope :published_this_week, -> {\n    where(published: true)\n      .where(published_at: 1.week.ago..)\n      .order(published_at: :desc)\n  }\n\n  scope :trending, -> {\n    published\n      .where('view_count > ?', 1000)\n      .order(view_count: :desc)\n      .limit(20)\n  }\n\n  scope :by_tag, ->(tag_name) {\n    joins(:tags).where(tags: { name: tag_name })\n  }\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

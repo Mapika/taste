@@ -1,0 +1,10 @@
+{
+  "id": "011",
+  "description": "before_filter used instead of before_action (deprecated Rails 4+ alias)",
+  "input": "class ApplicationController < ActionController::Base\n  before_filter :authenticate_user!\n  before_filter :set_locale\n  before_filter :track_visit, except: :health_check\nend",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.8,
+    "violationContains": ["before_action", "deprecated"]
+  }
+}

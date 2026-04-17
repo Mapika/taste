@@ -1,0 +1,8 @@
+{
+  "id": "012",
+  "description": "multi-statement macro wrapped in do/while(0)",
+  "input": "#define WARN_ON_ONCE(cond) \\\n\tdo { \\\n\t\tstatic int __warned; \\\n\t\tif (unlikely((cond) && !__warned)) { \\\n\t\t\t__warned = 1; \\\n\t\t\tWARN(1, \"one-time warning: \" #cond); \\\n\t\t} \\\n\t} while (0)",
+  "expect": {
+    "verdict": "pass"
+  }
+}

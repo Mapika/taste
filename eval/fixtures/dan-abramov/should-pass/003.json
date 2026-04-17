@@ -1,0 +1,8 @@
+{
+  "id": "003",
+  "description": "intent-named state variables, separate useState per concern",
+  "input": "function LoginForm() {\n  const [email, setEmail] = useState('');\n  const [password, setPassword] = useState('');\n  const [isSubmitting, setIsSubmitting] = useState(false);\n  const [error, setError] = useState(null);\n\n  async function handleSubmit(e) {\n    e.preventDefault();\n    setIsSubmitting(true);\n    setError(null);\n    try {\n      await login(email, password);\n    } catch (err) {\n      setError(err.message);\n    } finally {\n      setIsSubmitting(false);\n    }\n  }\n\n  return (\n    <form onSubmit={handleSubmit}>\n      <input value={email} onChange={e => setEmail(e.target.value)} type=\"email\" />\n      <input value={password} onChange={e => setPassword(e.target.value)} type=\"password\" />\n      {error && <p>{error}</p>}\n      <button type=\"submit\" disabled={isSubmitting}>\n        {isSubmitting ? 'Logging in...' : 'Log in'}\n      </button>\n    </form>\n  );\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

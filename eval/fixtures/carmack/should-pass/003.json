@@ -1,0 +1,8 @@
+{
+  "id": "003",
+  "description": "crash-on-invariant-violation with I_Error equivalent, no throw",
+  "input": "function moveActor(actor: Actor): boolean {\n  if (actor.moveDir === DI_NODIR) return false;\n  if (actor.moveDir >= 8) {\n    sysError(`Weird actor.moveDir: ${actor.moveDir}`);\n  }\n  const tx = actor.x + actor.info.speed * xspeed[actor.moveDir];\n  const ty = actor.y + actor.info.speed * yspeed[actor.moveDir];\n  const ok = tryMove(actor, tx, ty);\n  if (!ok) {\n    actor.moveDir = DI_NODIR;\n    return false;\n  }\n  if (!(actor.flags & MF_FLOAT)) actor.z = actor.floorZ;\n  return true;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

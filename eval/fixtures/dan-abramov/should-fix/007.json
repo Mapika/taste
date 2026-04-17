@@ -1,0 +1,10 @@
+{
+  "id": "007",
+  "description": "this.state and this.setState in a class extending React.Component",
+  "input": "class Toggle extends React.Component {\n  state = { on: false };\n\n  toggle = () => {\n    this.setState(prev => ({ on: !prev.on }));\n  };\n\n  render() {\n    return (\n      <button onClick={this.toggle}>\n        {this.state.on ? 'ON' : 'OFF'}\n      </button>\n    );\n  }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.9,
+    "violationContains": ["this.state", "class"]
+  }
+}

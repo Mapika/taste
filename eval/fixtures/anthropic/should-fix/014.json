@@ -1,0 +1,10 @@
+{
+  "id": "014",
+  "description": "comment explains WHAT not WHY — section-divider banner and redundant descriptive comments",
+  "input": "// ===== HTTP Request Section =====\n\n// Create the request headers\nconst headers = new Headers();\nheaders.set('Content-Type', 'application/json');\nheaders.set('Authorization', `Bearer ${apiKey}`);\n\n// Build the request body\nconst body = JSON.stringify(payload);\n\n// Send the request\nconst response = await fetch(url, { method: 'POST', headers, body });",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["comment", "why"]
+  }
+}

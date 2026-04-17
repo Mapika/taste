@@ -1,0 +1,10 @@
+{
+  "id": "006",
+  "description": "switch-on-type conditional instead of Replace Conditional with Polymorphism",
+  "input": "double calculateRentalCharge(Movie movie, int daysRented) {\n    switch (movie.getPriceCode()) {\n        case 0: // regular\n            return daysRented > 2 ? 1.5 + (daysRented - 2) * 1.5 : 1.5;\n        case 1: // new release\n            return daysRented * 3.0;\n        case 2: // children\n            return daysRented > 3 ? 1.5 + (daysRented - 3) * 1.5 : 1.5;\n        default:\n            throw new IllegalStateException(\"Unknown price code\");\n    }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["polymorphism", "switch"]
+  }
+}

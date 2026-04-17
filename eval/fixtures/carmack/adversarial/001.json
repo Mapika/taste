@@ -1,0 +1,8 @@
+{
+  "id": "001",
+  "description": "adversarial: looks like a violation (has 'class') but is a TypeScript type alias, not a structural class",
+  "input": "// This is a type alias, not a class definition\ntype EntityClass = number; // maps to classname int in the QuakeC VM\n\nconst EC_MONSTER = 1;\nconst EC_ITEM     = 2;\nconst EC_PLAYER   = 4;\nconst EC_WORLD    = 8;\n\nfunction isMonster(ent: Edict): boolean {\n  return (ent.v.flags & EC_MONSTER) !== 0;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

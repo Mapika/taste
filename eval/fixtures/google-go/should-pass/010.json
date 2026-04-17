@@ -1,0 +1,8 @@
+{
+  "id": "010",
+  "description": "getter without Get prefix, setter with Set prefix — idiomatic naming",
+  "input": "// Config holds application configuration.\ntype Config struct {\n\ttimeout time.Duration\n}\n\n// Timeout returns the configured request timeout.\nfunc (c *Config) Timeout() time.Duration {\n\treturn c.timeout\n}\n\n// SetTimeout sets the request timeout.\nfunc (c *Config) SetTimeout(d time.Duration) {\n\tc.timeout = d\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

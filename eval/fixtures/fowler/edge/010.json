@@ -1,0 +1,8 @@
+{
+  "id": "010",
+  "description": "abstract base class for hierarchy — acceptable OO structure even without interface",
+  "input": "abstract class PricingStrategy {\n    abstract Money calculateCharge(int quantity);\n\n    Money calculateChargeWithMinimum(int quantity, Money minimumCharge) {\n        Money calculated = calculateCharge(quantity);\n        return calculated.isLessThan(minimumCharge) ? minimumCharge : calculated;\n    }\n}\n\nclass VolumePricingStrategy extends PricingStrategy {\n    private final Money unitPrice;\n    private final int volumeThreshold;\n    private final double volumeDiscountRate;\n\n    VolumePricingStrategy(Money unitPrice, int volumeThreshold, double volumeDiscountRate) {\n        this.unitPrice = unitPrice;\n        this.volumeThreshold = volumeThreshold;\n        this.volumeDiscountRate = volumeDiscountRate;\n    }\n\n    public Money calculateCharge(int quantity) {\n        Money baseCharge = unitPrice.multipliedBy(quantity);\n        return quantity >= volumeThreshold\n            ? baseCharge.multipliedBy(1 - volumeDiscountRate)\n            : baseCharge;\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

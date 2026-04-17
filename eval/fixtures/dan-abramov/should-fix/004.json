@@ -1,0 +1,10 @@
+{
+  "id": "004",
+  "description": "premature useCallback wrapping a trivial handler before any measurement",
+  "input": "function TodoList({ todos, onDelete, onToggle }) {\n  const handleDelete = useCallback(\n    (id) => onDelete(id),\n    [onDelete]\n  );\n  const handleToggle = useCallback(\n    (id) => onToggle(id),\n    [onToggle]\n  );\n\n  return (\n    <ul>\n      {todos.map(todo => (\n        <li key={todo.id}>\n          <span>{todo.text}</span>\n          <button onClick={() => handleToggle(todo.id)}>Toggle</button>\n          <button onClick={() => handleDelete(todo.id)}>Delete</button>\n        </li>\n      ))}\n    </ul>\n  );\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["useCallback", "premature"]
+  }
+}

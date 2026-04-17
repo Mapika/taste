@@ -1,0 +1,10 @@
+{
+  "id": "014",
+  "description": "long verbose variable names in tight loop scope — index, element, counter",
+  "input": "func sumPositive(numbers []int) int {\n\ttotal := 0\n\tfor index, element := range numbers {\n\t\t_ = index\n\t\tif element > 0 {\n\t\t\ttotal += element\n\t\t}\n\t}\n\treturn total\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["index", "element", "scope"]
+  }
+}

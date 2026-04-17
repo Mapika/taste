@@ -1,0 +1,10 @@
+{
+  "id": "001",
+  "description": "class component with constructor state — hard rule violation",
+  "input": "class Counter extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = { count: 0 };\n    this.handleClick = this.handleClick.bind(this);\n  }\n  handleClick() {\n    this.setState({ count: this.state.count + 1 });\n  }\n  render() {\n    return <button onClick={this.handleClick}>{this.state.count}</button>;\n  }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.9,
+    "violationContains": ["class", "useState"]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "015",
+  "description": "switch with case aligned to switch, no double indent",
+  "input": "int handle_event(struct event *ev)\n{\n\tswitch (ev->type) {\n\tcase EVENT_READ:\n\t\treturn do_read(ev);\n\tcase EVENT_WRITE:\n\t\treturn do_write(ev);\n\tcase EVENT_CLOSE:\n\t\treturn do_close(ev);\n\tdefault:\n\t\treturn -EINVAL;\n\t}\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

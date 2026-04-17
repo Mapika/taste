@@ -1,0 +1,8 @@
+{
+  "id": "003",
+  "description": "struct definition without typedef, snake_case members",
+  "input": "struct ring_buffer {\n\tchar *buf;\n\tsize_t head;\n\tsize_t tail;\n\tsize_t capacity;\n\tspinlock_t lock;\n};",
+  "expect": {
+    "verdict": "pass"
+  }
+}

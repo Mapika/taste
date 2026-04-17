@@ -1,0 +1,10 @@
+{
+  "id": "009",
+  "description": "single-letter variable names throughout — naming discipline violation",
+  "input": "List<Order> getActiveOrdersForCustomer(List<Order> os, String c) {\n    List<Order> r = new ArrayList<>();\n    for (Order o : os) {\n        if (o.getCustomerId().equals(c) && o.isActive()) {\n            r.add(o);\n        }\n    }\n    return r;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.8,
+    "violationContains": ["name", "intention"]
+  }
+}

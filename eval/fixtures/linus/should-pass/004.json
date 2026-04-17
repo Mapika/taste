@@ -1,0 +1,8 @@
+{
+  "id": "004",
+  "description": "block comment explaining WHY, above function, correct style",
+  "input": "/*\n * We need to hold the lock across the power state transition because\n * another CPU may observe a partially-initialized device and attempt\n * to use it before init completes.\n */\nint power_on_device(struct device *dev)\n{\n\tint err;\n\n\tspin_lock(&dev->lock);\n\terr = do_power_on(dev);\n\tspin_unlock(&dev->lock);\n\treturn err;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

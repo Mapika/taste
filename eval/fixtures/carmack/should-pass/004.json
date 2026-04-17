@@ -1,0 +1,8 @@
+{
+  "id": "004",
+  "description": "plain constant array instead of enum for direction lookup table",
+  "input": "const DI_EAST = 0, DI_NORTHEAST = 1, DI_NORTH = 2, DI_NORTHWEST = 3;\nconst DI_WEST = 4, DI_SOUTHWEST = 5, DI_SOUTH = 6, DI_SOUTHEAST = 7;\nconst DI_NODIR = 8;\n\n// direction -> opposite direction\nconst opposite = [\n  DI_WEST, DI_SOUTHWEST, DI_SOUTH, DI_SOUTHEAST,\n  DI_EAST, DI_NORTHEAST, DI_NORTH, DI_NORTHWEST, DI_NODIR\n];\n\n// diagonal quadrant -> direction\nconst diags = [DI_NORTHWEST, DI_NORTHEAST, DI_SOUTHWEST, DI_SOUTHEAST];",
+  "expect": {
+    "verdict": "pass"
+  }
+}

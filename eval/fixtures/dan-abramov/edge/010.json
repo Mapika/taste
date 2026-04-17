@@ -1,0 +1,8 @@
+{
+  "id": "010",
+  "description": "two components with similar logic but no shared hook — duplication is appropriate at count=2",
+  "input": "function FriendStatus({ friendId }) {\n  const [isOnline, setIsOnline] = useState(null);\n\n  useEffect(() => {\n    ChatAPI.subscribeToStatus(friendId, status => setIsOnline(status.isOnline));\n    return () => ChatAPI.unsubscribeFromStatus(friendId);\n  }, [friendId]);\n\n  return <span>{isOnline ? 'Online' : 'Offline'}</span>;\n}\n\nfunction FriendListItem({ friend }) {\n  const [isOnline, setIsOnline] = useState(null);\n\n  useEffect(() => {\n    ChatAPI.subscribeToStatus(friend.id, status => setIsOnline(status.isOnline));\n    return () => ChatAPI.unsubscribeFromStatus(friend.id);\n  }, [friend.id]);\n\n  return (\n    <li style={{ color: isOnline ? 'green' : 'black' }}>\n      {friend.name}\n    </li>\n  );\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

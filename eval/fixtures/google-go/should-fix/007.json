@@ -1,0 +1,10 @@
+{
+  "id": "007",
+  "description": "doc comment does not begin with the identifier name",
+  "input": "// This function parses a URL from the given raw string.\nfunc ParseURL(raw string) (*url.URL, error) {\n\treturn url.Parse(raw)\n}\n\n// Handles the incoming HTTP request and writes a response.\nfunc (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {\n\tfmt.Fprintf(w, \"OK\")\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["comment", "identifier"]
+  }
+}

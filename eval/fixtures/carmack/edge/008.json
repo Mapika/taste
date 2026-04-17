@@ -1,0 +1,10 @@
+{
+  "id": "008",
+  "description": "Array.prototype methods used instead of indexed loops — higher-order functions vs bare loops",
+  "input": "function buildVertexOrder(tris: Triangle[], numTris: number): number[] {\n  return tris\n    .slice(0, numTris)\n    .flatMap((tri, i) => used[i] ? [] : tri.vertindex)\n    .filter((v, i, arr) => arr.indexOf(v) === i);\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.3,
+    "violationContains": ["flatMap", "loop"]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "006",
+  "description": "mixed declarations and statements",
+  "input": "int setup_socket(int domain, int type)\n{\n\tint fd = socket(domain, type, 0);\n\tif (fd < 0)\n\t\treturn fd;\n\tstruct sockaddr_in addr;\n\taddr.sin_family = AF_INET;\n\taddr.sin_port = htons(80);\n\treturn bind(fd, (struct sockaddr *)&addr, sizeof(addr));\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["declaration", "statement", "mixed"]
+  }
+}

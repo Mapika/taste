@@ -1,0 +1,8 @@
+{
+  "id": "003",
+  "description": "find_by_sql is acceptable when the query genuinely cannot be expressed in ActiveRecord DSL",
+  "input": "# Complex window function not expressible in AR DSL\nclass Post < ApplicationRecord\n  def self.with_rank_by_author\n    find_by_sql(<<~SQL)\n      SELECT posts.*,\n             RANK() OVER (PARTITION BY author_id ORDER BY view_count DESC) AS popularity_rank\n      FROM posts\n      WHERE published = true\n    SQL\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

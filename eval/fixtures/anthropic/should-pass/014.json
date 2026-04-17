@@ -1,0 +1,8 @@
+{
+  "id": "014",
+  "description": "timeout detection using isAbortError and regex — matches corpus pattern exactly",
+  "input": "const isTimeout =\n  isAbortError(response) ||\n  /timed? ?out/i.test(String(response) + ('cause' in response ? String(response.cause) : ''));\n\nif (isTimeout) {\n  throw new Errors.APIConnectionTimeoutError();\n}\nthrow new Errors.APIConnectionError({ cause: response });",
+  "expect": {
+    "verdict": "pass"
+  }
+}

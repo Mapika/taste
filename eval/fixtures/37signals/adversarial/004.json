@@ -1,0 +1,8 @@
+{
+  "id": "004",
+  "description": "AbstractSyntaxTree is a domain concept in a parser, not an over-engineered base class — should pass",
+  "input": "class AbstractSyntaxTree\n  attr_reader :root\n\n  def initialize(root)\n    @root = root\n  end\n\n  def walk(&block)\n    walk_node(@root, &block)\n  end\n\n  private\n\n  def walk_node(node, &block)\n    block.call(node)\n    node.children.each { |child| walk_node(child, &block) }\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

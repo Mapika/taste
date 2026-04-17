@@ -1,0 +1,8 @@
+{
+  "id": "008",
+  "description": "class used for a non-React utility (not a component) — class ban is React-component specific",
+  "input": "class EventEmitter {\n  constructor() {\n    this.listeners = new Map();\n  }\n\n  on(event, callback) {\n    if (!this.listeners.has(event)) {\n      this.listeners.set(event, []);\n    }\n    this.listeners.get(event).push(callback);\n    return () => this.off(event, callback);\n  }\n\n  off(event, callback) {\n    const fns = this.listeners.get(event);\n    if (fns) this.listeners.set(event, fns.filter(f => f !== callback));\n  }\n\n  emit(event, ...args) {\n    this.listeners.get(event)?.forEach(fn => fn(...args));\n  }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

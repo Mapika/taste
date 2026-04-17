@@ -1,0 +1,10 @@
+{
+  "id": "012",
+  "description": "panic in init-like setup but used as library constructor — should return error",
+  "input": "// NewDB creates and validates a database connection.\nfunc NewDB(dsn string) *DB {\n\tdb, err := sql.Open(\"postgres\", dsn)\n\tif err != nil {\n\t\tpanic(fmt.Sprintf(\"NewDB: failed to open: %v\", err))\n\t}\n\tif err := db.Ping(); err != nil {\n\t\tpanic(fmt.Sprintf(\"NewDB: failed to ping: %v\", err))\n\t}\n\treturn &DB{db: db}\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.85,
+    "violationContains": ["panic", "error"]
+  }
+}

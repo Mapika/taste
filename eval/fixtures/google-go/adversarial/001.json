@@ -1,0 +1,8 @@
+{
+  "id": "001",
+  "description": "the word 'interface{}' appears only in a quoted string — not actual type usage",
+  "input": "// describeType returns a human-readable description of the type.\nfunc describeType(t reflect.Type) string {\n\tif t == nil {\n\t\treturn \"interface{}\"\n\t}\n\treturn t.String()\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

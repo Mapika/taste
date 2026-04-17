@@ -1,0 +1,10 @@
+{
+  "id": "001",
+  "description": "abbreviated method names violate intention-revealing naming — calc, chk, mgr",
+  "input": "public class InvoiceRecord {\n    private double calcTtl(List<LineItem> items) {\n        return items.stream().mapToDouble(LineItem::getAmt).sum();\n    }\n\n    private boolean chkDue(LocalDate due) {\n        return due.isBefore(LocalDate.now());\n    }\n\n    private String getMgr() {\n        return managerName;\n    }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["abbrev", "intention"]
+  }
+}

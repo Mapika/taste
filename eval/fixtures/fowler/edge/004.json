@@ -1,0 +1,8 @@
+{
+  "id": "004",
+  "description": "variable named 'result' — a conventional temp name Fowler uses for extraction; borderline acceptable",
+  "input": "Money calculateOrderTotal(Order order) {\n    Money result = Money.ZERO;\n    for (OrderLine line : order.getLines()) {\n        result = result.add(line.calculateLineTotal());\n    }\n    return result;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "012",
+  "description": "imports: barrel re-export of an entire module's internals",
+  "input": "// physics/index.ts\nexport * from './entity';\nexport * from './collision';\nexport * from './movement';\nexport * from './gravity';\nexport * from './constants';",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["barrel", "re-export"]
+  }
+}

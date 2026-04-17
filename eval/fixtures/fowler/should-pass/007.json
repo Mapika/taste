@@ -1,0 +1,8 @@
+{
+  "id": "007",
+  "description": "Introduce Parameter Object applied — DateRange replaces start/end date pair",
+  "input": "class DateRange {\n    private final LocalDate startDate;\n    private final LocalDate endDate;\n\n    DateRange(LocalDate startDate, LocalDate endDate) {\n        this.startDate = startDate;\n        this.endDate = endDate;\n    }\n\n    boolean includes(LocalDate date) {\n        return !date.isBefore(startDate) && !date.isAfter(endDate);\n    }\n\n    boolean overlaps(DateRange other) {\n        return !other.endDate.isBefore(startDate) && !other.startDate.isAfter(endDate);\n    }\n\n    long lengthInDays() {\n        return ChronoUnit.DAYS.between(startDate, endDate);\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

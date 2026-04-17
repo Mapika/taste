@@ -1,0 +1,8 @@
+{
+  "id": "010",
+  "description": "function name uses 'tmp' as local variable — short name is fine for locals",
+  "input": "char *dup_string(const char *src, gfp_t flags)\n{\n\tchar *tmp;\n\tsize_t len;\n\n\tlen = strlen(src) + 1;\n\ttmp = kmalloc(len, flags);\n\tif (!tmp)\n\t\treturn NULL;\n\tmemcpy(tmp, src, len);\n\treturn tmp;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "008",
+  "description": "compose utility — small pure function, overload signatures, no class",
+  "input": "function compose(...funcs) {\n  if (funcs.length === 0) {\n    return arg => arg;\n  }\n  if (funcs.length === 1) {\n    return funcs[0];\n  }\n  return funcs.reduce(\n    (a, b) =>\n      (...args) =>\n        a(b(...args))\n  );\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

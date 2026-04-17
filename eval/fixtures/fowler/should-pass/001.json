@@ -1,0 +1,8 @@
+{
+  "id": "001",
+  "description": "table-of-contents top-level method with extracted intention-revealing delegates",
+  "input": "void fulfillOrder(OrderId orderId) {\n    Order order = orderRepository.findById(orderId)\n        .orElseThrow(() -> new OrderNotFoundException(orderId));\n    validateOrderCanBeFulfilled(order);\n    calculateAndApplyOrderPricing(order);\n    reserveInventoryForOrder(order);\n    scheduleDeliveryForOrder(order);\n    sendOrderConfirmationToCustomer(order);\n    orderRepository.save(order);\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "004",
+  "description": "table-driven test with tt convention and _test.go naming",
+  "input": "// file: string_utils_test.go\n\nfunc TestContains(t *testing.T) {\n\ttests := []struct {\n\t\ts      string\n\t\tsubstr string\n\t\twant   bool\n\t}{\n\t\t{\"hello world\", \"world\", true},\n\t\t{\"hello world\", \"xyz\", false},\n\t\t{\"\", \"\", true},\n\t}\n\tfor _, tt := range tests {\n\t\tgot := strings.Contains(tt.s, tt.substr)\n\t\tif got != tt.want {\n\t\t\tt.Errorf(\"Contains(%q, %q) = %v; want %v\", tt.s, tt.substr, got, tt.want)\n\t\t}\n\t}\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

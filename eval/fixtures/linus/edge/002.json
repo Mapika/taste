@@ -1,0 +1,8 @@
+{
+  "id": "002",
+  "description": "typedef for u32/u64 integer types — explicitly permitted by §5",
+  "input": "typedef unsigned char u8;\ntypedef unsigned short u16;\ntypedef unsigned int u32;\ntypedef unsigned long long u64;\n\nstatic inline u32 read_register(void __iomem *base, u32 offset)\n{\n\treturn ioread32(base + offset);\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

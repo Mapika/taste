@@ -1,0 +1,8 @@
+{
+  "id": "005",
+  "description": "useEffect with empty deps looks like it could be componentDidMount but is actually correct one-time setup",
+  "input": "function MapWidget({ containerId }) {\n  useEffect(() => {\n    // Map library requires one-time imperative initialization against a DOM node.\n    // There is no reactive equivalent; the library manages its own update cycle.\n    const map = L.map(containerId).setView([51.505, -0.09], 13);\n    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);\n    return () => map.remove();\n  }, [containerId]);\n\n  return <div id={containerId} style={{ height: 400 }} />;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

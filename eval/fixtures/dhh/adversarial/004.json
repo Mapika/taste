@@ -1,0 +1,8 @@
+{
+  "id": "004",
+  "description": "class UserService is the name of a test double/stub in a spec — not a real Service class",
+  "input": "RSpec.describe PostsController do\n  let(:user) { build_stubbed(:user) }\n\n  # UserService here is a stand-in name in the test description;\n  # the actual implementation uses the User model directly\n  describe 'POST #create when authenticated' do\n    before { sign_in user }\n\n    it 'creates a post and redirects' do\n      post :create, params: { post: { title: 'Hello', body: 'World' } }\n      expect(response).to redirect_to(assigns(:post))\n    end\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

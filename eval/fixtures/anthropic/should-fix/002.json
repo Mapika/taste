@@ -1,0 +1,10 @@
+{
+  "id": "002",
+  "description": "abbreviated parameter names — violates full-word naming convention",
+  "input": "function createMsg(b: MsgCreateParams, opts?: ReqOpts): APIPromise<Msg> {\n  return this._client.post('/messages', { body: b, ...opts });\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["abbreviat", "naming"]
+  }
+}

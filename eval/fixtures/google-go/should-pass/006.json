@@ -1,0 +1,8 @@
+{
+  "id": "006",
+  "description": "sentinel error with ErrXxx naming, errors.Is usage",
+  "input": "// ErrNotFound is returned when the requested resource does not exist.\nvar ErrNotFound = errors.New(\"not found\")\n\n// Find returns the item with the given id.\nfunc (r *Repo) Find(id int) (*Item, error) {\n\titem, ok := r.store[id]\n\tif !ok {\n\t\treturn nil, ErrNotFound\n\t}\n\treturn item, nil\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "002",
+  "description": "panic in init() — init is one of the few acceptable places for panic",
+  "input": "var validRegexp = regexp.MustCompile(`^[a-z]+$`)\n\nfunc init() {\n\tif os.Getenv(\"APP_ENV\") == \"\" {\n\t\tpanic(\"APP_ENV environment variable must be set\")\n\t}\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "013",
+  "description": "custom hook encapsulating window resize subscription — one concept per hook",
+  "input": "function useWindowWidth() {\n  const [width, setWidth] = useState(window.innerWidth);\n\n  useEffect(() => {\n    function handleResize() {\n      setWidth(window.innerWidth);\n    }\n\n    window.addEventListener('resize', handleResize);\n    return () => window.removeEventListener('resize', handleResize);\n  }, []);\n\n  return width;\n}\n\nfunction ResponsivePanel({ children }) {\n  const width = useWindowWidth();\n\n  return (\n    <div className={width < 768 ? 'panel-compact' : 'panel-full'}>\n      {children}\n    </div>\n  );\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

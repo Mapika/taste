@@ -1,0 +1,10 @@
+{
+  "id": "006",
+  "description": "naming: overly descriptive function name for a function that does one obvious thing",
+  "input": "function calculateAndReturnTheLengthOfATriangleStrip(startTriangleIndex: number, startVertex: number): number {\n  let count = 0;\n  let m1 = verts[(startVertex + 2) % 3];\n  let m2 = verts[(startVertex + 1) % 3];\n  for (let j = startTriangleIndex + 1; j < numTris; j++) {\n    for (let k = 0; k < 3; k++) {\n      if (tris[j][k] === m1 && tris[j][(k+1)%3] === m2) {\n        count++;\n        if (count & 1) m2 = tris[j][(k+2)%3];\n        else m1 = tris[j][(k+2)%3];\n        break;\n      }\n    }\n  }\n  return count;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["function name", "verbose"]
+  }
+}

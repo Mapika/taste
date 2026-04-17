@@ -1,0 +1,8 @@
+{
+  "id": "009",
+  "description": "useEffect with comment explaining the mental model why",
+  "input": "function ChatRoom({ roomId }) {\n  const [messages, setMessages] = useState([]);\n\n  useEffect(() => {\n    // Re-run whenever roomId changes so we always subscribe to the current room.\n    const connection = createChatConnection(roomId);\n    connection.onMessage(msg => setMessages(prev => [...prev, msg]));\n    connection.connect();\n    return () => connection.disconnect();\n  }, [roomId]);\n\n  return <MessageList messages={messages} />;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

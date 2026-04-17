@@ -1,0 +1,8 @@
+{
+  "id": "006",
+  "description": "why-comment explaining a surprising business rule, not restating the code",
+  "input": "def purge!\n  # We keep :email intact even after purging so former customers can't be\n  # impersonated if someone else claims the same address later.\n  update!(state: :purged, purged_at: Time.current)\n  attachments.each(&:purge)\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

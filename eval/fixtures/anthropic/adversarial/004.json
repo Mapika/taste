@@ -1,0 +1,8 @@
+{
+  "id": "004",
+  "description": "Unicode-containing variable name — should not confuse the judge",
+  "input": "const π = Math.PI;\n\nexport function calculateCircleArea(radiusInMeters: number): number {\n  // standard mathematical formula\n  return π * radiusInMeters * radiusInMeters;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

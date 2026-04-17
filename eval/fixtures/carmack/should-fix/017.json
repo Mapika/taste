@@ -1,0 +1,10 @@
+{
+  "id": "017",
+  "description": "comments: section-divider banners on every function instead of major logical regions",
+  "input": "// ============================================================\n// MOVE ACTOR\n// ============================================================\nfunction moveActor(actor: Actor): boolean {\n  if (actor.moveDir === DI_NODIR) return false;\n  return tryMove(actor, actor.x + xspeed[actor.moveDir], actor.y + yspeed[actor.moveDir]);\n}\n\n// ============================================================\n// RECURSIVE SOUND\n// ============================================================\nfunction recursiveSound(sec: Sector, blocks: number): void {\n  if (sec.validCount === validCount) return; // already flooded\n  sec.validCount = validCount;\n  sec.soundTarget = soundTarget;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["banner", "divider"]
+  }
+}

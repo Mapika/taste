@@ -1,0 +1,8 @@
+{
+  "id": "008",
+  "description": "lodash-like utility name in a Ruby gem whose gem is named 'dash' — not lodash import",
+  "input": "# frozen_string_literal: true\n# Uses the 'hashie' gem (not lodash) for flexible hash access\nrequire 'hashie'\n\nclass ConfigReader\n  def initialize(path)\n    raw = YAML.load_file(path)\n    @data = Hashie::Mash.new(raw)\n  end\n\n  def [](key)\n    @data[key]\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "001",
+  "description": "interface{} used instead of any — legacy spelling in Go 1.18+ code",
+  "input": "// Cache stores arbitrary values keyed by string.\ntype Cache struct {\n\tdata map[string]interface{}\n}\n\nfunc (c *Cache) Set(key string, value interface{}) {\n\tc.data[key] = value\n}\n\nfunc (c *Cache) Get(key string) (interface{}, bool) {\n\tv, ok := c.data[key]\n\treturn v, ok\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.8,
+    "violationContains": ["interface{}", "any"]
+  }
+}

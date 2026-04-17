@@ -1,0 +1,8 @@
+{
+  "id": "005",
+  "description": "happy-path test plus one meaningful edge case — not exhaustive branch coverage",
+  "input": "class Account::ClosableTest < ActiveSupport::TestCase\n  test \"terminates an account by purging when incineration is not allowed\" do\n    account = accounts(:basic)\n    account.terminate\n    assert_not account.reload.active?\n  end\n\n  test \"incinerates when account has no data-retention hold\" do\n    account = accounts(:enterprise_without_hold)\n    account.terminate\n    assert_raises(ActiveRecord::RecordNotFound) { account.reload }\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

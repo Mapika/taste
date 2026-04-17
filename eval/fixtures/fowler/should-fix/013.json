@@ -1,0 +1,10 @@
+{
+  "id": "013",
+  "description": "Command-Query Separation violation — method both mutates state and returns value",
+  "input": "class ShoppingCart {\n    private List<Item> items = new ArrayList<>();\n\n    // Violates CQS: modifies cart AND returns new total\n    double addItemAndReturnTotal(Item item) {\n        items.add(item);\n        return items.stream().mapToDouble(Item::getPrice).sum();\n    }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["command", "query"]
+  }
+}

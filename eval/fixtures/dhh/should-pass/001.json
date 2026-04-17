@@ -1,0 +1,8 @@
+{
+  "id": "001",
+  "description": "canonical scaffold controller shape with before_action and private params method",
+  "input": "class PostsController < ApplicationController\n  before_action :set_post, only: %i[ show edit update destroy ]\n  before_action :authenticate_user!, except: %i[ index show ]\n\n  def index\n    @posts = Post.published.order(created_at: :desc)\n  end\n\n  def show\n  end\n\n  def create\n    @post = Post.new(post_params)\n    if @post.save\n      redirect_to @post, notice: \"Post was successfully created.\"\n    else\n      render :new, status: :unprocessable_entity\n    end\n  end\n\n  private\n    def set_post\n      @post = Post.find(params.expect(:id))\n    end\n\n    def post_params\n      params.expect(post: [ :title, :body, :published ])\n    end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

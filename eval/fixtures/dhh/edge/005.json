@@ -1,0 +1,8 @@
+{
+  "id": "005",
+  "description": "lodash used in a JavaScript-only frontend file with no Rails backend equivalent",
+  "input": "// Pure React component — no Rails backend, this is a standalone SPA module\nimport _ from 'lodash';\n\nexport function debounceSearch(fn, wait = 300) {\n  return _.debounce(fn, wait);\n}\n\nexport function deepClone(obj) {\n  return _.cloneDeep(obj);\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

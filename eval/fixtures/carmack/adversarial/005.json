@@ -1,0 +1,8 @@
+{
+  "id": "005",
+  "description": "adversarial: uses crash-function style but names it 'handleError' — the naming implies recovery, not abort",
+  "input": "function handleError(msg: string): never {\n  process.stderr.write(`ERROR: ${msg}\\n`);\n  process.exit(1);\n}\n\nfunction readMap(name: string): Uint8Array {\n  const fd = openSync(name, 'r');\n  if (fd < 0) handleError(`Couldn't open map ${name}`);\n  const stat = fstatSync(fd);\n  const buf = new Uint8Array(stat.size);\n  readSync(fd, buf);\n  closeSync(fd);\n  return buf;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "007",
+  "description": "method 25 lines long but each line is at the same abstraction level — borderline length",
+  "input": "void processRefund(RefundRequest refundRequest) {\n    validateRefundRequestIsEligible(refundRequest);\n    Order originalOrder = orderRepository.findById(refundRequest.getOriginalOrderId())\n        .orElseThrow(() -> new OrderNotFoundException(refundRequest.getOriginalOrderId()));\n    validateRefundAmountDoesNotExceedOriginalOrderTotal(refundRequest, originalOrder);\n    Payment originalPayment = paymentRepository.findByOrderId(originalOrder.getId())\n        .orElseThrow(() -> new PaymentNotFoundException(originalOrder.getId()));\n    RefundTransaction refundTransaction = paymentGateway.processRefund(\n        originalPayment.getTransactionId(),\n        refundRequest.getRefundAmount());\n    originalOrder.recordRefund(refundRequest.getRefundAmount(), refundTransaction.getId());\n    orderRepository.save(originalOrder);\n    refundRepository.save(buildRefundRecord(refundRequest, refundTransaction));\n    notificationService.sendRefundConfirmationToCustomer(\n        originalOrder.getCustomer(),\n        refundRequest.getRefundAmount());\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

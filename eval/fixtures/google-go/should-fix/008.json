@@ -1,0 +1,10 @@
+{
+  "id": "008",
+  "description": "error ignored with blank identifier — violates error-as-value convention",
+  "input": "func loadData(path string) []byte {\n\tf, _ := os.Open(path)\n\tdata, _ := io.ReadAll(f)\n\t_ = f.Close()\n\treturn data\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.85,
+    "violationContains": ["error", "ignored"]
+  }
+}

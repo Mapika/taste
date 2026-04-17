@@ -1,0 +1,8 @@
+{
+  "id": "005",
+  "description": "number 365 appears as a string inside a log message, not as a computational magic number",
+  "input": "class DataRetentionService {\n    private static final int DATA_RETENTION_PERIOD_IN_DAYS = 365;\n\n    void purgeExpiredRecords(LocalDate asOfDate) {\n        LocalDate retentionCutoffDate = asOfDate.minusDays(DATA_RETENTION_PERIOD_IN_DAYS);\n        List<DataRecord> expiredRecords = recordRepository.findRecordsOlderThan(retentionCutoffDate);\n        logger.info(\"Purging {} records older than {} days (cutoff: {})\",\n            expiredRecords.size(),\n            DATA_RETENTION_PERIOD_IN_DAYS,\n            retentionCutoffDate);\n        recordRepository.deleteAll(expiredRecords);\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

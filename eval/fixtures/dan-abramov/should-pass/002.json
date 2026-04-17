@@ -1,0 +1,8 @@
+{
+  "id": "002",
+  "description": "custom hook with useX prefix, one concept, explicit cleanup",
+  "input": "function useWindowWidth() {\n  const [width, setWidth] = useState(window.innerWidth);\n\n  useEffect(() => {\n    const handleResize = () => setWidth(window.innerWidth);\n    window.addEventListener('resize', handleResize);\n    return () => window.removeEventListener('resize', handleResize);\n  }, []);\n\n  return width;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

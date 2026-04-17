@@ -1,0 +1,10 @@
+{
+  "id": "007",
+  "description": "single @param annotation on a function whose argument is not obvious from the name — edge: one annotation might be justified",
+  "input": "/**\n * @param trivial_accept - set if the previous BSP traversal guaranteed\n *   all vertices are on-screen; skips per-vertex clip tests\n */\nfunction R_AliasSetUpTransform(trivial_accept: number): void {\n  for (let i = 0; i < 3; i++) {\n    aliastransform[i][0] = rotationMatrix[0][i];\n    aliastransform[i][1] = rotationMatrix[1][i];\n    aliastransform[i][2] = rotationMatrix[2][i];\n  }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.3,
+    "violationContains": ["@param"]
+  }
+}

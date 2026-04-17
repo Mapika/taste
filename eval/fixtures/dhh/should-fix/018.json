@@ -1,0 +1,10 @@
+{
+  "id": "018",
+  "description": "verbose association setup instead of declarative has_many/belongs_to macros",
+  "input": "class Post\n  def comments\n    Comment.where(post_id: self.id).order('created_at ASC')\n  end\n\n  def author\n    User.find(self.author_id)\n  end\n\n  def tags\n    Tag.joins(:post_tags).where(post_tags: { post_id: self.id })\n  end\nend",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.85,
+    "violationContains": ["has_many", "belongs_to", "DSL"]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "009",
+  "description": "Service Layer method reads like a business process — each step is an extracted private method",
+  "input": "class PayrollProcessingService {\n    void processMonthlyPayroll(YearMonth payPeriod) {\n        List<Employee> activeEmployees = findActiveEmployeesForPayPeriod(payPeriod);\n        List<PayrollEntry> payrollEntries = calculatePayrollForAllEmployees(activeEmployees, payPeriod);\n        applyDeductionsToAllEntries(payrollEntries);\n        submitPayrollEntriesToPaymentProcessor(payrollEntries);\n        recordPayrollCompletionInAuditLog(payPeriod, payrollEntries.size());\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

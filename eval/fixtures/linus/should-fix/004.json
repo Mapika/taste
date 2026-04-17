@@ -1,0 +1,10 @@
+{
+  "id": "004",
+  "description": "line exceeds 80 columns",
+  "input": "static int validate_and_process_network_packet(struct sk_buff *skb, struct net_device *dev, unsigned int flags)\n{\n\treturn process_packet(skb);\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["80", "line length", "column"]
+  }
+}

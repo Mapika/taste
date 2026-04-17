@@ -1,0 +1,8 @@
+{
+  "id": "007",
+  "description": "flat mixin composition instead of inheritance for shared model behaviour",
+  "input": "module Recordable\n  extend ActiveSupport::Concern\n\n  included do\n    has_one :recording, as: :recordable, touch: true\n    has_one :bucket, through: :recording\n    has_one :creator, through: :recording\n  end\n\n  def copy_to(bucket)\n    Recording::Copier.new(self, bucket).copy!\n  end\n\n  def incinerate\n    Recording::Incineration.new(recording).incinerate!\n  end\nend\n\nclass Message < ApplicationRecord\n  include Recordable\nend\n\nclass Comment < ApplicationRecord\n  include Recordable\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

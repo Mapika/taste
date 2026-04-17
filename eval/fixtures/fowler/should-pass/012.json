@@ -1,0 +1,8 @@
+{
+  "id": "012",
+  "description": "Extract Function applied — printOwing refactored to delegate methods",
+  "input": "void printOwing(Order order) {\n    printBanner();\n    double outstanding = calculateOutstanding(order);\n    printOrderDetails(order, outstanding);\n}\n\nprivate void printBanner() {\n    System.out.println(\"***********************\");\n    System.out.println(\"**** Customer Owes ****\");\n    System.out.println(\"***********************\");\n}\n\nprivate double calculateOutstanding(Order order) {\n    return order.getOrderLines().stream()\n        .mapToDouble(OrderLine::getAmount)\n        .sum();\n}\n\nprivate void printOrderDetails(Order order, double outstanding) {\n    System.out.println(\"name: \" + order.getCustomer().getName());\n    System.out.println(\"amount: \" + outstanding);\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

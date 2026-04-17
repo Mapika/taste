@@ -1,0 +1,10 @@
+{
+  "id": "015",
+  "description": "SearchService class wrapping a query that should be a named scope or model class method",
+  "input": "class PostSearchService\n  def initialize(query, filters = {})\n    @query = query\n    @filters = filters\n  end\n\n  def results\n    scope = Post.all\n    scope = scope.where('title ILIKE ?', \"%#{@query}%\") if @query.present?\n    scope = scope.where(category: @filters[:category]) if @filters[:category]\n    scope = scope.where(published: true)\n    scope.order(created_at: :desc)\n  end\nend",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.8,
+    "violationContains": ["Service", "scope", "model"]
+  }
+}

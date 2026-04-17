@@ -1,0 +1,8 @@
+{
+  "id": "008",
+  "description": "abbreviated local variable name — acceptable for simple loop counter",
+  "input": "int flush_queue(struct work_queue *wq)\n{\n\tstruct work_item *w;\n\tint n = 0;\n\n\twhile ((w = dequeue(wq)) != NULL) {\n\t\tprocess_work(w);\n\t\tn++;\n\t}\n\treturn n;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

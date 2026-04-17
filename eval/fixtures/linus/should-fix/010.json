@@ -1,0 +1,10 @@
+{
+  "id": "010",
+  "description": "excessive local variables — function needs splitting",
+  "input": "int do_everything(struct device *dev)\n{\n\tint err, ret, status, result, rc;\n\tchar *buf, *tmp, *out;\n\tsize_t len, total, written, remaining, offset;\n\tunsigned long flags, mask, bits;\n\n\terr = init_device(dev);\n\tif (err)\n\t\treturn err;\n\treturn 0;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["local variables", "split", "function"]
+  }
+}

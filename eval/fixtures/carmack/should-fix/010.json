@@ -1,0 +1,10 @@
+{
+  "id": "010",
+  "description": "error handling: defensive null-checking ceremony where a crash reveals the bug faster",
+  "input": "function recursiveSound(sec: Sector | null | undefined, soundBlocks: number): void {\n  if (sec === null || sec === undefined) {\n    console.warn('recursiveSound called with null sector, skipping');\n    return;\n  }\n  if (soundBlocks < 0 || soundBlocks > 1) {\n    console.warn(`Invalid soundBlocks value: ${soundBlocks}`);\n    return;\n  }\n  if (sec.validCount === validCount && sec.soundTraversed <= soundBlocks + 1) {\n    return; // already flooded\n  }\n  sec.validCount = validCount;\n  sec.soundTraversed = soundBlocks + 1;\n  sec.soundTarget = soundTarget;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["null check", "defensive"]
+  }
+}

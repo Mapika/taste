@@ -1,0 +1,8 @@
+{
+  "id": "008",
+  "description": "switch in Factory Method — acceptable when switch is isolated to the factory, not scattered through domain",
+  "input": "class ReportFormatterFactory {\n    static ReportFormatter createForOutputFormat(OutputFormat format) {\n        switch (format) {\n            case PDF:  return new PdfReportFormatter();\n            case CSV:  return new CsvReportFormatter();\n            case HTML: return new HtmlReportFormatter();\n            case JSON: return new JsonReportFormatter();\n        }\n        throw new IllegalArgumentException(\"Unsupported output format: \" + format);\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

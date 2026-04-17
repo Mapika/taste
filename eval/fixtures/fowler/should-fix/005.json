@@ -1,0 +1,10 @@
+{
+  "id": "005",
+  "description": "long method mixing multiple abstraction levels — Extract Method target",
+  "input": "void processOrder(Order order) {\n    // validate\n    if (order.getItems().isEmpty()) throw new IllegalArgumentException(\"Order has no items\");\n    if (order.getCustomer() == null) throw new IllegalArgumentException(\"Order has no customer\");\n    // calculate pricing\n    double subtotal = 0;\n    for (OrderLine line : order.getLines()) {\n        subtotal += line.getQuantity() * line.getUnitPrice();\n    }\n    double tax = subtotal * 0.08;\n    order.setTotal(subtotal + tax);\n    // reserve inventory\n    for (OrderLine line : order.getLines()) {\n        inventoryService.reserve(line.getProductId(), line.getQuantity());\n    }\n    // notify\n    emailService.sendOrderConfirmation(order.getCustomer().getEmail(), order.getId());\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["extract", "method"]
+  }
+}

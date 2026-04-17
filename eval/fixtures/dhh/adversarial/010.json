@@ -1,0 +1,8 @@
+{
+  "id": "010",
+  "description": "attr_accessor in a PORO (not an AR model) — correct use for a non-database object",
+  "input": "# Plain Ruby object — not an ActiveRecord model\nclass FormObject\n  include ActiveModel::Model\n  include ActiveModel::Attributes\n\n  attr_accessor :first_name, :last_name, :email\n\n  validates :first_name, :last_name, presence: true\n  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }\n\n  def full_name\n    \"#{first_name} #{last_name}\"\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

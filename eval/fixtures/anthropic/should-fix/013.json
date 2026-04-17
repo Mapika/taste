@@ -1,0 +1,10 @@
+{
+  "id": "013",
+  "description": "barrel export * from for public API — violates explicit named export rule",
+  "input": "// src/index.ts\nexport * from './messages';\nexport * from './client';\nexport * from './core/error';\nexport * from './core/pagination';",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.85,
+    "violationContains": ["export *", "named"]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "008",
+  "description": "Decompose Conditional applied — complex boolean extracted to named method",
+  "input": "void applySeasonalPricing(Order order, LocalDate orderDate) {\n    if (isInSummerSeason(orderDate) && qualifiesForSeasonalDiscount(order)) {\n        order.applyDiscountRate(SUMMER_SEASONAL_DISCOUNT_RATE);\n    }\n}\n\nprivate boolean isInSummerSeason(LocalDate date) {\n    return !date.isBefore(SUMMER_SEASON_START) && !date.isAfter(SUMMER_SEASON_END);\n}\n\nprivate boolean qualifiesForSeasonalDiscount(Order order) {\n    return order.calculateTotal().isGreaterThan(SEASONAL_DISCOUNT_MINIMUM_ORDER_VALUE);\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

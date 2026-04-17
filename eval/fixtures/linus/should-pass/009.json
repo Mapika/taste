@@ -1,0 +1,8 @@
+{
+  "id": "009",
+  "description": "constant defined with ALL_CAPS macro, related constants grouped",
+  "input": "#define PAGE_SHIFT\t12\n#define PAGE_SIZE\t(1UL << PAGE_SHIFT)\n#define PAGE_MASK\t(~(PAGE_SIZE - 1))\n#define MAX_ORDER\t11",
+  "expect": {
+    "verdict": "pass"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "005",
+  "description": "bang/predicate method naming with alias_method — Rails naming convention honored",
+  "input": "class User < ApplicationRecord\n  def activate!\n    update!(active: true, activated_at: Time.current)\n  end\n\n  def deactivate!\n    update!(active: false)\n  end\n\n  alias_method :active?, :active\n\n  def guest?\n    !persisted?\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

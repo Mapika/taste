@@ -1,0 +1,10 @@
+{
+  "id": "003",
+  "description": "nested error handling instead of goto cleanup",
+  "input": "int open_device(struct device *dev)\n{\n\tint err;\n\n\terr = device_lock(dev);\n\tif (err == 0) {\n\t\terr = device_power_on(dev);\n\t\tif (err == 0) {\n\t\t\terr = device_init(dev);\n\t\t\tif (err != 0) {\n\t\t\t\tdevice_power_off(dev);\n\t\t\t\tdevice_unlock(dev);\n\t\t\t}\n\t\t} else {\n\t\t\tdevice_unlock(dev);\n\t\t}\n\t}\n\treturn err;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["goto", "nesting", "cleanup"]
+  }
+}

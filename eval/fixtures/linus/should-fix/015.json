@@ -1,0 +1,10 @@
+{
+  "id": "015",
+  "description": "more than 3 levels of indentation nesting",
+  "input": "int scan_tree(struct node *root)\n{\n\tif (root) {\n\t\tif (root->left) {\n\t\t\tif (root->left->data > 0) {\n\t\t\t\tif (root->left->data < MAX_VAL) {\n\t\t\t\t\tprocess_node(root->left);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\treturn 0;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["nesting", "indentation", "split"]
+  }
+}

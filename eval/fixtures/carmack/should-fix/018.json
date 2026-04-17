@@ -1,0 +1,10 @@
+{
+  "id": "018",
+  "description": "comments: comment restates the next line of code instead of explaining why",
+  "input": "function updatePhysics(ent: Entity, dt: number): void {\n  // Multiply velocity by delta time to get displacement\n  const dx = ent.velocity[0] * dt;\n  const dy = ent.velocity[1] * dt;\n  const dz = ent.velocity[2] * dt;\n\n  // Add displacement to position\n  ent.origin[0] += dx;\n  ent.origin[1] += dy;\n  ent.origin[2] += dz;\n\n  // Apply gravity to vertical velocity\n  ent.velocity[2] -= gravity * dt;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["restates", "comment"]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "003",
+  "description": "'tmp' appears only inside a comment explaining a workaround — not a variable name",
+  "input": "class FileProcessor {\n    /**\n     * Writes content to disk atomically by writing to a tmp file first,\n     * then renaming to the target path. This avoids partial writes.\n     */\n    void writeAtomically(Path targetPath, String content) throws IOException {\n        Path stagingPath = targetPath.resolveSibling(targetPath.getFileName() + \".staging\");\n        Files.writeString(stagingPath, content);\n        Files.move(stagingPath, targetPath, StandardCopyOption.ATOMIC_MOVE);\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

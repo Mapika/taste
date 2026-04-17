@@ -1,0 +1,8 @@
+{
+  "id": "002",
+  "description": "number 100 appears as a percentage denominator — domain-meaningful context, not a magic number",
+  "input": "class PercentageCalculator {\n    private static final double FULL_PERCENTAGE = 100.0;\n\n    double convertDecimalToPercentage(double decimalValue) {\n        return decimalValue * FULL_PERCENTAGE;\n    }\n\n    double convertPercentageToDecimal(double percentageValue) {\n        return percentageValue / FULL_PERCENTAGE;\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

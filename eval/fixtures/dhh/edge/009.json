@@ -1,0 +1,8 @@
+{
+  "id": "009",
+  "description": "model method that orchestrates multiple saves — controller pushed logic into model, right direction but long",
+  "input": "class Order < ApplicationRecord\n  def complete!(payment_method)\n    transaction do\n      charge = Stripe::Charge.create(\n        amount: total_cents,\n        currency: 'usd',\n        source: payment_method.stripe_token\n      )\n      update!(status: :completed, charge_id: charge.id, completed_at: Time.current)\n      line_items.each(&:fulfill!)\n      OrderMailer.confirmation(self).deliver_later\n    end\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

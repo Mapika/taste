@@ -1,0 +1,8 @@
+{
+  "id": "005",
+  "description": "a class with 'Handler' in its name that is a legitimate event-system handler, not a disguised service object — borderline pass",
+  "input": "class WebhookHandler\n  SUPPORTED_EVENTS = %w[ payment.succeeded payment.failed subscription.cancelled ].freeze\n\n  def initialize(payload)\n    @payload = payload\n  end\n\n  def handle\n    return unless SUPPORTED_EVENTS.include?(@payload[:event])\n    send(\"handle_#{@payload[:event].tr('.', '_')}\")\n  end\n\n  private\n\n  def handle_payment_succeeded = Payment.find(@payload[:id]).mark_paid!\n  def handle_payment_failed    = Payment.find(@payload[:id]).mark_failed!\n  def handle_subscription_cancelled = Subscription.find(@payload[:id]).cancel!\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

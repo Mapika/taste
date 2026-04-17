@@ -1,0 +1,10 @@
+{
+  "id": "014",
+  "description": "importing lodash for object utilities that Ruby/ActiveSupport handles natively",
+  "input": "import { isEmpty, omit, pick, merge } from 'lodash';\n\nconst sanitized = omit(userParams, ['password_confirmation', 'admin']);\nconst merged = merge(defaults, userPreferences);\nconst blank = isEmpty(sanitized);",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.85,
+    "violationContains": ["lodash", "stdlib"]
+  }
+}

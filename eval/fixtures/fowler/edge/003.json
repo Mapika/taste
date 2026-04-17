@@ -1,0 +1,8 @@
+{
+  "id": "003",
+  "description": "service class with many injected dependencies — borderline long constructor but correct DI pattern",
+  "input": "class OrderManagementService {\n    private final OrderRepository orderRepository;\n    private final CustomerRepository customerRepository;\n    private final InventoryService inventoryService;\n    private final PaymentGateway paymentGateway;\n    private final ShippingService shippingService;\n    private final OrderNotificationService orderNotificationService;\n    private final AuditLogger auditLogger;\n\n    OrderManagementService(\n            OrderRepository orderRepository,\n            CustomerRepository customerRepository,\n            InventoryService inventoryService,\n            PaymentGateway paymentGateway,\n            ShippingService shippingService,\n            OrderNotificationService orderNotificationService,\n            AuditLogger auditLogger) {\n        this.orderRepository = orderRepository;\n        this.customerRepository = customerRepository;\n        this.inventoryService = inventoryService;\n        this.paymentGateway = paymentGateway;\n        this.shippingService = shippingService;\n        this.orderNotificationService = orderNotificationService;\n        this.auditLogger = auditLogger;\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "018",
+  "description": "temp variable in loop where Replace Temp with Query applies",
+  "input": "double calculateOrderSubtotal(List<OrderLine> lines) {\n    double temp = 0;\n    for (OrderLine line : lines) {\n        temp += line.getQuantity() * line.getUnitPrice();\n    }\n    return temp;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["temp", "intention"]
+  }
+}

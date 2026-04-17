@@ -1,0 +1,8 @@
+{
+  "id": "004",
+  "description": "useMemo for genuinely expensive computation with clear profiler note",
+  "input": "function WorldMap({ countries, filter }) {\n  // Generating SVG paths for 200 countries is CPU-intensive (~80ms measured in profiler).\n  const filteredPaths = useMemo(\n    () => countries\n      .filter(c => c.region === filter)\n      .map(c => generateSvgPath(c.coordinates)),\n    [countries, filter]\n  );\n\n  return (\n    <svg viewBox=\"0 0 1000 500\">\n      {filteredPaths.map((path, i) => <path key={i} d={path} />)}\n    </svg>\n  );\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

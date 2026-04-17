@@ -1,0 +1,10 @@
+{
+  "id": "013",
+  "description": "goto used for forward jump (control flow), not cleanup",
+  "input": "int process_command(struct cmd *cmd)\n{\n\tif (cmd->flags & CMD_SKIP)\n\t\tgoto done;\n\n\tif (cmd->type == CMD_READ)\n\t\tgoto handle_read;\n\n\tprocess_write(cmd);\n\tgoto done;\n\nhandle_read:\n\tprocess_read(cmd);\ndone:\n\treturn 0;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["goto", "forward", "control flow"]
+  }
+}

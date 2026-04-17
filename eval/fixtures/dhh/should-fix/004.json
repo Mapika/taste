@@ -1,0 +1,10 @@
+{
+  "id": "004",
+  "description": "Java-style private final fields — ceremony antithetical to Ruby expressiveness",
+  "input": "public class UserAuthenticator {\n    private final String username;\n    private final String passwordHash;\n\n    public UserAuthenticator(String username, String passwordHash) {\n        this.username = username;\n        this.passwordHash = passwordHash;\n    }\n\n    public boolean authenticate(String password) {\n        return BCrypt.checkpw(password, this.passwordHash);\n    }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.8,
+    "violationContains": ["private final", "ceremony"]
+  }
+}

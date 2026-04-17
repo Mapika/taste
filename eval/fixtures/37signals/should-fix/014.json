@@ -1,0 +1,10 @@
+{
+  "id": "014",
+  "description": "class named with the Handler suffix — a non-domain name that hides the actual concept",
+  "input": "class SubscriptionExpirationHandler\n  def self.handle(account)\n    new(account).run\n  end\n\n  def initialize(account)\n    @account = account\n  end\n\n  def run\n    @account.update!(state: :expired)\n    SubscriptionMailer.expiration_notice(@account).deliver_later\n  end\nend",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["Handler", "domain", "noun"]
+  }
+}

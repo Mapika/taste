@@ -1,0 +1,10 @@
+{
+  "id": "019",
+  "description": "global variable with abbreviated name",
+  "input": "static int nActUsr;\nstatic int maxBufSz;\nstatic unsigned long mskFlg;\n\nvoid inc_user_count(void) { nActUsr++; }\nint get_buffer_max(void) { return maxBufSz; }",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["global", "name", "abbreviation"]
+  }
+}

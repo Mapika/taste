@@ -1,0 +1,10 @@
+{
+  "id": "009",
+  "description": "catching unknown without isAbortError check — swallows abort errors silently and logs instead of rethrowing",
+  "input": "async function streamResponse(url: string): Promise<void> {\n  try {\n    const res = await fetch(url);\n    for await (const chunk of res.body!) {\n      process.stdout.write(chunk);\n    }\n  } catch (err: unknown) {\n    console.error('Stream error:', err);\n    // do not rethrow\n  }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["abort", "rethrow"]
+  }
+}

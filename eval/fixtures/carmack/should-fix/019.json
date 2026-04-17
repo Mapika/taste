@@ -1,0 +1,10 @@
+{
+  "id": "019",
+  "description": "hard-rule: class used for module that is just grouped functions",
+  "input": "export class SoundSystem {\n  static propagate(sector: Sector, blocks: number): void {\n    if (sector.validCount === validCount) return;\n    sector.validCount = validCount;\n    sector.soundTarget = soundTarget;\n    for (let i = 0; i < sector.lineCount; i++) {\n      const line = sector.lines[i];\n      if (!(line.flags & ML_TWOSIDED)) continue;\n      const other = SoundSystem.getOtherSector(sector, line);\n      if (line.flags & ML_SOUNDBLOCK) {\n        if (!blocks) SoundSystem.propagate(other, 1);\n      } else {\n        SoundSystem.propagate(other, blocks);\n      }\n    }\n  }\n\n  static alert(target: MapObject, emitter: MapObject): void {\n    soundTarget = target;\n    validCount++;\n    SoundSystem.propagate(emitter.subsector.sector, 0);\n  }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["class", "functions"]
+  }
+}

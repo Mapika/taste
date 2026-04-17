@@ -1,0 +1,8 @@
+{
+  "id": "001",
+  "description": "clean kernel-style function with goto cleanup and descriptive label",
+  "input": "int open_device(struct device *dev)\n{\n\tint err;\n\n\terr = device_lock(dev);\n\tif (err)\n\t\treturn err;\n\n\terr = device_power_on(dev);\n\tif (err)\n\t\tgoto out_unlock;\n\n\terr = device_init(dev);\n\tif (err)\n\t\tgoto out_power_off;\n\n\treturn 0;\n\nout_power_off:\n\tdevice_power_off(dev);\nout_unlock:\n\tdevice_unlock(dev);\n\treturn err;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

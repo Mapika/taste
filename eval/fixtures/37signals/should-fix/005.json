@@ -1,0 +1,10 @@
+{
+  "id": "005",
+  "description": "flash notice with database jargon instead of human product copy",
+  "input": "class ProjectsController < ApplicationController\n  def create\n    @project = Project.new(project_params)\n    if @project.save\n      redirect_to @project, notice: \"Record created successfully.\"\n    else\n      render :new, status: :unprocessable_entity\n    end\n  end\nend",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["copy", "human", "notice"]
+  }
+}

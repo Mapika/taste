@@ -1,0 +1,8 @@
+{
+  "id": "006",
+  "description": "slightly abbreviated name 'opts' — common shorthand, borderline acceptable",
+  "input": "export function applyDefaults(opts: RequestOptions): RequestOptions {\n  return {\n    timeout: opts.timeout ?? 60_000,\n    maxRetries: opts.maxRetries ?? 2,\n    headers: opts.headers ?? {},\n    ...opts,\n  };\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

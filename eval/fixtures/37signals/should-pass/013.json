@@ -1,0 +1,8 @@
+{
+  "id": "013",
+  "description": "system test asserting on real user-visible text, not DOM selectors",
+  "input": "class SignupsTest < ApplicationSystemTestCase\n  test \"a new user can sign up\" do\n    visit new_signup_path\n    fill_in \"Email\", with: \"alice@example.com\"\n    fill_in \"Name\", with: \"Alice\"\n    click_button \"Create account\"\n    assert_text \"Welcome aboard!\"\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "019",
+  "description": "effect runs on every render — empty dep array needed for one-time setup",
+  "input": "function Analytics({ pageName }) {\n  useEffect(() => {\n    // This tracks a page view but runs on every re-render\n    analytics.page(pageName);\n  });\n\n  return <div>Page: {pageName}</div>;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["depend", "array"]
+  }
+}

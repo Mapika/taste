@@ -1,0 +1,8 @@
+{
+  "id": "002",
+  "description": "short loop variables in tight numeric loop — i, j, k are correct here",
+  "input": "function transformVec(m: number[][], v: number[], out: number[]): void {\n  for (let i = 0; i < 3; i++) {\n    out[i] = 0;\n    for (let j = 0; j < 3; j++) {\n      out[i] += m[i][j] * v[j];\n    }\n  }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

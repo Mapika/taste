@@ -1,0 +1,8 @@
+{
+  "id": "008",
+  "description": "predicate function returns boolean (0/1), not errno",
+  "input": "int device_is_present(struct bus *bus, unsigned int id)\n{\n\tif (!bus || id >= bus->nr_slots)\n\t\treturn 0;\n\treturn bus->slots[id] != NULL;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

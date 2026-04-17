@@ -1,0 +1,8 @@
+{
+  "id": "010",
+  "description": "deprecated compatibility shim with @deprecated JSDoc — only valid use of export *",
+  "input": "/** @deprecated Import from ./core/error instead */\nexport * from './core/error';",
+  "expect": {
+    "verdict": "pass"
+  }
+}

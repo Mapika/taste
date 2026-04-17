@@ -1,0 +1,10 @@
+{
+  "id": "008",
+  "description": "monolithic state object instead of separate useState calls",
+  "input": "function CheckoutForm() {\n  const [state, setState] = useState({\n    name: '',\n    email: '',\n    address: '',\n    isSubmitting: false,\n    error: null,\n  });\n\n  function handleNameChange(e) {\n    setState(prev => ({ ...prev, name: e.target.value }));\n  }\n\n  function handleSubmit() {\n    setState(prev => ({ ...prev, isSubmitting: true, error: null }));\n  }\n\n  return <form onSubmit={handleSubmit}>{/* ... */}</form>;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["separate", "useState"]
+  }
+}

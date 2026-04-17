@@ -1,0 +1,10 @@
+{
+  "id": "015",
+  "description": "fmt.Errorf with %v instead of %w — error chain not preserved",
+  "input": "func (s *Store) Fetch(id string) (*Record, error) {\n\tr, err := s.db.Query(\"SELECT * FROM records WHERE id = $1\", id)\n\tif err != nil {\n\t\treturn nil, fmt.Errorf(\"Store.Fetch: %v\", err)\n\t}\n\tdefer r.Close()\n\tvar rec Record\n\tif err := r.Scan(&rec); err != nil {\n\t\treturn nil, fmt.Errorf(\"Store.Fetch scan: %v\", err)\n\t}\n\treturn &rec, nil\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["%v", "%w", "wrap"]
+  }
+}

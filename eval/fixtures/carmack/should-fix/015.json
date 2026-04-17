@@ -1,0 +1,10 @@
+{
+  "id": "015",
+  "description": "imports: interface-per-file pattern creating unnecessary module surface",
+  "input": "// IPhysicsEntity.ts\nexport interface IPhysicsEntity {\n  getX(): number;\n  getY(): number;\n  getZ(): number;\n  getVelocityX(): number;\n  getMoveDir(): number;\n}\n\n// IMapSector.ts\nexport interface IMapSector {\n  getValidCount(): number;\n  getSoundTraversed(): number;\n  getLineCount(): number;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["interface", "module"]
+  }
+}

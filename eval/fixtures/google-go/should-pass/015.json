@@ -1,0 +1,8 @@
+{
+  "id": "015",
+  "description": "multiple composed interfaces and compile-time check — idiomatic",
+  "input": "// ReadWriter groups the Reader and Writer interfaces.\ntype ReadWriter interface {\n\tReader\n\tWriter\n}\n\n// ReadWriteCloser groups Reader, Writer, and Closer.\ntype ReadWriteCloser interface {\n\tReadWriter\n\tCloser\n}\n\n// Ensure *File implements ReadWriteCloser at compile time.\nvar _ ReadWriteCloser = (*File)(nil)",
+  "expect": {
+    "verdict": "pass"
+  }
+}

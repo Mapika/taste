@@ -1,0 +1,8 @@
+{
+  "id": "001",
+  "description": "simple exported arrow function with full-word naming — matches anthropic utility style",
+  "input": "export const isAbsoluteURL = (url: string): boolean => {\n  return /^[a-z][a-z0-9+.-]*:/i.test(url);\n};",
+  "expect": {
+    "verdict": "pass"
+  }
+}

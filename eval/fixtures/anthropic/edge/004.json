@@ -1,0 +1,8 @@
+{
+  "id": "004",
+  "description": "catch without isAbortError — might be acceptable at outermost entry point where abort is intentional",
+  "input": "export async function runWithTimeout<T>(fn: () => Promise<T>, timeoutMs: number): Promise<T> {\n  const controller = new AbortController();\n  const timer = setTimeout(() => controller.abort(), timeoutMs);\n  try {\n    return await fn();\n  } catch (e: unknown) {\n    // caller controls the abort; surface everything else\n    throw castToError(e);\n  } finally {\n    clearTimeout(timer);\n  }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

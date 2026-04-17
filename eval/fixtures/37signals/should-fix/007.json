@@ -1,0 +1,10 @@
+{
+  "id": "007",
+  "description": "concern that does too many unrelated things — should be split into narrow concerns",
+  "input": "module AccountHelpers\n  extend ActiveSupport::Concern\n\n  def cancel_subscription\n    subscription.cancel!\n  end\n\n  def send_welcome_email\n    AccountMailer.welcome(self).deliver_later\n  end\n\n  def generate_api_key\n    update!(api_key: SecureRandom.hex(32))\n  end\n\n  def archive_projects\n    projects.each(&:archive!)\n  end\n\n  def calculate_storage_usage\n    attachments.sum(:byte_size)\n  end\nend",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["narrow", "concern", "one concept"]
+  }
+}

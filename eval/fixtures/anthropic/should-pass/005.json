@@ -1,0 +1,8 @@
+{
+  "id": "005",
+  "description": "async iterable pagination pattern matching AbstractPage style",
+  "input": "export class PagePromise<\n    PageClass extends AbstractPage<Item>,\n    Item = ReturnType<PageClass['getPaginatedItems']>[number],\n  >\n  extends APIPromise<PageClass>\n  implements AsyncIterable<Item>\n{\n  async *[Symbol.asyncIterator](): AsyncIterator<Item, any, undefined> {\n    const page = await this;\n    for await (const item of page) {\n      yield item;\n    }\n  }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

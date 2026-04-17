@@ -1,0 +1,10 @@
+{
+  "id": "009",
+  "description": "excessive inlining of a non-trivial function",
+  "input": "static inline int parse_and_validate_network_header(\n\tstruct sk_buff *skb,\n\tstruct net_device *dev,\n\tunsigned char *eth_hdr,\n\tunsigned int *proto)\n{\n\tif (skb->len < ETH_HLEN)\n\t\treturn -EINVAL;\n\t*proto = ntohs(*(unsigned short *)(eth_hdr + 12));\n\tif (*proto < 1536 && skb->len < (*proto + ETH_HLEN))\n\t\treturn -EINVAL;\n\treturn 0;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["inline", "complex", "lines"]
+  }
+}

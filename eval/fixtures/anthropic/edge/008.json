@@ -1,0 +1,8 @@
+{
+  "id": "008",
+  "description": "empty catch block — could be a valid swallow like castToError's inner try/catch, or could be hiding errors",
+  "input": "export function safeParseJSON(text: string): unknown {\n  try {\n    return JSON.parse(text);\n  } catch {\n    return undefined;\n  }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

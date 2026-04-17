@@ -1,0 +1,10 @@
+{
+  "id": "020",
+  "description": "hard-rule: throw used for a hard invariant that should crash the process",
+  "input": "function newChaseDir(actor: Actor): void {\n  if (!actor.target) {\n    throw new Error('newChaseDir called with no target');\n  }\n  const oldDir = actor.moveDir;\n  const turnAround = opposite[oldDir];\n  const dx = actor.target.x - actor.x;\n  const dy = actor.target.y - actor.y;\n  if (Math.abs(dx) > 10 * FRACUNIT) {\n    actor.moveDir = dx > 0 ? DI_EAST : DI_WEST;\n  }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["throw", "crash"]
+  }
+}

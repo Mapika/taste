@@ -1,0 +1,8 @@
+{
+  "id": "006",
+  "description": "useRef for mutable value that should not trigger re-renders — not a state violation",
+  "input": "function Stopwatch() {\n  const [isRunning, setIsRunning] = useState(false);\n  const [elapsed, setElapsed] = useState(0);\n  // intervalId doesn't affect rendering; useRef avoids spurious re-renders.\n  const intervalRef = useRef(null);\n\n  function start() {\n    setIsRunning(true);\n    intervalRef.current = setInterval(() => setElapsed(e => e + 10), 10);\n  }\n\n  function stop() {\n    clearInterval(intervalRef.current);\n    setIsRunning(false);\n  }\n\n  return (\n    <div>\n      <p>{elapsed}ms</p>\n      <button onClick={isRunning ? stop : start}>\n        {isRunning ? 'Stop' : 'Start'}\n      </button>\n    </div>\n  );\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

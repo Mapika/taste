@@ -1,0 +1,10 @@
+{
+  "id": "017",
+  "description": "interface named after technology implementation rather than domain role",
+  "input": "interface IStripeAdapter {\n    StripeChargeResponse executeStripeCharge(StripeChargeRequest request);\n    StripeRefundResponse executeStripeRefund(String chargeId, double amount);\n}\n\nclass StripeAdapterImpl implements IStripeAdapter {\n    public StripeChargeResponse executeStripeCharge(StripeChargeRequest request) { ... }\n    public StripeRefundResponse executeStripeRefund(String chargeId, double amount) { ... }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["interface", "role"]
+  }
+}

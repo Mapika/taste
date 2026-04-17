@@ -1,0 +1,10 @@
+{
+  "id": "006",
+  "description": "PascalCase camelCase method names in Ruby — violates snake_case convention",
+  "input": "class PostsController < ApplicationController\n  def getPostById\n    @post = Post.find(params[:id])\n  end\n\n  def createNewPost\n    @post = Post.create(postParams)\n  end\n\n  def deletePost\n    Post.find(params[:id]).destroy\n  end\nend",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.9,
+    "violationContains": ["snake_case", "naming"]
+  }
+}

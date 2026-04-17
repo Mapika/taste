@@ -1,0 +1,8 @@
+{
+  "id": "005",
+  "description": "idiomatic defer-close after error check, short receiver, error wrapped with %w",
+  "input": "// ReadAll reads all bytes from the file at path.\nfunc ReadAll(path string) ([]byte, error) {\n\tf, err := os.Open(path)\n\tif err != nil {\n\t\treturn nil, fmt.Errorf(\"ReadAll: %w\", err)\n\t}\n\tdefer f.Close()\n\treturn io.ReadAll(f)\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

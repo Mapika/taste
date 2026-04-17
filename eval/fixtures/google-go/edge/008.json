@@ -1,0 +1,8 @@
+{
+  "id": "008",
+  "description": "IDs, URLs — acronym casing is MixedCaps not all-caps in Go, but package-level constants use all-caps for true constants",
+  "input": "const (\n\tMaxURLLength = 2048\n\tDefaultAPIVersion = \"v1\"\n)\n\n// ParseUserID extracts the user ID from a JWT token.\nfunc ParseUserID(token string) (int64, error) {\n\t// implementation\n\treturn 0, nil\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

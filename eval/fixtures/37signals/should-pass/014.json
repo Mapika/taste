@@ -1,0 +1,8 @@
+{
+  "id": "014",
+  "description": "kamal-style deploy config — SSH and Docker, no platform lock-in",
+  "input": "# config/deploy.yml\nservice: hey\nimage: 37signals/hey\n\nservers:\n  web:\n    hosts:\n      - 192.168.1.10\n      - 192.168.1.11\n    options:\n      network: private\n\nregistry:\n  server: registry.37signals.com\n  username: deploy\n  password:\n    - KAMAL_REGISTRY_PASSWORD",
+  "expect": {
+    "verdict": "pass"
+  }
+}

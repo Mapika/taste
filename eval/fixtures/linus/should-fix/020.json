@@ -1,0 +1,10 @@
+{
+  "id": "020",
+  "description": "void cast on kmalloc return value (C does not need it)",
+  "input": "int alloc_ring_buffer(struct ring *r, size_t n)\n{\n\tr->buf = (char *)kmalloc(n, GFP_KERNEL);\n\tif (!r->buf)\n\t\treturn -ENOMEM;\n\tr->capacity = n;\n\tr->head = 0;\n\tr->tail = 0;\n\treturn 0;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["cast", "kmalloc", "void pointer"]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "007",
+  "description": "private final in a Java file living in a genuinely Java-only module (not alongside Rails)",
+  "input": "// standalone Java microservice, no Rails context\npublic class JwtVerifier {\n    private final String secret;\n    private final Algorithm algorithm;\n\n    public JwtVerifier(String secret) {\n        this.secret = secret;\n        this.algorithm = Algorithm.HMAC256(secret);\n    }\n\n    public DecodedJWT verify(String token) {\n        return JWT.require(algorithm).build().verify(token);\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

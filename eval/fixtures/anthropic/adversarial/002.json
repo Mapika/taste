@@ -1,0 +1,10 @@
+{
+  "id": "002",
+  "description": "filename that looks snake_case but has a digit — user_service_1.ts — should still pass if content is fine",
+  "input": "// file: src/resources/user_service_1.ts\nimport { APIResource } from '../../core/resource';\nimport { RequestOptions } from '../../internal/request-options';\n\nexport class UserService extends APIResource {\n  get(userId: string, options?: RequestOptions): APIPromise<User> {\n    return this._client.get(`/users/${userId}`, options);\n  }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["kebab", "snake"]
+  }
+}

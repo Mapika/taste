@@ -1,0 +1,10 @@
+{
+  "id": "013",
+  "description": "imports: dependency injection container instead of direct module references",
+  "input": "import { Container } from 'inversify';\nimport { TYPES } from './types';\nimport { IRenderer } from './interfaces/IRenderer';\nimport { IPhysics } from './interfaces/IPhysics';\nimport { ISoundSystem } from './interfaces/ISoundSystem';\n\nconst container = new Container();\ncontainer.bind<IRenderer>(TYPES.Renderer).to(GLRenderer);\ncontainer.bind<IPhysics>(TYPES.Physics).to(QuakePhysics);\ncontainer.bind<ISoundSystem>(TYPES.Sound).to(SoundSystem);\n\nexport { container };",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["injection", "container"]
+  }
+}

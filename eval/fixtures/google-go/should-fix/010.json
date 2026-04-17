@@ -1,0 +1,10 @@
+{
+  "id": "010",
+  "description": "self used as receiver name — same anti-pattern as this",
+  "input": "// Client makes HTTP requests.\ntype Client struct {\n\tbaseURL string\n\ttimeout time.Duration\n}\n\nfunc (self *Client) Do(req *http.Request) (*http.Response, error) {\n\tctx, cancel := context.WithTimeout(req.Context(), self.timeout)\n\tdefer cancel()\n\treturn http.DefaultClient.Do(req.WithContext(ctx))\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.9,
+    "violationContains": ["self", "receiver"]
+  }
+}

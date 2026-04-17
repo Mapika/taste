@@ -1,0 +1,8 @@
+{
+  "id": "006",
+  "description": "camelCase method name in a Ruby file but inside an ERB comment block — not actual method definition",
+  "input": "<%# This view was originally written with getPostTitle() in the JS layer.\n    Now all data access goes through the Rails model. %>\n\n<article>\n  <h1><%= @post.title %></h1>\n  <p class=\"author\">By <%= @post.author.name %></p>\n  <div class=\"body\"><%= @post.body %></div>\n</article>",
+  "expect": {
+    "verdict": "pass"
+  }
+}

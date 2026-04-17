@@ -1,0 +1,10 @@
+{
+  "id": "009",
+  "description": "configuration over convention — explicit table and column names for standard Rails models",
+  "input": "class Post < ActiveRecord::Base\n  self.table_name = 'posts'\n  self.primary_key = 'id'\n  self.inheritance_column = 'type'\n\n  validates :title, presence: true\nend",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["convention", "redundant", "configuration"]
+  }
+}

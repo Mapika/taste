@@ -1,0 +1,8 @@
+{
+  "id": "002",
+  "description": "adversarial: has @param in a comment but it is inside a string literal, not an actual JSDoc annotation",
+  "input": "const HELP_TEXT = `\nUsage: quake [options]\n  @param -nosound    disable audio\n  @param -nocdaudio  disable CD audio\n  @param -window     run in a window\n`;\n\nfunction printHelp(): void {\n  console.log(HELP_TEXT);\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "002",
+  "description": "string-union type instead of enum — correct anthropic pattern",
+  "input": "export type LogLevel = 'off' | 'error' | 'warn' | 'info' | 'debug';\n\ntype LogFn = (message: string, ...rest: unknown[]) => void;\n\nexport type Logger = {\n  error: LogFn;\n  warn: LogFn;\n  info: LogFn;\n  debug: LogFn;\n};",
+  "expect": {
+    "verdict": "pass"
+  }
+}

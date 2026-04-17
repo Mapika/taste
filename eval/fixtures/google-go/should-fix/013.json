@@ -1,0 +1,10 @@
+{
+  "id": "013",
+  "description": "camelCase file name reference — Go files should be snake_case",
+  "input": "// file: httpServer.go\n\n// Server handles HTTP connections.\ntype Server struct {\n\taddr string\n}\n\n// ListenAndServe starts accepting connections.\nfunc (s *Server) ListenAndServe() error {\n\treturn http.ListenAndServe(s.addr, nil)\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.8,
+    "violationContains": ["snake_case", "file"]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "007",
+  "description": "JSDoc with @example and @param — concise and informative",
+  "input": "/**\n * Validates that a value is a positive integer.\n *\n * @param name - The field name used in the error message.\n * @param n - The value to validate.\n *\n * @example\n * ```ts\n * const count = validatePositiveInteger('maxRetries', opts.maxRetries);\n * ```\n */\nexport function validatePositiveInteger(name: string, n: unknown): number {\n  if (typeof n !== 'number' || !Number.isInteger(n) || n < 0) {\n    throw new AnthropicError(`${name} must be a non-negative integer`);\n  }\n  return n;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

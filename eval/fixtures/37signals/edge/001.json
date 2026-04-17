@@ -1,0 +1,10 @@
+{
+  "id": "001",
+  "description": "a class named XxxProcessor — not quite Service, but still a pattern-name, not a domain noun; borderline",
+  "input": "class PaymentProcessor\n  def initialize(account, amount)\n    @account = account\n    @amount = amount\n  end\n\n  def charge!\n    @account.subscription.charge!(@amount)\n  end\nend",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.6,
+    "violationContains": ["Processor", "domain", "noun"]
+  }
+}

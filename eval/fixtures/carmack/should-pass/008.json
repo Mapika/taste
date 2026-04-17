@@ -1,0 +1,8 @@
+{
+  "id": "008",
+  "description": "FIXME comment marking a known dependency problem with a reason",
+  "input": "import { patchData } from './d_local'; // FIXME: shouldn't be needed here, only r_alias uses it\n\nimport { quakeDef } from './quakedef';\nimport { rLocal } from './r_local';\n\nconst LIGHT_MIN = 5; // lowest value allowed to avoid inner-loop clamping\n\nlet ptriangles: Triangle[];\nlet pauxverts: AuxVert[];\nlet acolormap: Uint8Array | null = null; // FIXME: should go away",
+  "expect": {
+    "verdict": "pass"
+  }
+}

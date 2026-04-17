@@ -1,0 +1,8 @@
+{
+  "id": "008",
+  "description": "a comment that explains both what and why — the why is present so it's acceptable even if wordy",
+  "input": "def cancel_subscription\n  # Cancel the subscription and record the timestamp.\n  # We store cancelled_at separately from state so billing reports\n  # can compute prorated refunds without interpreting state strings.\n  subscription.update!(state: :cancelled, cancelled_at: Time.current)\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

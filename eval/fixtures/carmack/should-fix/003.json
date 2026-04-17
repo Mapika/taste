@@ -1,0 +1,10 @@
+{
+  "id": "003",
+  "description": "naming: enum where a plain constant table would be clearer and cheaper",
+  "input": "export enum MoveDirection {\n  East = 0,\n  NorthEast = 1,\n  North = 2,\n  NorthWest = 3,\n  West = 4,\n  SouthWest = 5,\n  South = 6,\n  SouthEast = 7,\n  NoDir = 8,\n}\n\nexport const OPPOSITE_DIR: Record<MoveDirection, MoveDirection> = {\n  [MoveDirection.East]: MoveDirection.West,\n  [MoveDirection.NorthEast]: MoveDirection.SouthWest,\n  [MoveDirection.North]: MoveDirection.South,\n  [MoveDirection.NorthWest]: MoveDirection.SouthEast,\n  [MoveDirection.West]: MoveDirection.East,\n  [MoveDirection.SouthWest]: MoveDirection.NorthEast,\n  [MoveDirection.South]: MoveDirection.North,\n  [MoveDirection.SouthEast]: MoveDirection.NorthWest,\n  [MoveDirection.NoDir]: MoveDirection.NoDir,\n};",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["enum", "constant"]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "004",
+  "description": "attr_accessor on a non-database virtual attribute — not a convention violation",
+  "input": "class Post < ApplicationRecord\n  # Virtual attribute: password is not persisted; only password_digest is\n  attr_accessor :password\n\n  validates :password, length: { minimum: 8 }, if: :new_record?\n\n  before_save :encrypt_password, if: -> { password.present? }\n\n  private\n    def encrypt_password\n      self.password_digest = BCrypt::Password.create(password)\n    end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

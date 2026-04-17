@@ -1,0 +1,8 @@
+{
+  "id": "005",
+  "description": "named constants replace magic numbers — Replace Magic Number with Symbolic Constant applied",
+  "input": "class SessionManager {\n    private static final long SESSION_TIMEOUT_MILLISECONDS = 86_400_000L;\n    private static final int MAX_CONCURRENT_SESSIONS_PER_USER = 3;\n\n    boolean isSessionExpired(long lastActivityTimestamp) {\n        long elapsedMilliseconds = System.currentTimeMillis() - lastActivityTimestamp;\n        return elapsedMilliseconds > SESSION_TIMEOUT_MILLISECONDS;\n    }\n\n    boolean hasExceededSessionLimit(List<Session> activeSessions) {\n        return activeSessions.size() >= MAX_CONCURRENT_SESSIONS_PER_USER;\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

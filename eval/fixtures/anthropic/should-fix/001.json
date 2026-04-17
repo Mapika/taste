@@ -1,0 +1,10 @@
+{
+  "id": "001",
+  "description": "class-heavy structure: utility helpers wrapped in a class when standalone functions would do",
+  "input": "export class StringUtils {\n  static truncate(str: string, max: number): string {\n    return str.length > max ? str.slice(0, max) + '...' : str;\n  }\n\n  static capitalize(str: string): string {\n    return str.charAt(0).toUpperCase() + str.slice(1);\n  }\n\n  static isEmpty(str: string): boolean {\n    return str.trim().length === 0;\n  }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["class", "function"]
+  }
+}

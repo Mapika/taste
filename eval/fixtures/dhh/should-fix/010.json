@@ -1,0 +1,10 @@
+{
+  "id": "010",
+  "description": "controller action with inline business logic that belongs in the model",
+  "input": "class PostsController < ApplicationController\n  def publish\n    post = Post.find(params[:id])\n    if post.draft? && post.author == current_user\n      post.published = true\n      post.published_at = Time.current\n      post.draft = false\n      post.save!\n      redirect_to post, notice: 'Published!'\n    else\n      redirect_to post, alert: 'Cannot publish'\n    end\n  end\nend",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.8,
+    "violationContains": ["model", "publish!", "business logic"]
+  }
+}

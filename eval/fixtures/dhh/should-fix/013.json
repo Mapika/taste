@@ -1,0 +1,10 @@
+{
+  "id": "013",
+  "description": "manual pagination instead of using the framework's conventions",
+  "input": "def index\n  page = (params[:page] || 1).to_i\n  per_page = 25\n  offset = (page - 1) * per_page\n  @posts = Post.where(published: true)\n               .order('created_at DESC')\n               .limit(per_page)\n               .offset(offset)\n  @total = Post.where(published: true).count\n  @total_pages = (@total / per_page.to_f).ceil\nend",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["scope", "convention", "compress"]
+  }
+}

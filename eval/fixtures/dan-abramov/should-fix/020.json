@@ -1,0 +1,10 @@
+{
+  "id": "020",
+  "description": "over-typed hook — TypeScript ceremony obscuring a simple state value",
+  "input": "type LoadingState = 'idle' | 'loading' | 'success' | 'error';\ntype FetchState<T> = { status: LoadingState; data: T | null; error: Error | null };\ntype FetchAction<T> =\n  | { type: 'FETCH_START' }\n  | { type: 'FETCH_SUCCESS'; payload: T }\n  | { type: 'FETCH_ERROR'; error: Error };\n\nfunction useFetch<T>(url: string): FetchState<T> {\n  const [state, dispatch] = useReducer(\n    (s: FetchState<T>, a: FetchAction<T>): FetchState<T> => {\n      switch (a.type) {\n        case 'FETCH_START': return { ...s, status: 'loading' };\n        case 'FETCH_SUCCESS': return { status: 'success', data: a.payload, error: null };\n        case 'FETCH_ERROR': return { status: 'error', data: null, error: a.error };\n        default: return s;\n      }\n    },\n    { status: 'idle', data: null, error: null }\n  );\n\n  useEffect(() => {\n    dispatch({ type: 'FETCH_START' });\n    fetch(url)\n      .then(r => r.json() as Promise<T>)\n      .then(data => dispatch({ type: 'FETCH_SUCCESS', payload: data }))\n      .catch(error => dispatch({ type: 'FETCH_ERROR', error }));\n  }, [url]);\n\n  return state;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["useState", "simpler"]
+  }
+}

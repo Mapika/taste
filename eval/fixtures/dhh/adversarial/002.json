@@ -1,0 +1,8 @@
+{
+  "id": "002",
+  "description": "'private final' appears only in a Ruby string/heredoc, not as Java code",
+  "input": "class CodeExampleHelper\n  JAVA_ANTIPATTERN = <<~JAVA\n    // Don't do this in a Rails app:\n    private final String serviceUrl;\n  JAVA\n\n  def render_antipattern_warning\n    \"Avoid Java patterns like: #{JAVA_ANTIPATTERN.strip}\"\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

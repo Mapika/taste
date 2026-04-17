@@ -1,0 +1,10 @@
+{
+  "id": "012",
+  "description": "cluster of primitive parameters that should be an Introduce Parameter Object",
+  "input": "class ReservationService {\n    boolean isAvailable(String startDate, String endDate, int roomNumber, String guestType) {\n        return checkRoomAvailability(roomNumber, startDate, endDate)\n            && verifyGuestEligibility(guestType, startDate, endDate);\n    }\n\n    void makeReservation(String startDate, String endDate, int roomNumber, String guestType, String guestId) {\n        if (!isAvailable(startDate, endDate, roomNumber, guestType)) {\n            throw new RoomNotAvailableException();\n        }\n        reservationStore.save(roomNumber, guestId, startDate, endDate);\n    }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["parameter", "object"]
+  }
+}

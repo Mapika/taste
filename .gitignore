@@ -1,0 +1,9 @@
+node_modules/
+.taste/
+eval/reports/*
+!eval/reports/.gitkeep
+.DS_Store
+*.log
+.env
+*.tsbuildinfo
+coverage/

@@ -1,0 +1,8 @@
+{
+  "id": "005",
+  "description": "goto used once for a single error exit — minimal cleanup, borderline vs direct return",
+  "input": "int lock_and_init(struct device *dev)\n{\n\tint err;\n\n\terr = mutex_lock_interruptible(&dev->mutex);\n\tif (err)\n\t\tgoto out;\n\n\terr = init_device(dev);\n\tmutex_unlock(&dev->mutex);\nout:\n\treturn err;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

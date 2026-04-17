@@ -1,0 +1,8 @@
+{
+  "id": "007",
+  "description": "action function returns 0 on success, negative errno on failure",
+  "input": "int register_driver(struct driver *drv)\n{\n\tint err;\n\n\terr = bus_add_driver(drv);\n\tif (err)\n\t\treturn err;\n\n\terr = driver_create_sysfs(drv);\n\tif (err)\n\t\tgoto out_remove;\n\n\treturn 0;\n\nout_remove:\n\tbus_remove_driver(drv);\n\treturn err;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

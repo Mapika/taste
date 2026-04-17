@@ -1,0 +1,33 @@
+{
+  "name": "taste",
+  "version": "0.1.0",
+  "description": "AI taste judge for Claude Code. Your code. Your taste.",
+  "author": { "name": "Mapika" },
+  "homepage": "https://github.com/Mapika/taste",
+  "license": "MIT",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit|NotebookEdit",
+        "hooks": [
+          { "type": "command", "command": "node ${CLAUDE_PLUGIN_ROOT}/dist/hooks/pre_tool_use.js" }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit|NotebookEdit",
+        "hooks": [
+          { "type": "command", "command": "node ${CLAUDE_PLUGIN_ROOT}/dist/hooks/post_tool_use.js" }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          { "type": "command", "command": "node ${CLAUDE_PLUGIN_ROOT}/dist/hooks/user_prompt_submit.js" }
+        ]
+      }
+    ]
+  }
+}

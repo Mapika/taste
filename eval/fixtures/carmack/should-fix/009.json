@@ -1,0 +1,10 @@
+{
+  "id": "009",
+  "description": "error handling: throw instead of crash-function on hard invariant violation",
+  "input": "function checkVelocity(ent: Entity): void {\n  for (let i = 0; i < 3; i++) {\n    if (isNaN(ent.velocity[i])) {\n      throw new Error(`NaN velocity on entity ${ent.classname} component ${i}`);\n    }\n    if (Math.abs(ent.velocity[i]) > svMaxVelocity) {\n      throw new RangeError(\n        `Velocity ${ent.velocity[i]} exceeds max ${svMaxVelocity} on ${ent.classname}`\n      );\n    }\n  }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["throw", "crash"]
+  }
+}

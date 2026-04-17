@@ -1,0 +1,8 @@
+{
+  "id": "010",
+  "description": "module that uses both a class (for resource lifecycle) and file-scope state (for renderer globals) — mixed pattern",
+  "input": "// r_main.ts — main renderer module\n\nlet r_framecount = 0;\nlet r_visframecount = 0;\nlet c_brush_polys = 0;\nlet c_alias_polys = 0;\n\nclass Renderer {\n  constructor(private readonly gl: WebGLRenderingContext) {}\n\n  renderView(): void {\n    r_framecount++;\n    c_brush_polys = 0;\n    c_alias_polys = 0;\n    this.setupFrame();\n    this.markLeaves();\n    this.drawWorld();\n  }\n\n  private setupFrame(): void {\n    r_visframecount++;\n  }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

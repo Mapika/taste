@@ -1,0 +1,10 @@
+{
+  "id": "007",
+  "description": "anemic domain model — Customer is a data bag; all logic lives in service class",
+  "input": "class Customer {\n    private String name;\n    private String email;\n    private List<Order> orders;\n    public String getName() { return name; }\n    public String getEmail() { return email; }\n    public List<Order> getOrders() { return orders; }\n    public void setOrders(List<Order> orders) { this.orders = orders; }\n}\n\nclass CustomerService {\n    Money calculateLifetimeValue(Customer customer) {\n        return customer.getOrders().stream()\n            .map(Order::getTotal)\n            .reduce(Money.ZERO, Money::add);\n    }\n\n    boolean isHighValueCustomer(Customer customer) {\n        return calculateLifetimeValue(customer).isGreaterThan(Money.of(1000));\n    }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["anemic", "behavior"]
+  }
+}

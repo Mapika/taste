@@ -1,0 +1,8 @@
+{
+  "id": "001",
+  "description": "word 'service' appears only in a comment describing an external service — not a Service class",
+  "input": "class PaymentsController < ApplicationController\n  before_action :authenticate_user!\n\n  # Handles callbacks from the Stripe payment service\n  def create\n    @payment = Payment.new(payment_params)\n    if @payment.save\n      redirect_to @payment, notice: 'Payment recorded.'\n    else\n      render :new, status: :unprocessable_entity\n    end\n  end\n\n  private\n    def payment_params\n      params.expect(payment: [ :amount_cents, :stripe_charge_id ])\n    end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

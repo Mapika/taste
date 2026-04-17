@@ -1,0 +1,8 @@
+{
+  "id": "003",
+  "description": "componentDidMount appears in a string variable holding a log message — not a lifecycle method",
+  "input": "function useLegacyWarning(componentName) {\n  useEffect(() => {\n    const message = `[${componentName}] This component previously relied on componentDidMount. ` +\n      'It has been migrated to useEffect. If you see this message, the migration is working.';\n    if (process.env.NODE_ENV !== 'production') {\n      console.warn(message);\n    }\n  }, [componentName]);\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

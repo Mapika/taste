@@ -1,0 +1,10 @@
+{
+  "id": "018",
+  "description": "inline comment after statement explaining WHAT",
+  "input": "int free_memory(struct allocator *a)\n{\n\ta->used = 0; /* reset used counter */\n\ta->head = NULL; /* clear the list head */\n\tkfree(a->buf); /* free backing buffer */\n\treturn 0;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["comment", "WHAT", "inline"]
+  }
+}

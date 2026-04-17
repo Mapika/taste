@@ -1,0 +1,8 @@
+{
+  "id": "005",
+  "description": "self keyword appears only inside a quoted SQL string — not a Go receiver",
+  "input": "// FindRelated queries for items related to the given id.\nfunc (r *Repo) FindRelated(ctx context.Context, id int) ([]*Item, error) {\n\tconst query = `SELECT * FROM items WHERE self_id = $1 OR related_id = $1`\n\trows, err := r.db.QueryContext(ctx, query, id)\n\tif err != nil {\n\t\treturn nil, fmt.Errorf(\"Repo.FindRelated: %w\", err)\n\t}\n\tdefer rows.Close()\n\treturn scanItems(rows)\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

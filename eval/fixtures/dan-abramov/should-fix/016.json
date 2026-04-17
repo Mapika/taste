@@ -1,0 +1,10 @@
+{
+  "id": "016",
+  "description": "JSX with deeply nested ternaries instead of early returns",
+  "input": "function StatusMessage({ status, message, retryCount }) {\n  return (\n    <div>\n      {status === 'loading'\n        ? <Spinner />\n        : status === 'error'\n          ? retryCount > 3\n            ? <p>Failed after {retryCount} tries: {message}</p>\n            : <p>Error: {message}. Retrying...</p>\n          : status === 'success'\n            ? <p>Done: {message}</p>\n            : <p>Idle</p>}\n    </div>\n  );\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["ternary", "early return"]
+  }
+}

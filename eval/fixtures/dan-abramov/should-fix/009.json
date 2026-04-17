@@ -1,0 +1,10 @@
+{
+  "id": "009",
+  "description": "useEffect with missing dependency — stale closure on callback",
+  "input": "function SearchBox({ onSearch }) {\n  const [query, setQuery] = useState('');\n\n  useEffect(() => {\n    const timer = setTimeout(() => {\n      onSearch(query);\n    }, 300);\n    return () => clearTimeout(timer);\n  }, [query]); // onSearch missing from deps\n\n  return (\n    <input\n      value={query}\n      onChange={e => setQuery(e.target.value)}\n      placeholder=\"Search...\"\n    />\n  );\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["depend", "onSearch"]
+  }
+}

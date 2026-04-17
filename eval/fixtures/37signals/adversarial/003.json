@@ -1,0 +1,8 @@
+{
+  "id": "003",
+  "description": "@deprecated appears in a documentation string being rendered to users, not annotating code — should pass",
+  "input": "class ApiDocsController < ApplicationController\n  def show\n    @endpoint = {\n      path: \"/v1/accounts/:id\",\n      status: \"@deprecated — use /v2/accounts/:id instead\",\n      description: \"Legacy endpoint kept for backward compatibility.\"\n    }\n    render :show\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

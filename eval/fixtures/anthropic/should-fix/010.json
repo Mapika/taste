@@ -1,0 +1,10 @@
+{
+  "id": "010",
+  "description": "flat error class without hierarchy — no AnthropicError root, APIError generic typing",
+  "input": "export class RequestError extends Error {\n  statusCode: number;\n  constructor(message: string, statusCode: number) {\n    super(message);\n    this.statusCode = statusCode;\n    this.name = 'RequestError';\n  }\n}\n\nexport class TimeoutError extends Error {\n  constructor() {\n    super('Request timed out');\n    this.name = 'TimeoutError';\n  }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["hierarch", "AnthropicError"]
+  }
+}

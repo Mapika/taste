@@ -1,0 +1,8 @@
+{
+  "id": "007",
+  "description": "inline function with 3 lines — exactly at the limit per §15",
+  "input": "static inline bool is_power_of_two(unsigned long n)\n{\n\tif (n == 0)\n\t\treturn false;\n\treturn (n & (n - 1)) == 0;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

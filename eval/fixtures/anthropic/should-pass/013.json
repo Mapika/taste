@@ -1,0 +1,8 @@
+{
+  "id": "013",
+  "description": "single-responsibility APIResource base class — only holds _client",
+  "input": "import { BaseAnthropic } from '../client';\n\nexport abstract class APIResource {\n  protected _client: BaseAnthropic;\n\n  constructor(client: BaseAnthropic) {\n    this._client = client;\n  }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

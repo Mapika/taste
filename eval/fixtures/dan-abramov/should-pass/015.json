@@ -1,0 +1,8 @@
+{
+  "id": "015",
+  "description": "useReducer for multi-field form state — current/next naming, guard clause dispatch",
+  "input": "const initialState = { selectedTab: 'overview', isLoading: false, hasError: false };\n\nfunction tabReducer(state, action) {\n  switch (action.type) {\n    case 'SELECT_TAB':\n      return { ...state, selectedTab: action.tab, hasError: false };\n    case 'FETCH_START':\n      return { ...state, isLoading: true, hasError: false };\n    case 'FETCH_SUCCESS':\n      return { ...state, isLoading: false };\n    case 'FETCH_ERROR':\n      return { ...state, isLoading: false, hasError: true };\n    default:\n      return state;\n  }\n}\n\nfunction TabbedView({ tabs }) {\n  const [state, dispatch] = useReducer(tabReducer, initialState);\n  const { selectedTab, isLoading, hasError } = state;\n\n  function handleTabClick(tab) {\n    dispatch({ type: 'SELECT_TAB', tab });\n  }\n\n  return (\n    <div>\n      <nav>\n        {tabs.map(tab => (\n          <button\n            key={tab.id}\n            onClick={() => handleTabClick(tab.id)}\n            aria-selected={selectedTab === tab.id}\n          >\n            {tab.label}\n          </button>\n        ))}\n      </nav>\n      {isLoading && <p>Loading...</p>}\n      {hasError && <p>Something went wrong.</p>}\n    </div>\n  );\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

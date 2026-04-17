@@ -1,0 +1,8 @@
+{
+  "id": "007",
+  "description": "ApplicationRecord base class — minimal, single-purpose base",
+  "input": "class ApplicationRecord < ActiveRecord::Base\n  primary_abstract_class\n\n  connects_to database: { writing: :primary, reading: :replica }\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "017",
+  "description": "React.PureComponent instead of functional component",
+  "input": "class UserBadge extends React.PureComponent {\n  render() {\n    const { name, role, avatarUrl } = this.props;\n    return (\n      <div className=\"badge\">\n        <img src={avatarUrl} alt={name} />\n        <span>{name}</span>\n        <span className=\"role\">{role}</span>\n      </div>\n    );\n  }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.85,
+    "violationContains": ["class", "functional component"]
+  }
+}

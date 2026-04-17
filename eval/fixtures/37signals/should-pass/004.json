@@ -1,0 +1,8 @@
+{
+  "id": "004",
+  "description": "thin controller with human-readable flash copy",
+  "input": "class ProjectsController < ApplicationController\n  def create\n    @project = Project.new(project_params)\n    if @project.save\n      redirect_to @project, notice: \"Project created. You're all set!\"\n    else\n      render :new, status: :unprocessable_entity\n    end\n  end\n\n  private\n\n  def project_params\n    params.require(:project).permit(:name, :description)\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

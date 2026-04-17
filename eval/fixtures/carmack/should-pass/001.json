@@ -1,0 +1,8 @@
+{
+  "id": "001",
+  "description": "file-scope globals for column renderer state, no class wrapper",
+  "input": "let dc_colormap: Uint8Array;\nlet dc_x: number;\nlet dc_yl: number;\nlet dc_yh: number;\nlet dc_source: Uint8Array;\n\nfunction R_DrawColumn(): void {\n  let count = dc_yh - dc_yl;\n  if (count < 0) return;\n  let dest = ylookup[dc_yl] + columnofs[dc_x];\n  const fracstep = dc_iscale;\n  let frac = dc_texturemid + (dc_yl - centery) * fracstep;\n  do {\n    dest[0] = dc_colormap[dc_source[frac >> FRACBITS]];\n    dest += SCREENWIDTH;\n    frac += fracstep;\n  } while (count--);\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

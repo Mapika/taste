@@ -1,0 +1,8 @@
+{
+  "id": "009",
+  "description": "hook with TypeScript generics that clarify — types add value without ceremony",
+  "input": "function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T) => void] {\n  const [storedValue, setStoredValue] = useState<T>(() => {\n    try {\n      const item = window.localStorage.getItem(key);\n      return item ? (JSON.parse(item) as T) : initialValue;\n    } catch {\n      return initialValue;\n    }\n  });\n\n  function setValue(value: T) {\n    setStoredValue(value);\n    window.localStorage.setItem(key, JSON.stringify(value));\n  }\n\n  return [storedValue, setValue];\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

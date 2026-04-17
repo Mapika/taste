@@ -1,0 +1,8 @@
+{
+  "id": "003",
+  "description": "any used correctly, error returned with %w, context first",
+  "input": "// Store holds arbitrary values.\ntype Store struct {\n\tmu   sync.RWMutex\n\tdata map[string]any\n}\n\n// Set stores value under key.\nfunc (s *Store) Set(ctx context.Context, key string, value any) error {\n\tif err := ctx.Err(); err != nil {\n\t\treturn fmt.Errorf(\"Store.Set: %w\", err)\n\t}\n\ts.mu.Lock()\n\tdefer s.mu.Unlock()\n\ts.data[key] = value\n\treturn nil\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

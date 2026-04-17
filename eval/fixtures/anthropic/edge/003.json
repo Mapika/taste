@@ -1,0 +1,8 @@
+{
+  "id": "003",
+  "description": "comment that might be useful — explains a non-obvious platform-compat workaround",
+  "input": "export const isRunningInBrowser = () => {\n  return (\n    // @ts-ignore\n    typeof window !== 'undefined' &&\n    // @ts-ignore\n    typeof window.document !== 'undefined' &&\n    // @ts-ignore\n    typeof navigator !== 'undefined'\n  );\n};",
+  "expect": {
+    "verdict": "pass"
+  }
+}

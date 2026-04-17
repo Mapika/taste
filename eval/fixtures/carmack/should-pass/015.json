@@ -1,0 +1,8 @@
+{
+  "id": "015",
+  "description": "AI chase direction using plain constant arrays, random tiebreak, no class",
+  "input": "function newChaseDir(actor: Actor): void {\n  if (!actor.target) sysError('newChaseDir: called with no target');\n  const turn = opposite[actor.moveDir];\n  const dx = actor.target.x - actor.x;\n  const dy = actor.target.y - actor.y;\n  const d: number[] = [DI_NODIR, DI_NODIR, DI_NODIR];\n  if (dx > 10 * FRACUNIT) d[1] = DI_EAST;\n  else if (dx < -10 * FRACUNIT) d[1] = DI_WEST;\n  if (dy < -10 * FRACUNIT) d[2] = DI_SOUTH;\n  else if (dy > 10 * FRACUNIT) d[2] = DI_NORTH;\n  if (d[1] !== DI_NODIR && d[2] !== DI_NODIR) {\n    actor.moveDir = diags[((dy < 0) ? 2 : 0) + ((dx > 0) ? 1 : 0)];\n    if (actor.moveDir !== turn && tryWalk(actor)) return;\n  }\n  if (pRandom() > 200 || Math.abs(dy) > Math.abs(dx)) { const t = d[1]; d[1] = d[2]; d[2] = t; }\n  if (d[1] !== DI_NODIR && d[1] !== turn) { actor.moveDir = d[1]; if (tryWalk(actor)) return; }\n  if (d[2] !== DI_NODIR && d[2] !== turn) { actor.moveDir = d[2]; if (tryWalk(actor)) return; }\n  actor.moveDir = DI_NODIR; // can not move\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

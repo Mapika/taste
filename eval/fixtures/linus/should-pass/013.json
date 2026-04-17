@@ -1,0 +1,8 @@
+{
+  "id": "013",
+  "description": "single-statement if/else without braces — correct kernel style",
+  "input": "static int check_bounds(struct buffer *b, size_t offset)\n{\n\tif (offset >= b->size)\n\t\treturn -ERANGE;\n\telse\n\t\treturn 0;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

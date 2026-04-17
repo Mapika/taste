@@ -1,0 +1,10 @@
+{
+  "id": "010",
+  "description": "WIP commit message — work in progress commits belong on a branch, not on main",
+  "input": "# git log --oneline (last 5 commits on main)\nab3f1c2 WIP: fixing stuff\n9d8e4b1 more changes\n7f2a3d0 FIXME: this is broken\n4c1e9f8 various updates and fixes\n2b5d7a1 temp commit plz ignore",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.8,
+    "violationContains": ["commit", "one thing", "WIP"]
+  }
+}

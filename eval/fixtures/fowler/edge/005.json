@@ -1,0 +1,8 @@
+{
+  "id": "005",
+  "description": "a utility method in domain class — not a separate Utils class — acceptable if behavior belongs",
+  "input": "class Money {\n    private final long amountInCents;\n    private final Currency currency;\n\n    private Money(long amountInCents, Currency currency) {\n        this.amountInCents = amountInCents;\n        this.currency = currency;\n    }\n\n    static Money of(double amount, Currency currency) {\n        return new Money(Math.round(amount * 100), currency);\n    }\n\n    static Money zero(Currency currency) {\n        return new Money(0, currency);\n    }\n\n    Money add(Money other) {\n        assertSameCurrency(other);\n        return new Money(this.amountInCents + other.amountInCents, currency);\n    }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

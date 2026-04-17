@@ -1,0 +1,10 @@
+{
+  "id": "003",
+  "description": "adversarial: superficially terse (short names, no class) but hides a violation — the throw is real, not a process-crash",
+  "input": "function R_DrawColumn(): void {\n  const count = dc_yh - dc_yl;\n  if (count < 0) return;\n  if (dc_x >= SCREENWIDTH || dc_yl < 0 || dc_yh >= SCREENHEIGHT) {\n    throw new RangeError(`R_DrawColumn: bad parameters x=${dc_x} yl=${dc_yl} yh=${dc_yh}`);\n  }\n  let dest = ylookup[dc_yl] + columnofs[dc_x];\n  let frac = dc_texturemid + (dc_yl - centery) * dc_iscale;\n  for (let i = 0; i <= count; i++, dest += SCREENWIDTH, frac += dc_iscale) {\n    dest[0] = dc_colormap[dc_source[frac >> FRACBITS]];\n  }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.7,
+    "violationContains": ["throw"]
+  }
+}

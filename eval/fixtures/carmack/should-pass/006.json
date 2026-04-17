@@ -1,0 +1,8 @@
+{
+  "id": "006",
+  "description": "recursive traversal with stamp guard, terse inline comments on branches",
+  "input": "function recursiveSound(sec: Sector, soundBlocks: number): void {\n  if (sec.validCount === validCount && sec.soundTraversed <= soundBlocks + 1)\n    return; // already flooded\n\n  sec.validCount = validCount;\n  sec.soundTraversed = soundBlocks + 1;\n  sec.soundTarget = soundTarget;\n\n  for (let i = 0; i < sec.lineCount; i++) {\n    const check = sec.lines[i];\n    if (!(check.flags & ML_TWOSIDED)) continue;\n    lineOpening(check);\n    if (openrange <= 0) continue; // closed door\n    const other = sides[check.sidenum[0]].sector === sec\n      ? sides[check.sidenum[1]].sector\n      : sides[check.sidenum[0]].sector;\n    if (check.flags & ML_SOUNDBLOCK) {\n      if (!soundBlocks) recursiveSound(other, 1);\n    } else {\n      recursiveSound(other, soundBlocks);\n    }\n  }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

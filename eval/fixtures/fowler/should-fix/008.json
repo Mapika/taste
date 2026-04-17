@@ -1,0 +1,10 @@
+{
+  "id": "008",
+  "description": "Tell Don't Ask violation — caller interrogates internal state and makes decisions",
+  "input": "void processAlarm(Alarm alarm, NotificationService notificationService) {\n    if (alarm.getSeverity() == 2 && alarm.getOwner() == null && alarm.getStatus() == 0) {\n        alarm.setStatus(3);\n        notificationService.sendAlert(alarm.getId(), alarm.getMessage(), alarm.getSeverity());\n    }\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["tell", "ask"]
+  }
+}

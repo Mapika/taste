@@ -1,0 +1,8 @@
+{
+  "id": "004",
+  "description": "GetX appears in a variable name string literal — not a method name violation",
+  "input": "// parseAction extracts the action verb from a method name string.\nfunc parseAction(method string) string {\n\tprefixes := []string{\"GetUser\", \"SetUser\", \"DeleteUser\"}\n\tfor _, p := range prefixes {\n\t\tif strings.HasPrefix(method, p) {\n\t\t\treturn p\n\t\t}\n\t}\n\treturn method\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

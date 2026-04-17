@@ -1,0 +1,8 @@
+{
+  "id": "014",
+  "description": "dynamic lights loop with short vars, bit-test early continue, no abstraction",
+  "input": "function addDynamicLights(surf: Surface): void {\n  const smax = (surf.extents[0] >> 4) + 1;\n  const tmax = (surf.extents[1] >> 4) + 1;\n\n  for (let lnum = 0; lnum < MAX_DLIGHTS; lnum++) {\n    if (!(surf.dlightBits & (1 << lnum))) continue; // not lit by this light\n    const rad = clDlights[lnum].radius;\n    const dist = dotProduct(clDlights[lnum].origin, surf.plane.normal) - surf.plane.dist;\n    const minlight = rad - Math.abs(dist);\n    if (minlight < clDlights[lnum].minlight) continue;\n    for (let t = 0; t < tmax; t++) {\n      for (let s = 0; s < smax; s++) {\n        const sd = Math.abs(localImpact[0] - s * 16);\n        const td = Math.abs(localImpact[1] - t * 16);\n        const d = sd > td ? sd + (td >> 1) : td + (sd >> 1);\n        if (d < minlight) blocklights[t * smax + s] += (rad - d) * 256;\n      }\n    }\n  }\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

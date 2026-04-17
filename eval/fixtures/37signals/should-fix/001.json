@@ -1,0 +1,10 @@
+{
+  "id": "001",
+  "description": "service object suffix: a class named XxxService instead of a domain-named PORO",
+  "input": "class AccountClosureService\n  def self.call(account)\n    new(account).execute\n  end\n\n  def initialize(account)\n    @account = account\n  end\n\n  def execute\n    @account.update!(state: :closed, closed_at: Time.current)\n    AccountMailer.closure_confirmation(@account).deliver_later\n  end\nend",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["Service", "PORO", "domain"]
+  }
+}

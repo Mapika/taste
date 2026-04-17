@@ -1,0 +1,10 @@
+{
+  "id": "017",
+  "description": "ReportGeneratorService — presentation/export logic that belongs in a presenter or job",
+  "input": "class ReportGeneratorService\n  def initialize(user, date_range)\n    @user = user\n    @date_range = date_range\n  end\n\n  def generate_csv\n    posts = Post.where(author: @user, created_at: @date_range)\n    CSV.generate do |csv|\n      csv << ['Title', 'Published', 'Views']\n      posts.each { |p| csv << [p.title, p.published_at, p.view_count] }\n    end\n  end\nend",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.8,
+    "violationContains": ["Service", "presenter", "job"]
+  }
+}

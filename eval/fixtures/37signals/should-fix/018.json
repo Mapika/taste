@@ -1,0 +1,10 @@
+{
+  "id": "018",
+  "description": "Gemfile pulling in a form-object framework when ActiveModel::Model is sufficient",
+  "input": "# Gemfile\ngem 'reform'           # form object framework\ngem 'dry-validation'   # validation library\ngem 'virtus'           # attribute coercion\n\n# app/forms/signup_form.rb\nclass SignupForm < Reform::Form\n  property :email\n  property :name\n\n  validates :email, presence: true\n  validates :name, presence: true\nend",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["dependency", "ActiveModel::Model", "plain Ruby"]
+  }
+}

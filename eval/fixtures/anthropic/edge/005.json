@@ -1,0 +1,8 @@
+{
+  "id": "005",
+  "description": "JSDoc that might be over-explained — borderline verbose but includes a real example",
+  "input": "/**\n * Converts milliseconds to a human-readable duration string.\n *\n * Used in log output so humans can read retry delays without a calculator.\n * Note: this is only for display; do not parse the output.\n *\n * @param ms - Duration in milliseconds.\n * @returns A string like \"1.5s\" or \"300ms\".\n *\n * @example\n * ```ts\n * formatDuration(1500); // '1.5s'\n * formatDuration(250);  // '250ms'\n * ```\n */\nexport function formatDuration(ms: number): string {\n  return ms >= 1000 ? `${(ms / 1000).toFixed(1)}s` : `${ms}ms`;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

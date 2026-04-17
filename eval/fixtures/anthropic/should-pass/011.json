@@ -1,0 +1,8 @@
+{
+  "id": "011",
+  "description": "import type for pure-type imports and namespace star imports — correct module pattern",
+  "input": "import type { RequestInit, BodyInit } from './internal/builtin-types';\nimport type { HTTPMethod, FinalizedRequestInit } from './internal/types';\nimport { uuid4 } from './internal/utils/uuid';\nimport { validatePositiveInteger, isAbsoluteURL, safeJSON } from './internal/utils/values';\nimport { sleep } from './internal/utils/sleep';\nimport { castToError, isAbortError } from './internal/errors';\nimport * as Errors from './core/error';",
+  "expect": {
+    "verdict": "pass"
+  }
+}

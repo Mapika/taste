@@ -1,0 +1,8 @@
+{
+  "id": "010",
+  "description": "snake_case file references and delegate DSL — Rails conventions fully honored",
+  "input": "class Post < ApplicationRecord\n  belongs_to :author, class_name: 'User'\n\n  delegate :name,  to: :author, prefix: true\n  delegate :email, to: :author, prefix: true\n  delegate :avatar_url, to: :author\n\n  def to_s\n    title\n  end\nend",
+  "expect": {
+    "verdict": "pass"
+  }
+}

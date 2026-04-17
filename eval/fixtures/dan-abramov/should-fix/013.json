@@ -1,0 +1,10 @@
+{
+  "id": "013",
+  "description": "Hungarian notation in state variable names — implementation-typed not intent-named",
+  "input": "function AuthForm() {\n  const [strEmail, setStrEmail] = useState('');\n  const [strPassword, setStrPassword] = useState('');\n  const [bIsSubmitting, setBIsSubmitting] = useState(false);\n  const [objError, setObjError] = useState(null);\n\n  return (\n    <form>\n      <input value={strEmail} onChange={e => setStrEmail(e.target.value)} />\n      <input value={strPassword} onChange={e => setStrPassword(e.target.value)} type=\"password\" />\n      {bIsSubmitting && <span>Logging in...</span>}\n      {objError && <p>{objError.message}</p>}\n    </form>\n  );\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.8,
+    "violationContains": ["name", "intent"]
+  }
+}

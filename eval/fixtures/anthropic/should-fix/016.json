@@ -1,0 +1,10 @@
+{
+  "id": "016",
+  "description": "commented-out code left in production — violates no TODO-style breadcrumbs rule",
+  "input": "export function buildRequestHeaders(apiKey: string, options?: RequestOptions): Headers {\n  const headers = new Headers();\n  headers.set('x-api-key', apiKey);\n  headers.set('anthropic-version', '2023-06-01');\n  // headers.set('x-request-id', generateId()); // TODO: add request tracing\n  // const legacyAuth = `Bearer ${apiKey}`;\n  // headers.set('Authorization', legacyAuth);\n  return headers;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["comment", "TODO"]
+  }
+}

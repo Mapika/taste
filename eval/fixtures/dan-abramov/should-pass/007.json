@@ -1,0 +1,8 @@
+{
+  "id": "007",
+  "description": "reusable form input hook returning spreadable object",
+  "input": "function useFormInput(initialValue) {\n  const [value, setValue] = useState(initialValue);\n\n  function handleChange(e) {\n    setValue(e.target.value);\n  }\n\n  return { value, onChange: handleChange };\n}\n\nfunction ContactForm() {\n  const name = useFormInput('');\n  const email = useFormInput('');\n\n  return (\n    <form>\n      <input {...name} placeholder=\"Name\" />\n      <input {...email} placeholder=\"Email\" type=\"email\" />\n    </form>\n  );\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

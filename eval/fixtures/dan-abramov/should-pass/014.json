@@ -1,0 +1,8 @@
+{
+  "id": "014",
+  "description": "functional component with destructured props and intent-revealing boolean names",
+  "input": "function UserCard({ name, avatarUrl, isOnline, hasUnreadMessages }) {\n  return (\n    <div className=\"user-card\">\n      <img src={avatarUrl} alt={name} />\n      <span>{name}</span>\n      {isOnline && <span className=\"badge-online\">Online</span>}\n      {hasUnreadMessages && <span className=\"badge-unread\">New messages</span>}\n    </div>\n  );\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "003",
+  "description": "panic token in a string literal describing an error recovery strategy — not a real panic call",
+  "input": "// RecoveryMiddleware wraps an HTTP handler with panic recovery.\n// If the handler calls panic(), RecoveryMiddleware catches it via recover()\n// and returns a 500 status code rather than crashing the server.\nfunc RecoveryMiddleware(next http.Handler) http.Handler {\n\treturn http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {\n\t\tdefer func() {\n\t\t\tif rec := recover(); rec != nil {\n\t\t\t\thttp.Error(w, \"internal server error\", http.StatusInternalServerError)\n\t\t\t}\n\t\t}()\n\t\tnext.ServeHTTP(w, r)\n\t})\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

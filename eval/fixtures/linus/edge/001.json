@@ -1,0 +1,8 @@
+{
+  "id": "001",
+  "description": "goto used for cleanup in a function that also has an early return — borderline acceptable",
+  "input": "int read_file(struct file *f, char *buf, size_t len)\n{\n\tchar *tmp;\n\tint err;\n\n\tif (!f->f_op->read)\n\t\treturn -EINVAL;\n\n\ttmp = kmalloc(len, GFP_KERNEL);\n\tif (!tmp)\n\t\treturn -ENOMEM;\n\n\terr = f->f_op->read(f, tmp, len);\n\tif (err < 0)\n\t\tgoto out_free;\n\n\tmemcpy(buf, tmp, err);\nout_free:\n\tkfree(tmp);\n\treturn err;\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}

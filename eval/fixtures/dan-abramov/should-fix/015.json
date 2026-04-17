@@ -1,0 +1,10 @@
+{
+  "id": "015",
+  "description": "custom hook not prefixed with 'use' — breaks React rules-of-hooks detection",
+  "input": "function windowWidth() {\n  const [width, setWidth] = useState(window.innerWidth);\n\n  useEffect(() => {\n    const handleResize = () => setWidth(window.innerWidth);\n    window.addEventListener('resize', handleResize);\n    return () => window.removeEventListener('resize', handleResize);\n  }, []);\n\n  return width;\n}\n\nfunction ResponsiveLayout() {\n  const width = windowWidth();\n  return <div>{width > 768 ? 'Desktop' : 'Mobile'}</div>;\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.85,
+    "violationContains": ["use", "prefix", "hook"]
+  }
+}

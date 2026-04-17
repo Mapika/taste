@@ -1,0 +1,10 @@
+{
+  "id": "009",
+  "description": "error message starts with capital letter and ends with punctuation",
+  "input": "func validateAge(age int) error {\n\tif age < 0 {\n\t\treturn fmt.Errorf(\"Age must be non-negative.\")\n\t}\n\tif age > 150 {\n\t\treturn fmt.Errorf(\"Age exceeds maximum allowed value!\")\n\t}\n\treturn nil\n}",
+  "expect": {
+    "verdict": "fix",
+    "minConfidence": 0.75,
+    "violationContains": ["error", "lowercase"]
+  }
+}

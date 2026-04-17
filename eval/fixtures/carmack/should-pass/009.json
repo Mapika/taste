@@ -1,0 +1,8 @@
+{
+  "id": "009",
+  "description": "module-level comment describing object taxonomy rather than API docs",
+  "input": "/*\npushmove objects do not obey gravity and do not interact with trigger fields,\nbut block normal movement and push normal objects when they move.\n\ndoors/plats: SOLID_BSP + MOVETYPE_PUSH\nbonus items: SOLID_TRIGGER touch + MOVETYPE_TOSS\ncorpses:     SOLID_NOT + MOVETYPE_TOSS\nwalking monsters: SOLID_SLIDEBOX + MOVETYPE_STEP\nflying monsters:  SOLID_SLIDEBOX + MOVETYPE_FLY\n*/\n\nconst MOVE_EPSILON = 0.01;\n\nfunction svPhysicsToss(ent: Edict): void {\n  // only called for MOVETYPE_TOSS entities\n  if (ent.v.flags & FL_ONGROUND) return;\n  svAddGravity(ent);\n  svCheckVelocity(ent);\n  svFlyMove(ent, host_frametime, null);\n}",
+  "expect": {
+    "verdict": "pass"
+  }
+}
